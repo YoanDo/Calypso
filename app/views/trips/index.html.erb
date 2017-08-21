@@ -1,0 +1,22 @@
+<%= link_to 'add a trip', new_trip_path %>
+
+ <% @trips.each do |trip| %>
+  <div>
+  <%= trip.title %><br>
+  <%= trip.from %><br>
+  <%= trip.to %><br>
+  <%= trip.starts_at %><br>
+  <%= trip.ends_at %><br>
+  <%= trip.estimated_duration %><br>
+  <%= trip.description %><br>
+  <%= trip.nb_participant %><br>
+  <%= trip.user.email %><br>
+  <%= trip.status %><br>
+  <%= trip.category %><br>
+  <%= trip.car %><br>
+  <%= trip.house %><br>
+  <%= trip.equipment %><br><br>
+
+  <%= link_to 'edit trip', edit_trip_path(trip.id) %>
+  </div>
+ <% end %>
