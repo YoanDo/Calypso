@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :trips, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :comments, only: [:create]
     resources :participants, only: [ :create, :update ]
-
   end
 
   resources :users, only: [ :edit, :update, :show] do
