@@ -1,3 +1,6 @@
+STATUS = ["pending", "going", "cancelled"]
+
+
 class Trip < ApplicationRecord
   belongs_to :user
 
@@ -12,4 +15,13 @@ class Trip < ApplicationRecord
   validates :ends_at, presence: :true
   validates :description, presence: :true
   validates :nb_participant, presence: :true
+  validates :status, inclusion: { in: STATUS }
+
+  def is_full?
+    self.participants.where(status: "accepted").count >= self.nb_participant
+  end
+
+  def pending_to_waiting_list
+    self.participants.where(status: "pending").each { |participant| participant.waiting_list }
+  end
 end
