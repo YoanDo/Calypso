@@ -13,3 +13,17 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+
+h3 {
+  font-size: 22px;
+  color: black;
+  letter-spacing: 2px;
+}
+
+p {
+  font-size: 14px;
+  color: grey;
+  letter-spacing: 1px;
+  line-height: 22px;
+}
