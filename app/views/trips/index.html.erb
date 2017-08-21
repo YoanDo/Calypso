@@ -1,8 +1,12 @@
 <%= link_to 'add a trip', new_trip_path %>
 
+<hr>
+
  <% @trips.each do |trip| %>
   <div>
-  <%= trip.title %><br>
+  <h1> <%= trip.title %></h1>
+  <%= link_to 'edit trip', edit_trip_path(trip.id) %>
+  <%= link_to 'view trip', trip_path(trip.id) %><br>
   <%= trip.from %><br>
   <%= trip.to %><br>
   <%= trip.starts_at %><br>
@@ -17,6 +21,12 @@
   <%= trip.house %><br>
   <%= trip.equipment %><br><br>
 
-  <%= link_to 'edit trip', edit_trip_path(trip.id) %>
+  <h4> NB participants : <%= trip.participants.count %></h4>
+  <ul>
+    <% trip.participants.each do |participant| %>
+    <li> <%= participant.user.email %></li>
+    <% end %>
+  </ul>
+  <hr>
   </div>
  <% end %>
