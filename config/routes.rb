@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :users, only: [ :edit, :update, :show] do
+  resources :users, only: [ :edit, :update, :show ] do
     get 'mytrips', on: :collection
     get 'mybookings', on: :collection
   end
