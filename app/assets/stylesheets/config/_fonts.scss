@@ -6,11 +6,11 @@ $body-font: "Open Sans", "Helvetica", "sans-serif";
 $headers-font: "Raleway", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+
+@font-face {
+  font-family: 'Gotham-black';
+  src: url('<%= asset_path("fonts/Gotham/gotham-black-webfont.eot") %>');
+  src: url('<%= asset_path("fonts/Gotham/gotham-black-webfont.eot#iefix") %>') format('embedded-opentype'),
+       url('<%= asset_path("fonts/Gotham/gotham-black-webfont.woff") %>') format('woff'),
+       url('<%= asset_path("fonts/Gotham/gotham-black-webfont.ttf") %>') format('truetype');
+}
