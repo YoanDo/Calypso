@@ -14,16 +14,19 @@
 @import "components/index";
 @import "pages/index";
 
+body {
+  background-color: white;
+}
 
 h3 {
   font-size: 22px;
-  color: black;
+  color: $black;
   letter-spacing: 2px;
 }
 
 p {
   font-size: 14px;
-  color: grey;
+  color: $gray;
   letter-spacing: 1px;
   line-height: 22px;
 }
