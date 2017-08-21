@@ -24,7 +24,7 @@
   <h4> NB participants : <%= trip.participants.count %></h4>
   <ul>
     <% trip.participants.each do |participant| %>
-    <li> <%= participant.user.email %></li>
+    <li> <%= participant.user.email %> - <%= participant.status %></li>
     <% end %>
   </ul>
   <hr>
