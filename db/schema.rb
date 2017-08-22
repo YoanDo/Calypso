@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821134020) do
+ActiveRecord::Schema.define(version: 20170822102802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20170821134020) do
     t.text     "description"
     t.integer  "nb_participant"
     t.integer  "user_id"
-    t.string   "status",             default: "Pending"
+    t.string   "status",             default: "going"
     t.string   "category"
     t.string   "car"
     t.string   "house"
     t.string   "equipment"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20170821134020) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "description"
+    t.string   "level"
+    t.string   "location"
+    t.string   "language"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "facebook_picture_url"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

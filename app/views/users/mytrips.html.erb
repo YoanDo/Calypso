@@ -1,7 +1,3 @@
-<%= link_to 'add a trip', new_trip_path %>
-
-<hr>
-
  <% @trips.each do |trip| %>
   <div>
   <h1> <%= trip.title %></h1>
@@ -11,20 +7,18 @@
   <%= trip.to %><br>
   <%= trip.starts_at %><br>
   <%= trip.ends_at %><br>
-  <%= trip.estimated_duration %><br>
-  <%= trip.description %><br>
-  <%= trip.nb_participant %><br>
-  <%= trip.user.email %><br>
-  <%= trip.status %><br>
-  <%= trip.category %><br>
-  <%= trip.car %><br>
-  <%= trip.house %><br>
-  <%= trip.equipment %><br><br>
 
   <h4> NB participants : <%= trip.participants.count %></h4>
   <ul>
     <% trip.participants.each do |participant| %>
-    <li> <%= participant.user.email %> - <%= participant.status %></li>
+    <li> <%= participant.user.email %> - <%= participant.status %>
+      <% if participant.status == "pending" %>
+        <%= simple_form_for([trip, participant]) do |f| %>
+          <%= f.hidden_field :status, value: "accepted" %>
+          <%= f.submit "accept"%>
+        <% end %>
+      <% end %>
+    </li>
     <% end %>
   </ul>
   <hr>
