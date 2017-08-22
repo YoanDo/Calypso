@@ -9,9 +9,10 @@ class ParticipantsController < ApplicationController
     @participant.trip = @trip
     @trip.is_full? ? @participant.status = "waiting list" : @participant.status = "pending"
     if @participant.save
-      redirect_to trip_path(@trip.id)
+      redirect_to trip_path(@trip)
     else
-      render :new
+      render "trips/show"
+
     end
   end
 
