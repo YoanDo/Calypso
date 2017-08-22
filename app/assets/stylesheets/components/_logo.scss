@@ -1,0 +1,45 @@
+.logo-nav {
+  font-family: "Gotham-black";
+  font-size: 35px;
+  color: $black;
+  padding-left: 20px;
+}
+
+.logo-nav a {
+  font-family: "Gotham-black";
+  font-size: 35px;
+  color: $black;
+}
+
+.logo-nav a:hover {
+  font-family: "Gotham-black";
+  font-size: 35px;
+  color: $black;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: $black;
+  text-decoration: none;
+}
+
+
+.logo-footer {
+  font-family: "Gotham-black";
+  font-size: 20px;
+  color: $black;
+  padding-left: 20px;
+}
+
+.logo-footer a {
+  font-family: "Gotham-black";
+  font-size: 20px;
+  color: $black;
+}
+
+.logo-footer a:hover {
+  font-family: "Gotham-black";
+  font-size: 20px;
+  color: $black;
+  text-decoration: none;
+}

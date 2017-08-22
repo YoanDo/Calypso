@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20170822092626) do
     t.text     "description"
     t.integer  "nb_participant"
     t.integer  "user_id"
-    t.string   "status",             default: "Pending"
+    t.string   "status",             default: "going"
     t.string   "category"
     t.string   "car"
     t.string   "house"
     t.string   "equipment"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 

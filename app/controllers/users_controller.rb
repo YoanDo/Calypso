@@ -12,9 +12,14 @@ class UsersController < ApplicationController
   def mytrips
     @trips = current_user.trips
   end
-
-  def mybookings
-    @participants = current_user.participants
+  
+  def dashboard
+  @trips = current_user.trips
+  @participants = current_user.participants
+  @user = current_user
+    if @user.nil?
+      redirect_to new_user_registration_path
+    end
   end
 
   private
