@@ -7,6 +7,7 @@ class Participant < ApplicationRecord
 
   validates :trip, uniqueness: { scope: :user, message: "You have already join the trip" }
   validates :status, inclusion: { in: STATUS }
+  validates :message, presence: { message: "Please add a message" }
 
   def waiting_list
     self.status = "waiting list"

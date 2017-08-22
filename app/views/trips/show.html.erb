@@ -1,46 +1,135 @@
-<div>
-  <h1> <%= @trip.title %></h1>
-  <%= link_to 'edit trip', edit_trip_path(@trip.id) %>
-  <%= @trip.from %><br>
-  <%= @trip.to %><br>
-  <%= @trip.starts_at %><br>
-  <%= @trip.ends_at %><br>
-  <%= @trip.estimated_duration %><br>
-  <%= @trip.description %><br>
-  <%= @trip.nb_participant %><br>
-  <%= @trip.user.email %><br>
-  <%= @trip.status %><br>
-  <%= @trip.category %><br>
-  <%= @trip.car %><br>
-  <%= @trip.house %><br>
-  <%= @trip.equipment %><br>
+<!-- Trip body -->
+
+<div class="container">
+  <div class="row">
+  <!-- Trip info -->
+    <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+    <div>
+      <% if @trip.user == current_user %>
+      <h1><%= @trip.title %> <%= link_to 'edit trip', edit_trip_path(@trip), class: 'btn btn-info'%></h1>
+      <% end %>
+    </div>
+    <div class="">
+      <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
+      <p>Date: <%= @trip.starts_at %> </p>
+    </div>
+    <div class="">
+      <p><%= @trip.description  %></p>
+    </div>
+    <div class="">
+      <p><%= @trip.car  %></p>
+    </div>
+    </div>
+    <!-- Host info -->
+    <div class="col-xs-12 col-sm-3">
+    <div class="row">
+      <div class="">
+        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <p><%= @trip.user.first_name %> <%= @trip.user.last_name %></p>
+        <p>Trip status: <%= @trip.status %></p>
+        <p>Seats left: <%= @trip.nb_participant - @trip.participants.count { |participant| participant.status == "accepted"} %></p>
+      </div>
+    <!-- Booking -->
+      <div class="row">
+      <% if @trip.has_participant(current_user)[:status] == false %>
+        <p>Join this trip:</p>
+        <%= simple_form_for([@trip, @participant]) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
+        <p>You have a pending request to join this trip</p>
+        <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch %>
+      <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
+        <p>You are on the waiting list for this trip</p>
+      <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
+        <p>You have joined this trip !</p>
+      <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
+        <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
+      <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
+        <p>You have cancelled your request</p>
+      <% else %>
+      <p>Sorry, you cannot join this trip</p>
+      <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+    </div>
+  </div>
 </div>
 
-<h4> NB participants : <%= @trip.participants.count %></h4>
-<ul>
-  <% @trip.participants.each do |participant| %>
-    <li> <%= participant.user.email %> - <%= participant.status %>
-      <% if participant.user == current_user %>
-        <%= link_to "Cancel", trip_participant_path(@trip, participant, status: "cancelled"), method: :patch, status: "cancelled" %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
 
- <hr>
+<!-- Chat box -->
+<div class="comment-box">
+  <strong>Questions and answers</strong>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-7">
 
- <h4>join the trip</h4>
+        <%= simple_form_for [@trip, @comment] do |f| %>
+        <div class="form-inputs">
+        <% if @trip.user == current_user %>
+          <%= f.input :content, label: false, placeholder: "Type your answer here" %>
+        <% else %>
+          <%= f.input :content, label: false, placeholder: "What question do you have for #{@trip.user.first_name}?" %>
+        <% end %>
+        </div>
 
-<%= simple_form_for([@trip, @participant]) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :message %>
+        <div class="form-actions">
+          <%= f.button :submit, "Send", input_html: {class: "btn btn-info"} %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
+
+        <div class="board-outline">
+
+        <% unless @comments.nil? %>
+          <% @comments.each do |comment| %>
+
+            <div class="message">
+
+              <% if comment.user.facebook_picture_url? %>
+              <%= image_tag comment.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
+              <% else %>
+              <div class="message-empty-img"></div>
+              <% end %>
+
+              <div class="message-name">
+                <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
+                <p><%= comment.created_at.strftime('%a %d %b %Y')  %></p>
+              </div>
+              <div class="message-body">
+                <p>
+                  <% if comment.user == current_user %>
+                  <div class="text-green">
+                    <%= comment.content %>
+                  </div>
+                  <% else %>
+                  <div>
+                    <%= comment.content %>
+                  </div>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "create" %>
-  </div>
-<% end %>
-
-
+</div>
 
 
