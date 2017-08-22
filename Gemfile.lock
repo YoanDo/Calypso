@@ -61,7 +61,6 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
-    cloudinary (1.8.1)
       aws_cf_signer
       rest-client
     coderay (1.1.1)

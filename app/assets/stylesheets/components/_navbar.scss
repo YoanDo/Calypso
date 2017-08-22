@@ -37,12 +37,14 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #504E5C;
+    color: $black;
   font-size: 14px;
+  opacity: 1;
 }
 .navbar-wagon-link:hover {
   // color: #da552f;
   text-decoration: none;
+  color: $black;
 }
 
 /* Dropdown menu */
