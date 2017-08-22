@@ -1,0 +1,44 @@
+
+.search .form-group-navbar-home {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.search .form-group-navbar-button {
+  width: 40px;
+}
+.search .form-group {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.search .searchbar {
+  font-family: "Lato", "sans-serif";
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 2.6px;
+  color: white;
+  background-color: rgba(250, 250, 250, 0);
+  border:solid white;
+  border-width: 2px 0px 2px 2px;
+  border-radius: 2px;
+  padding: 8px 20px;
+  margin: 0 auto;
+}
+
+.search .input-group-addon {
+  background-color: rgba(250, 250, 250, 0);
+  border: solid white;
+  border-width: 2px 2px 2px 0px;
+  border-left: 1px solid white;
+  border-radius: 2px;
+}
+
+.search .input-group-addon:last-child{
+  color: white;
+}
+
+.search .input-group-addon:last-child:hover {
+  color: $orange;
+}
