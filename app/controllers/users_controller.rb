@@ -8,18 +8,20 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to root_path
   end
-  
-  def mytrips
-    @trips = current_user.trips
-  end
 
-  def mybookings
-    @participants = current_user.participants
+  def dashboard
+  @trips = current_user.trips
+  @participants = current_user.participants
+  @user = current_user
+    if @user.nil?
+      redirect_to new_user_registration_path
+    end
   end
 
   private
 
   def user_params
     params.require(:user).permit(:description, :location, :language)
+  end
 
 end
