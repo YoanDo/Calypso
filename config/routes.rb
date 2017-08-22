@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :edit, :update, :show ] do
     get 'mytrips', on: :collection
     get 'mybookings', on: :collection
+    get 'dashboard', on: :collection
   end
 
   root to: 'pages#home'
