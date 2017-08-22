@@ -8,6 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
+gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -18,6 +19,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'omniauth-facebook'
 gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
+
 
 group :development, :test do
   gem 'better_errors'

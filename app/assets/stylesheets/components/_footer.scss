@@ -1,10 +1,9 @@
 .footer {
   display: flex;
   background: RGB(255, 255, 255);
-  // align-items: center;
-  justify-content: space-around;
-  height: 200px;
-  padding: 0px 50px;
+  justify-content: space-between;
+  height: 150px;
+  padding-top: 50px;
   color: RGB(112, 111, 131);
   padding-top: 50px;
 }
@@ -14,6 +13,7 @@
 .footer-links a {
   color: RGB(112, 111, 131);
   opacity: 1;
+  font-size: 16px !important;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;

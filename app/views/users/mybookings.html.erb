@@ -7,10 +7,7 @@
   <%= participant.trip.ends_at %><br>
 
   <strong><%= participant.status %></strong>
-  <%= simple_form_for([participant.trip, participant]) do |f| %>
-    <%= f.hidden_field :status, value: "cancelled" %>
-    <%= f.submit "Cancel my participant"%>
-  <% end %>
+  <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch, status: "cancelled" %>
   <hr>
   </div>
  <% end %>

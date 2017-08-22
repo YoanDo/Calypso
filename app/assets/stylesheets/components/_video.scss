@@ -14,23 +14,26 @@
     // border-bottom:1px solid #FFF;
     margin:0 auto;
     max-width:50%;
-    padding:4em 0 2em;
+    padding:14% 0 2em;
     text-align:center;
 }
 
 .heropanel__content h1 {
-    margin: 10%;
-    text-transform:uppercase;
-    font-family: 'FuriousStyles';
+    margin: -4px;
+    text-transform: uppercase;
+    font-family: 'Lato';
     color: white;
-    font-size: 80px;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 700;
 }
 
-.heropanel__content h1 a {
-    color:#FFF;
-    text-decoration:none;
-    font-family: 'FuriousStyles';
-}
+// .heropanel__content h1 a {
+//     color:#FFF;
+//     text-decoration:none;
+//     font-family: 'Lato';
+//     font-weight: 700;
+// }
 
 .heropanel__content p {
     color:#fff;
