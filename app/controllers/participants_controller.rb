@@ -1,6 +1,7 @@
 class ParticipantsController < ApplicationController
   before_action :set_trip , only: [ :create ]
-  before_action :set_participant , only: [ :update ]
+  before_action :set_participant , only: [ :update, :cancel ]
+  # before_action :set_participant , only: [ :update, :cancel ]
 
   def create
     @participant = Participant.new(participant_params)
@@ -15,17 +16,18 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-    @participant.update(participant_params)
+    @participant.update(status:params[:status])
     @trip = Trip.find(@participant.trip.id)
     if @trip.is_full?
       @trip.pending_to_waiting_list
     end
+    redirect_to :back
   end
 
   private
 
   def participant_params
-    params.require(:participant).permit(:message, :status, :trip_id)
+    params.require(:participant).permit(:id, :message, :status, :trip_id)
   end
 
   def set_trip()

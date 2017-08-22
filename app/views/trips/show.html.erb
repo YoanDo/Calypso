@@ -21,10 +21,7 @@
   <% @trip.participants.each do |participant| %>
     <li> <%= participant.user.email %> - <%= participant.status %>
       <% if participant.user == current_user %>
-        <%= simple_form_for([@trip, participant]) do |f| %>
-          <%= f.hidden_field :status, value: "cancelled" %>
-          <%= f.submit "Cancel my participant"%>
-        <% end %>
+        <%= link_to "Cancel", trip_participant_path(@trip, participant, status: "cancelled"), method: :patch, status: "cancelled" %>
       <% end %>
     </li>
   <% end %>
