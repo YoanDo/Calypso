@@ -2,7 +2,10 @@
 
 <hr>
 
- <% @trips.each do |trip| %>
+<% @trips_day.each do |day, trips| %>
+  <h3><%= day.strftime('%v') %></h3>
+
+  <% for trip in trips %>
   <div>
   <h1> <%= trip.title %></h1>
   <%= link_to 'edit trip', edit_trip_path(trip.id) %>
@@ -29,4 +32,5 @@
   </ul>
   <hr>
   </div>
+  <% end %>
  <% end %>
