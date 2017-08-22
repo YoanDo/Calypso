@@ -4,6 +4,9 @@ STATUS = ["pending", "going", "cancelled"]
 class Trip < ApplicationRecord
   belongs_to :user
 
+  geocoded_by :to
+  after_validation :geocode, if: :to_changed?
+
   has_many :participants, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
@@ -15,6 +18,7 @@ class Trip < ApplicationRecord
   validates :description, presence: :true
   validates :nb_participant, presence: :true
   validates :status, inclusion: { in: STATUS }
+
 
   def is_full?
     self.participants.where(status: "accepted").count >= self.nb_participant
