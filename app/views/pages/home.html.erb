@@ -1,7 +1,20 @@
 <header class="heropanel--video" data-vide-bg="mp4: https://ak3.picdn.net/shutterstock/videos/13402823/preview/stock-footage-pov-surfing-view-of-empty-ocean-wave-crashing-view-from-in-the-barrel-extreme-sport-slow-motion-hd.mp4", poster: https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg data-vide-options="posterType: png, loop: true, muted: true, position: 50% 50%">
   <div class="heropanel__content">
+  <h1>JOIN A TRIP ,</h1>
+  <h1>MEET SURFERS,</h1>
+  <h1>CREATE ADVENTURES</h1>
   </div>
   <!-- searchbar -->
+  <div class="search">
+    <div class="form-group">
+      <%= form_tag "/services", method: :get, class: "form-group-navbar-home"  do %>
+      <%= text_field_tag :search, "", class:'autocomplete-location form-control searchbar' , placeholder: "Where would you like to surf ?"  %>
+      <%= button_tag "search", name: nil, class:"input-group-addon form-group-navbar-button" do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 
 </header>
 
