@@ -4,9 +4,9 @@ class ParticipantsController < ApplicationController
 
   def create
     @participant = Participant.new(participant_params)
-    @participant.status = "pending"
     @participant.user = current_user
     @participant.trip = @trip
+    @trip.is_full? ? @participant.status = "waiting list" : @participant.status = "pending"
     if @participant.save
       redirect_to trip_path(@trip.id)
     else
@@ -16,7 +16,10 @@ class ParticipantsController < ApplicationController
 
   def update
     @participant.update(participant_params)
-    @participant.save
+    @trip = Trip.find(@participant.trip.id)
+    if @trip.is_full?
+      @trip.pending_to_waiting_list
+    end
   end
 
   private
@@ -32,6 +35,4 @@ class ParticipantsController < ApplicationController
   def set_participant()
     @participant = Participant.find(params[:id])
   end
-
-
 end

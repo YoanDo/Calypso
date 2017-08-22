@@ -1,0 +1,26 @@
+ <% @trips.each do |trip| %>
+  <div>
+  <h1> <%= trip.title %></h1>
+  <%= link_to 'edit trip', edit_trip_path(trip.id) %>
+  <%= link_to 'view trip', trip_path(trip.id) %><br>
+  <%= trip.from %><br>
+  <%= trip.to %><br>
+  <%= trip.starts_at %><br>
+  <%= trip.ends_at %><br>
+
+  <h4> NB participants : <%= trip.participants.count %></h4>
+  <ul>
+    <% trip.participants.each do |participant| %>
+    <li> <%= participant.user.email %> - <%= participant.status %>
+      <% if participant.status == "pending" %>
+        <%= simple_form_for([trip, participant]) do |f| %>
+          <%= f.hidden_field :status, value: "accepted" %>
+          <%= f.submit "accept"%>
+        <% end %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <hr>
+  </div>
+ <% end %>

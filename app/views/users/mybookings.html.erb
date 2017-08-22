@@ -1,0 +1,16 @@
+ <% @participants.each do |participant| %>
+  <div>
+  <h1> <%= participant.trip.title %></h1>
+  <%= participant.trip.from %><br>
+  <%= participant.trip.to %><br>
+  <%= participant.trip.starts_at %><br>
+  <%= participant.trip.ends_at %><br>
+
+  <strong><%= participant.status %></strong>
+  <%= simple_form_for([participant.trip, participant]) do |f| %>
+    <%= f.hidden_field :status, value: "cancelled" %>
+    <%= f.submit "Cancel my participant"%>
+  <% end %>
+  <hr>
+  </div>
+ <% end %>
