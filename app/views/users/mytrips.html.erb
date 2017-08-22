@@ -13,8 +13,8 @@
     <% trip.participants.each do |participant| %>
     <li> <%= participant.user.email %> - <%= participant.status %>
       <% if participant.status == "pending" %>
-        <%= link_to "accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch, status: "cancelled" %>
-        <%= link_to "decline", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch, status: "cancelled" %>
+        <%= link_to "accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch %>
+        <%= link_to "decline", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch %>
       <% end %>
     </li>
     <% end %>

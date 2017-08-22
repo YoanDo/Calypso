@@ -4,6 +4,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trips_day = @trips.order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
   end
 
   def show

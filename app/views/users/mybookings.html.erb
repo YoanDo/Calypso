@@ -7,7 +7,7 @@
   <%= participant.trip.ends_at %><br>
 
   <strong><%= participant.status %></strong>
-  <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch, status: "cancelled" %>
+  <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch %>
   <hr>
   </div>
  <% end %>
