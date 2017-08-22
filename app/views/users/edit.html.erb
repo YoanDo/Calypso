@@ -9,6 +9,8 @@
         <%= f.input :level, required: true, label: 'Surf level', collection: ['Beginner', 'Intermediate', 'Advanced' ] %>
         <%= f.input :location, required: true %>
         <%= f.input :language, required: true %>
+        <%= f.input :photo, required: true %>
+        <%= f.input :photo_cache, as: :hidden %>
 
         <%= f.button :submit, 'Update', class: 'btn btn-primary' %>
       <% end %>
