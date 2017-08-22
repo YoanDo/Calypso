@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to root_path, class: "navbar-wagon-brand logo-nav" do %>
     CALYPSO/
   <% end %>
 
@@ -11,13 +11,13 @@
 
       <!-- Links when logged in -->
       <div class="menu menu--adsila">
-        <%= link_to "new_trip", class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+        <%= link_to new_trip_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
           <span class="menu__item-name">CREATE</span>
           <% end %>
-        <%= link_to "trips", class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+        <%= link_to trips_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
           <span class="menu__item-name">EXPLORE</span>
           <% end %>
-        <%= link_to "trips", class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+        <%= link_to trips_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
           <span class="menu__item-name">MY TRIPS</span>
         <% end %>
         </div>

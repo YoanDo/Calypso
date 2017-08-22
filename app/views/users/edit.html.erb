@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <Div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <%= simple_form_for(@user) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
+        <%= f.input :description, required: true, label: 'Profile', placeholder: 'Tell us about yourself !', as: :text, :input_html => {:rows => 5} %>
+        <%= f.input :level, required: true, label: 'Surf level', collection: ['Beginner', 'Intermediate', 'Advanced' ] %>
+        <%= f.input :location, required: true %>
+        <%= f.input :language, required: true %>
+
+        <%= f.button :submit, 'Update', class: 'btn btn-primary' %>
+      <% end %>
+    </Div>
+  </div>
+</div>
+
+
