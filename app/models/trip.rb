@@ -7,7 +7,6 @@ class Trip < ApplicationRecord
   has_many :participants, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-
   validates :title, presence: :true, uniqueness: true
   validates :from, presence: :true
   validates :to, presence: :true
@@ -23,5 +22,14 @@ class Trip < ApplicationRecord
 
   def pending_to_waiting_list
     self.participants.where(status: "pending").each { |participant| participant.waiting_list }
+  end
+
+  def has_participant(user)
+    self.participants.each do |participant|
+      if participant.user == user
+        return { participant: participant, status: participant.status }
+      end
+    end
+    return { participant: nil, status: false }
   end
 end

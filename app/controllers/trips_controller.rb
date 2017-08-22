@@ -7,6 +7,8 @@ class TripsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @trip.comments
     @participant = Participant.new
   end
 
@@ -44,4 +46,5 @@ class TripsController < ApplicationController
   def set_trip
     @trip = Trip.find(params[:id])
   end
+
 end
