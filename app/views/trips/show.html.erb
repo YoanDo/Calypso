@@ -1,0 +1,49 @@
+<div>
+  <h1> <%= @trip.title %></h1>
+  <%= link_to 'edit trip', edit_trip_path(@trip.id) %>
+  <%= @trip.from %><br>
+  <%= @trip.to %><br>
+  <%= @trip.starts_at %><br>
+  <%= @trip.ends_at %><br>
+  <%= @trip.estimated_duration %><br>
+  <%= @trip.description %><br>
+  <%= @trip.nb_participant %><br>
+  <%= @trip.user.email %><br>
+  <%= @trip.status %><br>
+  <%= @trip.category %><br>
+  <%= @trip.car %><br>
+  <%= @trip.house %><br>
+  <%= @trip.equipment %><br>
+</div>
+
+<h4> NB participants : <%= @trip.participants.count %></h4>
+<ul>
+  <% @trip.participants.each do |participant| %>
+    <li> <%= participant.user.email %> - <%= participant.status %>
+      <% if participant.user == current_user %>
+        <%= simple_form_for([@trip, participant]) do |f| %>
+          <%= f.hidden_field :status, value: "cancelled" %>
+          <%= f.submit "Cancel my participant"%>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+ <hr>
+
+ <h4>join the trip</h4>
+
+<%= simple_form_for([@trip, @participant]) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :message %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "create" %>
+  </div>
+<% end %>
+
+
+
+
