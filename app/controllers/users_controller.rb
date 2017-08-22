@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def mytrips
+    @trips = current_user.trips
+  end
+  
   def dashboard
   @trips = current_user.trips
   @participants = current_user.participants
@@ -21,7 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:description, :location, :language)
+    params.require(:user).permit(:first_name, :last_name, :description, :level, :location, :language, :photo, :photo_cache)
   end
-
 end
