@@ -16,7 +16,10 @@ class ParticipantsController < ApplicationController
 
   def update
     @participant.update(participant_params)
-    @trip.is_full? ? @trip.pending_to_waiting_list : ""
+    @trip = Trip.find(@participant.trip.id)
+    if @trip.is_full?
+      @trip.pending_to_waiting_list
+    end
   end
 
   private
