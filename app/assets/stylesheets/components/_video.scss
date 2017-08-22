@@ -1,0 +1,39 @@
+.heropanel--video {
+    font-family:sans-serif;
+    min-height:500px;
+}
+
+.heropanel__content {
+  //pour slide le H1
+    -moz-animation:gm-slidein 3s 1;
+    -ms-animation:gm-slidein 3s 1;
+    -o-animation:gm-slidein 3s 1;
+    -webkit-animation:gm-slidein 3s 1;
+    animation:gm-slidein 3s 1;
+//line
+    // border-bottom:1px solid #FFF;
+    margin:0 auto;
+    max-width:50%;
+    padding:4em 0 2em;
+    text-align:center;
+}
+
+.heropanel__content h1 {
+    margin: 10%;
+    text-transform:uppercase;
+    font-family: 'FuriousStyles';
+    color: white;
+    font-size: 80px;
+}
+
+.heropanel__content h1 a {
+    color:#FFF;
+    text-decoration:none;
+    font-family: 'FuriousStyles';
+}
+
+.heropanel__content p {
+    color:#fff;
+    margin:0;
+    text-transform:uppercase;
+}
