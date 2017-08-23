@@ -113,7 +113,7 @@
 <!-- JS (incl. map) -->
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
@@ -126,6 +126,15 @@
           handler.getMap().setZoom(14);
         }
       });
+
+      App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
+        received: function(data) {
+          const new_comment = data.comment;
+          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+          document.querySelector("#comment_content").value = '';
+        }
+      });
+
     });
-  <% end %>
+  </script>
 <% end %>
