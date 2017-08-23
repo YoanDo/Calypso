@@ -1,12 +1,10 @@
-
 <div class="container">
-  <% @trips_day.each do |day, trips| %>
-    <div class="date">
-    <h3><%= day.strftime('%v') %></h3>
-    </div>
-    <% for trip in trips %>
-      <%= render "shared/cardtrip", trip: trip %>
+    <% @trips_day.each do |day, trips| %>
+        <div class="date">
+          <h3><%= day.strftime('%v') %></h3>
+        </div>
+      <% for trip in trips %>
+          <%= render "shared/cardtrip", trip: trip %>
+      <% end %>
     <% end %>
-   <% end %>
 </div>
-
