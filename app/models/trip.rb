@@ -1,5 +1,5 @@
 STATUS = ["pending", "going", "cancelled"]
-
+CATEGORY = ["Surf", "Kitesurf", "Windsurf"]
 
 class Trip < ApplicationRecord
   belongs_to :user
@@ -18,6 +18,7 @@ class Trip < ApplicationRecord
   validates :description, presence: :true
   validates :nb_participant, presence: :true
   validates :status, inclusion: { in: STATUS }
+  validates :category, inclusion: { in: CATEGORY }
 
 
   def is_full?
