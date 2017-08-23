@@ -1,0 +1,10 @@
+<div class="search">
+    <div class="form-group">
+      <%= form_tag trips_path, method: :get, class: "form-group-navbar-home"  do %>
+      <%= text_field_tag :search, "", class:'autocomplete-location form-control searchbar' , placeholder: "Where would you like to surf ?"  %>
+      <%= button_tag "search", name: nil, class:"input-group-addon form-group-navbar-button" do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
