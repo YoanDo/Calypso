@@ -1,0 +1,46 @@
+<div class="row text-right">
+  <% if current_user == trip.user %>
+  <div class="align-left">
+    <%= link_to edit_trip_path(trip.id) do %>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<div class="card">
+  <div class="time">
+    <h3><%= trip.starts_at.strftime('%R') %></h3>
+    <p><%= ((trip.ends_at.to_date) - (trip.starts_at.to_date)).to_i %> days</p>
+    <div class="text-right">
+      <% if trip.user.facebook_picture_url? %>
+      <%= link_to user_path(trip.user.id) do %>
+      <%= image_tag trip.user.facebook_picture_url, :class => "avatar" %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to trip_path(trip.id) do %>
+    <div class="body">
+      <div class="title">
+        <div class="destination">
+          <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+          <p><%= trip.title %><p>
+          </div>
+          <div class="participant text-center">
+            <p class="logo-nav">
+              <%= trip.participants.where(status: "accepted").count %>/<%= trip.nb_participant %>
+            </p>
+            <p>seats lefts</p>
+          </div>
+        </div>
+        <div class="detail">
+          <div class="description">
+            <p class="text-justify"><%= trip.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="weather text-center align-middle">
+      Weather
+    </div>
+  </div>
