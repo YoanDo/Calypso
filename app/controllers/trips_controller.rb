@@ -11,6 +11,11 @@ class TripsController < ApplicationController
     @comment = Comment.new
     @comments = @trip.comments
     @participant = Participant.new
+
+    @hash = Gmaps4rails.build_markers(@trip) do |trip, marker|
+      marker.lat trip.latitude
+      marker.lng trip.longitude
+    end
   end
 
   def new
