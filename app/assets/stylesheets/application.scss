@@ -55,3 +55,11 @@ p {
 .footer_down {
   min-height: calc(100vh - 270px);
 }
+
+.container {
+  width: calc(100vh - 10vh);
+}
+
+#icon_big {
+  font-size: 2.5em;
+}

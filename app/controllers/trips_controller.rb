@@ -4,10 +4,18 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trips_day = @trips.order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
   end
 
   def show
+    @comment = Comment.new
+    @comments = @trip.comments
     @participant = Participant.new
+
+    @hash = Gmaps4rails.build_markers(@trip) do |trip, marker|
+      marker.lat trip.latitude
+      marker.lng trip.longitude
+    end
   end
 
   def new
@@ -44,4 +52,5 @@ class TripsController < ApplicationController
   def set_trip
     @trip = Trip.find(params[:id])
   end
+
 end
