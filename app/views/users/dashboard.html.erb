@@ -29,8 +29,8 @@
         <% @user.participants.each do |participant| %>
           <div class="grid__card-bookings">
             <div class="grid__card-bookings__info">
-              <%= participant.trip.title %>
-              <%= participant.status %>
+              <%= participant.trip.title %><br>
+              <span class="green"><%= participant.status %></span>
             </div>
             <div class="grid__card-bookings__host-img">
               <%= participant.trip.user.facebook_picture_url %>
