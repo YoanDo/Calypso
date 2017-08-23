@@ -1,0 +1,38 @@
+
+.btn-primary {
+  border: solid 2px rgba(255, 116, 97, .90);
+  color: rgba(255, 116, 97, .90);
+  background-color: rgba(255, 116, 97, 0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
+  margin: 1%
+}
+
+.btn-primary:hover {
+  border: solid 2px rgba(255, 116, 97, 1.0);
+  color: white;
+  background-color: rgba(255, 116, 97, 1.0);
+}
+
+.btn-info {
+  border: solid 2px RGBA(62, 61, 75, .90);
+  color: RGBA(62, 61, 75, .90);
+  background-color: RGBA(62, 61, 75, 0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
+  margin: 1%
+}
+
+.btn-info:hover {
+  border: solid 2px RGBA(62, 61, 75, 1.00);
+  color: white;
+  background-color: RGBA(62, 61, 75, 1.00);
+}
