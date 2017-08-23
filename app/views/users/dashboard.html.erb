@@ -1,47 +1,17 @@
 <nav class="nav-dashboard">
 
-  <ul class="list-inline text-center">
-    <li>Dashboard</li>
-    <li>My trips</li>
-    <li>My Bookings</li>
-    <li>Reviews</li>
+  <ul class="list-inline align-items">
+    <%= link_to dashboard_users_path do %>
+    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+    <% end %>
+
+    <%= link_to "Host", mytrips_users_path %>
+    <%= link_to mybookings_users_path do %>
+    <i class="fa fa-calendar" aria-hidden="true"></i> Bookings
+    <% end %>
+
+    <li><i class="fa fa-star-o" aria-hidden="true"></i>
+ Reviews</li>
   </ul>
 </nav>
 
-<div class="container">
-  <% @user.trips.each do |trip| %>
-  <div class="card">
-    <div class="time_start">
-      <%= trip.starts_at.strftime("%I:%M%p") %>
-    </div>
-
-    <div class="card-destination">
-      <h4><%= trip.to %></h4>
-      <p><%= trip.starts_at %></p>
-    </div>
-    <div class="card-name">
-      <h4><%= trip.user.first_name %> <%= trip.user.last_name%></h4>
-      <p><%= trip.starts_at %></p>
-    </div>
-    <div class="card-body">
-    <p><strong><%= trip.title %></strong></p>
-      <p>
-        <i class="fa fa-car" aria-hidden="true"></i>
- <%= trip.from %> > <%= trip.to %>
-      </p>
-    </div>
-    <div class="card-status">
-      <p class="status pending"><%= trip.status %></p>
-      <p class="price"></p>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-
-<!--    <div class="img-card">
-      <#% if trip.user.facebook_picture_url == nil %>
-      <#% else %>
-      <#%= image_tag trip.user.facebook_picture_url.gsub("squreare", "large"), class: "avatar img-circle"  %>
-      <#% end %> -->
-<!--     </div> -->
