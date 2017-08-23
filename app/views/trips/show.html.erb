@@ -64,8 +64,12 @@
         <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
       <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
         <p>You are on the waiting list for this trip</p>
+        <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+
       <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
         <p>You have joined this trip !</p>
+        <%= link_to "Cancel", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+
       <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
         <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
       <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
