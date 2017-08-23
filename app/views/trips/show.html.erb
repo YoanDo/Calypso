@@ -90,64 +90,25 @@
 
 
 <!-- Chat box -->
+
 <div class="comment-box">
   <strong>Questions and answers</strong>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-7">
-
-        <%= simple_form_for [@trip, @comment] do |f| %>
-        <div class="form-inputs">
-        <% if @trip.user == current_user %>
-          <%= f.input :content, label: false, placeholder: "Type your answer here" %>
-        <% else %>
-          <%= f.input :content, label: false, placeholder: "What question do you have for #{@trip.user.first_name}?" %>
-        <% end %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Send", input_html: {class: "btn btn-info"} %>
-        </div>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <%= render 'comments/form', trip: @trip, comment: @comment %>
     </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
-
-        <div class="board-outline">
-
-          <% @comments.each do |comment| %>
-            <div class="message">
-              <% if comment.user.facebook_picture_url? %>
-              <%= image_tag comment.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
-              <% else %>
-              <div class="message-empty-img"></div>
-              <% end %>
-
-              <div class="message-name">
-                <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
-                <p><%= comment.created_at.strftime('%a %d %b %Y')  %></p>
-              </div>
-              <div class="message-body">
-                <p>
-                  <% if comment.user == current_user %>
-                  <div class="text-green">
-                    <%= comment.content %>
-                  </div>
-                  <% else %>
-                  <div>
-                    <%= comment.content %>
-                  </div>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          <% end %>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
+      <div class="board-outline" id="message-board-public">
+      <!-- Action-cable here (JS) -->
+      <% @comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+      <% end %>
       </div>
     </div>
   </div>
 </div>
-
 <!-- JS (incl. map) -->
 
 <% content_for(:after_js) do %>

@@ -6,9 +6,15 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.trip = @trip
     if @comment.save
-      redirect_to trip_path(@trip)
+      respond_to do |format|
+        format.html { redirect_to trip_path(@trip) }
+        format.js
+      end
     else
-      render "trips/show"
+      respond_to do |format|
+        format.html { render "trips/show" }
+        format.js
+      end
     end
   end
 

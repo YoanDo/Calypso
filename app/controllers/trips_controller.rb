@@ -9,7 +9,7 @@ class TripsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @trip.comments
+    @comments = @trip.comments.order(created_at: :desc)
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
 
