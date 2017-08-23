@@ -8,7 +8,14 @@ class TripsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @trip.comments
     @participant = Participant.new
+
+    @hash = Gmaps4rails.build_markers(@trip) do |trip, marker|
+      marker.lat trip.latitude
+      marker.lng trip.longitude
+    end
   end
 
   def new
@@ -45,4 +52,5 @@ class TripsController < ApplicationController
   def set_trip
     @trip = Trip.find(params[:id])
   end
+
 end

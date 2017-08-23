@@ -8,7 +8,6 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
-gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -20,6 +19,14 @@ gem 'uglifier'
 gem 'omniauth-facebook'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 
 
 group :development, :test do

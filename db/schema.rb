@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170822102802) do
     t.string   "equipment"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 
