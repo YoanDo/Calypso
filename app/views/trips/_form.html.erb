@@ -1,52 +1,18 @@
-<div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-lg-5 col-lg-offset-1">
-      <%= simple_form_for(@trip) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :title %>
-          <%= f.input :from %>
-          <%= f.input :to %>
-          <%= f.input :starts_at %>
-          <%= f.input :ends_at %>
-          <%= f.input :description %>
-          <%= f.input :nb_participant %>
-          <%= f.input :category %>
-          <%= f.input :car %>
-          <%= f.input :house %>
-          <%= f.input :equipment %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Create" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="col-xs-12 col-sm-4 col-lg-5">
-      <h1>How it works</h2>
-      <div class="box-service">
-        <h3>1 - Create your trip</strong><br>
-        <p> Anyone can register on the platform, but during the beta period, we prefer to personally review every service provider application in order to offer the best experience to our users.</p>
-        <div class="text-center" id="icon_big">
-          <i class="fa fa-magic" aria-hidden="true"></i>
-        </div>
-      </div>
-
-      <div class="box-service">
-        <h3>2 - Get friend</h3><br>
-        <p> Find the perfect local for your need, request a booking on one of their packages. </p>
-        <div class="text-center" id="icon_big">
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-        </div>
-      </div>
-
-      <div class="box-service">
-        <h3>3 - Get money </h3><br>
-        <p> Time to go surfing! Meet your local service provider, surf together, take pictures, share the waves, the local culture and an awesome experience </p>
-        <div class="text-center" id="icon_big">
-          <i class="fa fa-money" aria-hidden="true"></i>
-        </div>
-      </div>
-    </div>
+<%= simple_form_for(@trip) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :title, placeholder: "The title of your trip" %>
+    <%= f.input :from %>
+    <%= f.input :to %>
+    <%= f.input :starts_at %>
+    <%= f.input :ends_at %>
+    <%= f.input :description, label: "Trips info", placeholder: "The description of your trip (details about the destination, schedule, ...)", as: :text, :input_html => {:rows => 5} %>
+    <%= f.input :nb_participant, label: "Number of seats available" %>
+    <%= f.input :category, collection: CATEGORY %>
+    <%= f.input :car, placeholder: "The description of your car (model, available space for equipment, ...)", as: :text, :input_html => {:rows => 3} %>
   </div>
-</div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send", class: "btn btn-info" %>
+  </div>
+<% end %>
+

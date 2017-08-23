@@ -1,11 +1,12 @@
 .footer {
   display: flex;
+  width: 80vw;
+  margin: auto;
   background: RGB(255, 255, 255);
   justify-content: space-between;
   height: 150px;
   padding-top: 50px;
   color: RGB(112, 111, 131);
-  padding-top: 50px;
 }
 .footer-links {
   display: flex;
@@ -20,4 +21,18 @@
 }
 .footer-links a:hover {
   opacity: 0.6;
+}
+
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    height: 150px;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+
+  .footer-links {
+    margin-top: 20px;
+  }
 }

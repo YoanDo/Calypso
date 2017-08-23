@@ -11,6 +11,8 @@ class ParticipantsController < ApplicationController
     if @participant.save
       redirect_to trip_path(@trip)
     else
+      @comment = Comment.new
+      @comments = @trip.comments
       render "trips/show"
 
     end

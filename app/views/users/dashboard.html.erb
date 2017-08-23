@@ -1,17 +1,60 @@
-<nav class="nav-dashboard">
+ <div class="body-dashboard">
 
-  <ul class="list-inline align-items">
-    <%= link_to dashboard_users_path do %>
-    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
-    <% end %>
+  <%= render 'shared/navbar-dashboard' %>
 
-    <%= link_to "Host", mytrips_users_path %>
-    <%= link_to mybookings_users_path do %>
-    <i class="fa fa-calendar" aria-hidden="true"></i> Bookings
-    <% end %>
+  <div class="container-dashboard">
+    <h3>Overiew</h3>
 
-    <li><i class="fa fa-star-o" aria-hidden="true"></i>
- Reviews</li>
-  </ul>
-</nav>
-
+    <div class="grid">
+      <div class="grid-notifications">
+        <div class="grid__title">
+          Notifications
+        </div>
+        <div class="grid__container">
+          <div class="grid__container-notifications">
+            Florent has joined your last trip.
+          </div>
+        </div>
+        <div class="grid__container">
+          <div class="grid__container-notifications">
+            Julien has joined your last trip.
+          </div>
+        </div>
+      </div>
+      <div class="grid-bookings">
+        <div class="grid__title">
+          Bookings
+        </div>
+        <div class="grid__container">
+        <% @user.participants.each do |participant| %>
+          <div class="grid__card-bookings">
+            <div class="grid__card-bookings__info">
+              <%= participant.trip.title %><br>
+              <span class="green"><%= participant.status %></span>
+            </div>
+            <div class="grid__card-bookings__host-img">
+              <%= participant.trip.user.facebook_picture_url %>
+            </div>
+            <div class="grid__card-bookings__host-name">
+              <%= participant.trip.user.first_name %>
+            </div>
+            <div class="grid__card-bookings__date">
+              <%= participant.trip.starts_at %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="grid-trips">
+        <div class="grid__title">
+          Trips
+        </div>
+      </div>
+      <div class="grid-reviews">
+        <div class="grid__title">
+          Last reviews
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

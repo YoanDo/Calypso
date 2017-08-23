@@ -11,6 +11,7 @@ class TripsController < ApplicationController
     @comment = Comment.new
     @comments = @trip.comments
     @participant = Participant.new
+    @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
 
     @hash = Gmaps4rails.build_markers(@trip) do |trip, marker|
       marker.lat trip.latitude
