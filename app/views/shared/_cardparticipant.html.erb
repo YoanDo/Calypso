@@ -1,0 +1,31 @@
+
+<div class="trip">
+  <div class="time text-right">
+    <% if participant.user.facebook_picture_url? %>
+      <%= link_to user_path(participant.user.id) do %>
+        <%= image_tag participant.user.facebook_picture_url, :class => "avatar small" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="body">
+    <div class="title">
+    </div>
+    <div class="detail">
+      <p class="text-message">
+        <% if participant.user.first_name? %>
+        <strong> <%= participant.user.first_name%> <%= participant.user.last_name%> </strong> <%= participant.created_at.strftime('%v') %></p>
+        <% else %>
+          <strong> <%= participant.user.email%></strong>
+        <% end %>
+      <p class="text-justify text-message"><%= participant.message %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="status text-center align-middle">
+    <p><%= participant.status %></p>
+    <% if participant.status == "pending" %>
+      <%= link_to "Accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch, :class=>"btn-accept" %>
+      <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch, :class=>"btn-decline"%>
+    <% end %>
+  </div>
+</div>
