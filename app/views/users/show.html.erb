@@ -1,6 +1,67 @@
-<%= current_user.first_name %>
+<div class="background-user">
+  <div class="banner-user" style="background-image: url('https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg');">
+    <% if @user.facebook_picture_url != nil %>
+    <div class="banner-avatar img-circle" style="background-image: url(<%= @user.facebook_picture_url.gsub('square', 'large') %>)">
+    </div>
+    <% end %>
+    <div class="">
+      <h1>
+      <%= @user.first_name %> <%= @user.last_name %>
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="infos">
+  <div class="details">
+    <h3>I N F O S</h3>
+    <hr>
+    <ul>
+      <% if @user.location != nil %>
+      <li>Location: <%= @user.location  %></li>
+      <% else %>
+      <li> Location to define</li>
+      <% end %>
+      <li>Member since: <%= @user.created_at.strftime("%Y") %></li>
+      <% if @user.language != nil %>
+      <li>Speaks: <%= @user.language %></li>
+      <% else %>
+      <li>Languages to define</li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="info-description">
+    <% if current_user == @user %>
+    <div class="user-edit">
+      <%= link_to edit_user_path(current_user) do %><i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <div class="user-description">
+      <% end %>
+      <h3>D E S C R I P T I O N</h3>
+      <% if @user.description != nil %>
+      <p> <%= @user.description %></p>
+      <% else %>
+      <p><i>This member hasn't write his description yet</i></p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
+<div class="infos-last-booking">
+    <h3>L A S T  -  E X P E R I E N C E S  -  O N  -  C A L Y P S O</h3>
 
-<%= link_to edit_user_path(current_user) do %>
-  <i class="fa fa-user"></i> <%= t(".profile", default: "Edit") %>
-<% end %>
+    <p>!!! to add</p>
+<!--
+      <%# @user.bookings.last(4).each do |b| %>
+        <div class="exp-cards" style="background-image: url('<%#= cl_image_path b.service.photo_url, height: 150, width: 300, crop: :fill %>');">
+          <div class="exp-description">
+            <h2> <%#= b.service.title %> </h2>
+            <hr>
+            <p> <%#= b.service.location %></p>
+          </div>
+        </div>
+      <%# end %> -->
+<!-- Chat box à ajouter -->
+    </div>
+  </div>
+</div>
