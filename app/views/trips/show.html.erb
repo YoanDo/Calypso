@@ -4,38 +4,41 @@
   <div class="row">
   <!-- Trip info -->
     <div class="col-xs-12 col-sm-7 col-sm-offset-1">
-    <div>
-      <% if @trip.user == current_user %>
-      <h1><%= @trip.title %> <%= link_to 'edit trip', edit_trip_path(@trip), class: 'btn btn-info'%></h1>
-      <% end %>
-    </div>
-    <div class="">
-      <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
-      <p>Date: <%= @trip.starts_at %> </p>
-    </div>
-    <h3>Current participants</h3>
-    <div class="layout-participants-box">
-      <% @trip.participants.each do |participant| %>
-        <% if participant.status == 'accepted' %>
-          <div class="layout-participants-profile">
-              <% participant_avatar_url = participant.user.facebook_picture_url || "http://placehold.it/30x30" %>
-              <%= image_tag participant_avatar_url, class: "avatar" %>
-            <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
-          </div>
+      <div>
+        <h1><%= @trip.title %></h1><p><span class="category"><%= @trip.category.downcase %></span></p>
+      </div>
+      <div>
+        <% if @trip.user == current_user %>
+          <%= link_to 'edit trip', edit_trip_path(@trip), class: 'btn btn-info'%>
         <% end %>
-      <% end %>
-      <% @remaining_spots.times do %>
-        <p>Available spot</p>
-      <% end %>
-    </div>
-    <h3>Trip info</h3>
-    <div class="">
-      <p><%= @trip.description  %></p>
-    </div>
-    <div class="">
-      <p><%= @trip.car %></p>
-    </div>
-    </div>
+      </div>
+      <div class="">
+        <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
+        <p>Date: <%= @trip.starts_at %> </p>
+      </div>
+      <h3>Current participants</h3>
+      <div class="layout-participants-box">
+        <% @trip.participants.each do |participant| %>
+          <% if participant.status == 'accepted' %>
+            <div class="layout-participants-profile">
+                <% participant_avatar_url = participant.user.facebook_picture_url || "http://placehold.it/30x30" %>
+                <%= image_tag participant_avatar_url, class: "avatar" %>
+              <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
+            </div>
+          <% end %>
+        <% end %>
+        <% @remaining_spots.times do %>
+          <p>Available spot</p>
+        <% end %>
+      </div>
+      <h3>Trip info</h3>
+      <div class="">
+        <p><%= @trip.description  %></p>
+      </div>
+      <div class="">
+        <p><%= @trip.car %></p>
+      </div>
+      </div>
     <!-- Host info -->
     <div class="col-xs-12 col-sm-3">
     <div class="row">
