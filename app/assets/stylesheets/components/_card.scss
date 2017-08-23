@@ -1,99 +1,142 @@
-.date {
-  margin-top: 30px;
-}
-
-.trip h3{
-  margin-bottom: 0px;
-}
-
-.trip {
-  padding: 10px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
+.card-trip {
   display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-}
-
-.trip-participant {
-  padding: 0px 10px 0px 10px;
-}
-
-.trip .time {
-  flex: 0 0 15%;
-  padding: 5px;
-}
-
-.trip .avatar {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.trip .small {
-  width: 25px;
-  height: 25px;
-}
-
-
-.trip .body {
-  flex: 1 0 auto;
-  padding: 0px 5px 0px 5px;
   width: 100%;
+  height: 100%;
+  padding: 20px 40px 20px 20px;
+  border-radius: 5px;
+  border: 1px solid RGB(220, 220, 220);
+  // box-shadow: 0px 2px 10px RGB(200, 200, 200);
+  margin: 20px 0 40px 0;
+  align-items: center;
 }
 
-.trip .body .title{
-  display: flex;
-  justify-content: space-between;
+.card-trip__time {
+  align-self: flex-start;
 }
 
-.trip h3{
-  margin-top: 0px;
-  margin-bottom: 0px;
+.card-trip__info {
+  padding-left: 20px;
+  flex-grow: 1;
+}
+
+.category {
+  background: $orange;
+  border-radius: 5px;
+  color: white !important;
+  padding: 3px 8px;
+  margin-left: 10px;
+}
+
+.u-font-big {
+  font-size: 35px;
+  padding: 0 10px;
+}
+
+.u-color-font-orange {
+  color: $orange;
 }
 
 
-.trip .body .title .destination {
-  padding-bottom: 5px;
-}
 
-.trip .body .participant {
-  margin: 0 0 0px;
-}
 
-.trip .body .title .badge{
-  background: $black;
-  color: white;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 10px;
-}
 
-.trip .detail {
-  padding-bottom: 5px;
-  padding-right: 5px;
-}
 
-.trip .limit{
-  overflow: hidden;
-  max-height: 5em;
-}
+// .date {
+//   margin-top: 30px;
+// }
 
-.trip .body .text-message {
-  margin: 0 0 0px;
-}
+// .trip h3{
+//   margin-bottom: 0px;
+// }
 
-.trip .weather {
-  background-color: $light-gray;
-  flex: 0 0 20%;
-  padding: 5px;
-}
+// .trip {
+//   padding: 10px;
+//   border-bottom: 1px solid rgba(220,224,244,0.4);
+//   display: flex;
+//   justify-content: space-between;
+//   max-width: 900px;
+// }
 
-.trip .status {
-  flex: 0 0 20%;
-  padding: 5px;
-}
+// .trip-participant {
+//   padding: 0px 10px 0px 10px;
+// }
 
-.icon {
-  font-size: 3em;
-}
+// .trip .time {
+//   flex: 0 0 15%;
+//   padding: 5px;
+// }
+
+// .trip .avatar {
+//   border-radius: 50%;
+//   width: 50px;
+//   height: 50px;
+// }
+
+// .trip .small {
+//   width: 25px;
+//   height: 25px;
+// }
+
+
+// .trip .body {
+//   flex: 1 0 auto;
+//   padding: 0px 5px 0px 5px;
+//   width: 100%;
+// }
+
+// .trip .body .title{
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .trip h3{
+//   margin-top: 0px;
+//   margin-bottom: 0px;
+// }
+
+
+// .trip .body .title .destination {
+//   padding-bottom: 5px;
+// }
+
+// .trip .body .participant {
+//   margin: 0 0 0px;
+// }
+
+// .trip .body .title .badge{
+//   background: $black;
+//   color: white;
+//   padding-left: 5px;
+//   padding-right: 5px;
+//   border-radius: 10px;
+// }
+
+// .trip .detail {
+//   padding-bottom: 5px;
+//   padding-right: 5px;
+// }
+
+// .trip .limit{
+//   overflow: hidden;
+//   max-height: 5em;
+// }
+
+// .trip .body .text-message {
+//   margin: 0 0 0px;
+// }
+
+// .trip .weather {
+//   background-color: $light-gray;
+//   flex: 0 0 20%;
+//   padding: 5px;
+// }
+
+// .trip .status {
+//   flex: 0 0 20%;
+//   padding: 5px;
+// }
+
+// .icon {
+//   font-size: 3em;
+// }
 
