@@ -1,169 +1,180 @@
-<!-- Trip body -->
+<!-- map -->
+<div id="map" style="width: 100%; height: 30vh;"></div>
 
-<div class="container">
-  <div class="row">
-  <!-- Trip info -->
-    <div class="col-xs-12 col-sm-7 col-sm-offset-1">
-    <div>
-      <% if @trip.user == current_user %>
-      <h1><%= @trip.title %> <%= link_to 'edit trip', edit_trip_path(@trip), class: 'btn btn-info'%></h1>
-      <% end %>
+<!-- banner infos -->
+<div class="banner-trip">
+  <div class="host-info">
+    <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
     </div>
-    <div class="">
-      <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
-      <p>Date: <%= @trip.starts_at %> </p>
-    </div>
-    <h3>Current participants</h3>
-    <div class="layout-participants-box">
-      <% @trip.participants.each do |participant| %>
-        <% if participant.status == 'accepted' %>
-          <div class="layout-participants-profile">
-              <% participant_avatar_url = participant.user.facebook_picture_url || "http://placehold.it/30x30" %>
-              <%= image_tag participant_avatar_url, class: "avatar" %>
-            <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
-          </div>
-        <% end %>
-      <% end %>
-      <% @remaining_spots.times do %>
-        <p>Available spot</p>
-      <% end %>
-    </div>
-    <h3>Trip info</h3>
-    <div class="">
-      <p><%= @trip.description  %></p>
-    </div>
-    <div class="">
-      <p><%= @trip.car %></p>
-    </div>
-    </div>
-    <!-- Host info -->
-    <div class="col-xs-12 col-sm-3">
-    <div class="row">
-      <div class="">
-        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <p><%= @trip.user.first_name %> <%= @trip.user.last_name %></p>
-        <p>Trip status: <%= @trip.status %></p>
-        <p>Seats left: <%= @remaining_spots %></p>
-      </div>
-    <!-- Booking -->
-      <div class="row">
-      <% if @trip.has_participant(current_user)[:status] == false %>
-        <p>Join this trip:</p>
-        <%= simple_form_for([@trip, @participant]) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
-          </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
-        <p>You have a pending request to join this trip</p>
-        <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
-      <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
-        <p>You are on the waiting list for this trip</p>
-      <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
-        <p>You have joined this trip !</p>
-      <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
-        <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
-      <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
-        <p>You have cancelled your request</p>
-      <% else %>
-      <p>Sorry, you cannot join this trip</p>
-      <% end %>
-      </div>
-      </div>
+    <div class="info-trip-host">
+      <p><%= @trip.user.first_name %> <%= @trip.user.last_name %>
+      <hr>
+      Status: <%= @trip.status %></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-
-    </div>
+  <div class="trip-title">
+    <h1> <%= @trip.title %> </h1>
+  </div>
+  <div class="trip-edit">
+    <% if @trip.user == current_user %>
+    <%= @trip.title %> <%= link_to edit_trip_path(@trip) do%>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+    <% end %>
   </div>
 </div>
 
-<!-- map -->
 
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-
-<!-- Chat box -->
-<div class="comment-box">
-  <strong>Questions and answers</strong>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-7">
-
-        <%= simple_form_for [@trip, @comment] do |f| %>
-        <div class="form-inputs">
+<!-- Trip body -->
+<div class="container">
+  <div class="row">
+    <!-- Trip info -->
+    <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+      <div>
         <% if @trip.user == current_user %>
-          <%= f.input :content, label: false, placeholder: "Type your answer here" %>
-        <% else %>
-          <%= f.input :content, label: false, placeholder: "What question do you have for #{@trip.user.first_name}?" %>
-        <% end %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Send", input_html: {class: "btn btn-info"} %>
-        </div>
+        <h1><%= @trip.title %> <%= link_to 'edit trip', edit_trip_path(@trip), class: 'btn btn-info'%></h1>
         <% end %>
       </div>
+      <div class="">
+        <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
+        <p>Date: <%= @trip.starts_at %> </p>
+      </div>
+      <h3>Current participants</h3>
+      <div class="layout-participants-box">
+        <% @trip.participants.each do |participant| %>
+        <% if participant.status == 'accepted' %>
+        <div class="layout-participants-profile">
+          <% participant_avatar_url = participant.user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag participant_avatar_url, class: "avatar" %>
+          <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
+        </div>
+        <% end %>
+        <% end %>
+        <% @remaining_spots.times do %>
+        <p>Available spot</p>
+        <% end %>
+      </div>
+      <h3>Trip info</h3>
+      <div class="">
+        <p><%= @trip.description  %></p>
+      </div>
+      <div class="">
+        <p><%= @trip.car %></p>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
-
-        <div class="board-outline">
-
-          <% @comments.each do |comment| %>
-            <div class="message">
-              <% if comment.user.facebook_picture_url? %>
-              <%= image_tag comment.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
-              <% else %>
-              <div class="message-empty-img"></div>
-              <% end %>
-
-              <div class="message-name">
-                <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
-                <p><%= comment.created_at.strftime('%a %d %b %Y')  %></p>
-              </div>
-              <div class="message-body">
-                <p>
-                  <% if comment.user == current_user %>
-                  <div class="text-green">
-                    <%= comment.content %>
-                  </div>
-                  <% else %>
-                  <div>
-                    <%= comment.content %>
-                  </div>
-                  <% end %>
-                </p>
-              </div>
-            </div>
+    <!-- Host info -->
+    <div class="col-xs-12 col-sm-3">
+      <div class="row">
+        <div class="">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <p><%= @trip.user.first_name %> <%= @trip.user.last_name %></p>
+          <p>Trip status: <%= @trip.status %></p>
+          <p>Seats left: <%= @remaining_spots %></p>
+        </div>
+        <!-- Booking -->
+        <div class="row">
+          <% if @trip.has_participant(current_user)[:status] == false %>
+          <p>Join this trip:</p>
+          <%= simple_form_for([@trip, @participant]) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
+          </div>
+          <% end %>
+          <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
+          <p>You have a pending request to join this trip</p>
+          <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+          <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
+          <p>You are on the waiting list for this trip</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
+          <p>You have joined this trip !</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
+          <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
+          <p>You have cancelled your request</p>
+          <% else %>
+          <p>Sorry, you cannot join this trip</p>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    </div>
+  </div>
 </div>
-
+<!-- Chat box -->
+<div class="comment-box">
+  <strong>Questions and answers</strong>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-7">
+      <%= simple_form_for [@trip, @comment] do |f| %>
+      <div class="form-inputs">
+        <% if @trip.user == current_user %>
+        <%= f.input :content, label: false, placeholder: "Type your answer here" %>
+        <% else %>
+        <%= f.input :content, label: false, placeholder: "What question do you have for #{@trip.user.first_name}?" %>
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Send", input_html: {class: "btn btn-info"} %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
+      <div class="board-outline">
+        <% @comments.each do |comment| %>
+        <div class="message">
+          <% if comment.user.facebook_picture_url? %>
+          <%= image_tag comment.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
+          <% else %>
+          <div class="message-empty-img"></div>
+          <% end %>
+          <div class="message-name">
+            <h3><%= comment.user.first_name %> <%= comment.user.last_name %></h3>
+            <p><%= comment.created_at.strftime('%a %d %b %Y')  %></p>
+          </div>
+          <div class="message-body">
+            <p>
+              <% if comment.user == current_user %>
+              <div class="text-green">
+                <%= comment.content %>
+              </div>
+              <% else %>
+              <div>
+                <%= comment.content %>
+              </div>
+              <% end %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <!-- JS (incl. map) -->
-
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+});
+<% end %>
 <% end %>

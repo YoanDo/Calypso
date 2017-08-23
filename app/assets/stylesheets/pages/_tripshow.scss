@@ -1,0 +1,43 @@
+.banner-trip {
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 15vh;
+  margin: 0 ;
+}
+
+.host-info {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  // max-width: 10vw;
+  width: 15vw;
+  height: 100%;
+  background-color: $black;
+  padding: 2%;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 3px
+}
+
+.host-info p {
+  color: white;
+}
+.img-trip-host{
+  min-width: 50px;
+  min-height: 50px;
+  background-position: cover;
+  margin-top: 2%;
+}
+
+.trip-title{
+width: 60vw;
+// flex: 1 0 auto;
+text-align: center;
+margin: auto;
+text-transform: uppercase
+}
+
