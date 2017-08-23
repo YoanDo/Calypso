@@ -43,6 +43,7 @@ h3 {
   font-size: 22px;
   color: $black;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 p {
@@ -57,7 +58,7 @@ p {
 }
 
 .container {
-  width: calc(100vh - 10vh);
+  width: 900px;
 }
 
 #icon_big {
