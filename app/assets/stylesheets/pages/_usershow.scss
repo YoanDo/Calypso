@@ -1,0 +1,170 @@
+//Banner user
+.banner-user {
+  height: 200px;
+  text-align: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-user h1 {
+  color: white;
+  font-family: 'Gotham-black';
+  font-size: 70px;
+  white-space: nowrap;
+  margin-left: 5%;
+  text-transform: uppercase;
+}
+
+.banner-avatar {
+  min-height: 150px;
+  min-width: 150px;
+  background-position: center;
+}
+
+@media (max-width: 600px) {
+  .banner-user {
+    flex-direction: column;
+    height: 80vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner-user {
+  h1 {
+    font-size: 30px;
+    }
+  }
+}
+//Infos
+.infos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.infos li {
+  list-style-type: none;
+  font-weight: 300;
+}
+
+.infos ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.infos strong {
+  margin-bottom: 2%;
+  }
+
+.user-edit {
+  padding-right: 1%;
+}
+
+.user-edit i {
+  color: $orange;
+}
+
+.details {
+  padding-top: 3%;
+  padding-left: 3%;
+  padding-bottom: 3%;
+  background-color: $black;
+  width: 30%;
+  color: white;
+  border-radius: 2px;
+}
+
+.details p {
+  color: white;
+}
+
+.details h3 {
+  color: white;
+}
+
+.info-description {
+  padding-top: 2%;
+  padding-left: 2%;
+  width: 70%;
+}
+
+.user-edit {
+  margin-top: 0;
+  text-align: right;
+}
+
+.user-description {
+  padding-right: 3%;
+}
+
+.user-description h3 {
+  margin-top: 1%;
+}
+
+.info-description {
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+@media (max-width: 600px) {
+  .infos {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .details {
+    height: 30vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .info-description {
+    height: 30vh;
+    width: 100%;
+  }
+}
+
+
+.infos-last-booking {
+  width: 100%;
+  background-color: white;
+  padding: 2%;
+}
+
+// .exp-cards {
+//   padding: 2%;
+//   margin-bottom: 20px;
+//   background-size: cover !important;
+//   background-position: center;
+//   height: 160px;
+//   width: 300px;
+
+//    .exp-description {
+//     background-color: RGBA(34, 35, 53, .60);
+//     height: 100px;
+//     color: white;
+//     padding-left: 2%;
+//     overflow: hidden;
+//     }
+// }
+
+// .exp-description h2 {
+//   margin-bottom: 0;
+//   margin-top: 2%;
+// }
+
+// .exp-description p {
+//   font-size: 12px;
+// }
+
+// .exp-description hr {
+//   margin: 1%;
+// }
+
+
+

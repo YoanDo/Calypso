@@ -1,0 +1,25 @@
+.body-dashboard {
+  background: RGB(249, 249, 249);
+}
+
+.nav-dashboard {
+  height: 70px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid rgb(222, 222, 222);
+  box-shadow: 0px 3px 6px #EFEFEF;
+}
+
+ul > a {
+  color: black !important;
+}
+
+.align-items {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  margin: auto;
+  justify-content: space-around;
+}
+
