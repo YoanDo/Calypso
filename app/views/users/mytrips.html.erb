@@ -1,24 +1,37 @@
- <% @trips.each do |trip| %>
-  <div>
-  <h1> <%= trip.title %></h1>
-  <%= link_to 'edit trip', edit_trip_path(trip.id) %>
-  <%= link_to 'view trip', trip_path(trip.id) %><br>
-  <%= trip.from %><br>
-  <%= trip.to %><br>
-  <%= trip.starts_at %><br>
-  <%= trip.ends_at %><br>
 
-  <h4> NB participants : <%= trip.participants.count %></h4>
-  <ul>
-    <% trip.participants.each do |participant| %>
-    <li> <%= participant.user.email %> - <%= participant.status %>
-      <% if participant.status == "pending" %>
-        <%= link_to "accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch %>
-        <%= link_to "decline", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch %>
+<div class="block-center">
+</div>
+
+<div class="logo-footer">UPCOMMING TRIP/</div>
+
+<div class="container">
+  <% @trips_day_up.each do |day, trips| %>
+      <div class="date">
+        <h3><%= day.strftime('%v') %></h3>
+      </div>
+    <% for trip in trips %>
+        <%= render "shared/cardtrip", trip: trip %>
+        <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
+          <% for participant in participants %>
+            <%= render "shared/cardparticipant", participant: participant %>
+          <% end %>
+        <% end %>
       <% end %>
-    </li>
-    <% end %>
-  </ul>
-  <hr>
-  </div>
- <% end %>
+  <% end %>
+</div>
+
+<div class="block-center">
+</div>
+
+<div class="logo-footer">PAST TRIP/</div>
+
+<div class="container">
+  <% @trips_day_past.each do |day, trips| %>
+      <div class="date">
+        <h3><%= day.strftime('%v') %></h3>
+      </div>
+    <% for trip in trips %>
+      <%= render "shared/cardtrip", trip: trip %>
+      <% end %>
+  <% end %>
+</div>
