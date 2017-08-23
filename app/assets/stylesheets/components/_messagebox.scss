@@ -66,8 +66,15 @@
   margin: 6px 0;
 }
 
-.text-green {
-  color: $green;
+.text-orange {
+  color: $orange;
+  line-height: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.text-grey {
+  color: $gray;
   line-height: 20px;
   font-size: 14px;
   letter-spacing: 1px;

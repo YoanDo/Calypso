@@ -12,11 +12,11 @@
   <div class="message-body">
     <p>
       <% if comment.user == current_user %>
-      <div class="text-green">
+      <div class="text-orange">
         <%= comment.content %>
       </div>
       <% else %>
-      <div>
+      <div class="text-grey">
         <%= comment.content %>
       </div>
       <% end %>
