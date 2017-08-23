@@ -13,11 +13,7 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to user_path(@user)
   end
-
-  def mytrips
-    @trips = current_user.trips
-  end
-
+  
   def dashboard
   @trips = current_user.trips
   @participants = current_user.participants
@@ -27,12 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def mytrips
-   @trips = current_user.trips
-  end
-
   def mybookings
    @participants = current_user.participants
+  end
+
+  def mytrips
+    @trips = current_user.trips
+    @trips_day_past = @trips.where('ends_at <= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
+    @trips_day_up = @trips.where('ends_at >= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
   end
 
   private
