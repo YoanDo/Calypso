@@ -29,6 +29,15 @@ class Trip < ApplicationRecord
     self.participants.where(status: "pending").each { |participant| participant.waiting_list }
   end
 
+  def self.search(search)
+    if search
+      # where(['location LIKE ?', "%#{search}%"])
+      near("#{search}", 40)
+    else
+      all
+    end
+  end
+
   def has_participant(user)
     self.participants.each do |participant|
       if participant.user == user

@@ -3,8 +3,14 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update]
 
   def index
-    @trips = Trip.all
+    @trips = Trip.search(params[:search])
     @trips_day = @trips.order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
+    @trips_map = @trips.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@trips_map) do |trip, marker|
+      marker.lat trip.latitude
+      marker.lng trip.longitude
+    end
   end
 
   def show
@@ -12,10 +18,11 @@ class TripsController < ApplicationController
     @comments = @trip.comments
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
-
-    @hash = Gmaps4rails.build_markers(@trip) do |trip, marker|
-      marker.lat trip.latitude
-      marker.lng trip.longitude
+    if @trip.latitude.present?
+      @hash = Gmaps4rails.build_markers([@trip]) do |trip, marker|
+        marker.lat trip.latitude
+        marker.lng trip.longitude
+      end
     end
   end
 

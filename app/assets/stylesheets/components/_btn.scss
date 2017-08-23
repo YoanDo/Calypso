@@ -37,6 +37,19 @@
   background-color: RGBA(62, 61, 75, 1.00);
 }
 
+.btn-full-width {
+  width: 100%;
+}
+
+.btn-facebook {
+  border: 2px solid $blue;
+}
+
+.btn-facebook:hover {
+  background-color: $blue;
+  border: 2px solid $blue;
+}
+
 .btn-accept {
   min-width: 55px;
   color: green;
