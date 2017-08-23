@@ -1,35 +1,60 @@
-<div class="trip">
+<div class="card-trip">
+  <div class="card-trip__time">
+    <p><%= trip.starts_at.strftime('%R') %></p>
+  </div>
+  <div class="card-trip__info">
+    <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
+    <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+    <p>Hosted by <%= trip.user.first_name %></p>
+    <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count %> spots left</span></p>
+  </div>
+  <div class="card-trip__weather">
+    <p>
+      <i class="fa fa-tint u-font-big" aria-hidden="true"></i>
+      <i class="fa fa-sun-o u-font-big" aria-hidden="true"></i>
+    </p>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="trip">
   <div class="time text-left">
-    <h3><%= trip.starts_at.strftime('%R') %></h3>
-    <p><%= ((trip.ends_at.to_date) - (trip.starts_at.to_date)).to_i %> days</p>
+    <h3><#%= trip.starts_at.strftime('%R') %></h3>
+    <p><#%= ((trip.ends_at.to_date) - (trip.starts_at.to_date)).to_i %> days</p>
     <div class="text-right">
-      <% if trip.user.facebook_picture_url? %>
-      <%= link_to user_path(trip.user.id) do %>
-      <%= image_tag trip.user.facebook_picture_url, :class => "avatar" %>
-      <% end %>
-      <% end %>
+      <#% if trip.user.facebook_picture_url? %>
+      <#%= link_to user_path(trip.user.id) do %>
+      <#%= image_tag trip.user.facebook_picture_url, :class => "avatar" %>
+      <#% end %>
+      <#% end %>
     </div>
   </div>
     <div class="body">
       <div class="title">
         <div class="destination">
-        <%= link_to trip_path(trip.id) do %>
-          <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
-          <p><%= trip.title %><p>
-          <% end %>
+        <#%= link_to trip_path(trip.id) do %>
+          <h3><#%= trip.from %> <<strong>/</strong>> <#%= trip.to %></h3>
+          <p><#%= trip.title %><p>
+          <#% end %>
         </div>
         <div class="participant text-center">
           <p class="logo-nav">
-            <%= trip.participants.where(status: "accepted").count %>/<%= trip.nb_participant %>
+            <#%= trip.participants.where(status: "accepted").count %>/<#%= trip.nb_participant %>
           </p>
           <p>seats taken</p>
         </div>
       </div>
       <div class="detail limit">
-        <p class="text-justify"><%= trip.description %></p>
+        <p class="text-justify"><#%= trip.description %></p>
       </div>
     </div>
   <div class="weather text-center align-middle">
     Weather
   </div>
 </div>
+-->
