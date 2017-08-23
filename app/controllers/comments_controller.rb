@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.trip = @trip
     if @comment.save
-      ActionCable.server.broadcast 'comments',
+      ActionCable.server.broadcast "comments_trip_#{@trip.id}",
         comment: (render(:partial => 'comments/show', :formats => [:html], :locals => { comment: @comment }))
       head :ok
     else
