@@ -2,7 +2,7 @@ $(document).ready(function() {
   var flat_addresses = document.querySelectorAll('.autocomplete-location');
 
   if (flat_addresses.length > 0) {
-    flat_addresses.forEach((flat_address) => {
+    flat_addresses.forEach(function(flat_address) {
       var autocomplete = new google.maps.places.Autocomplete(flat_address, { types: ['geocode'] });
       google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
       google.maps.event.addDomListener(flat_address, 'keydown', function(e) {
