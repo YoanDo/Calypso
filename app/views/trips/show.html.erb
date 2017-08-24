@@ -123,46 +123,30 @@
   </div>
 
 
-<!-- JS (incl. map) -->
+<!-- JS  -->
 <% content_for(:after_js) do %>
-<script>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length === 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
-App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
-received: function(data) {
-var new_comment = data.comment;
-document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
-document.querySelector("#comment_content").value = '';
-}
-});
-});
-</script>
-<% end %>
-<!-- JS MAP -->
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
-});
-<% end %>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length === 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+
+      App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
+        received: function(data) {
+          var new_comment = data.comment;
+          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+          document.querySelector("#comment_content").value = '';
+        }
+      });
+
+    });
+  </script>
 <% end %>
