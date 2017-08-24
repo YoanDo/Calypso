@@ -1,0 +1,38 @@
+.card-dashboard__booking {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border: 1px solid RGB(220, 220, 220);
+  margin-top: 20px;
+  position: relative;
+
+}
+
+.u-display-flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.u-display-flex {
+  display: flex;
+  align-items: center;
+}
+
+.u-padding {
+  padding: 10px 0;
+}
+
+.card-dashboard__booking h4 {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.card-booking__options {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  font-size: 5px;
+}
