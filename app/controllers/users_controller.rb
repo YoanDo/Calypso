@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to user_path(@user)
   end
-  
+
   def dashboard
   @trips = current_user.trips
   @participants = current_user.participants
@@ -36,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :description, :level, :location, :language, :photo, :photo_cache)
+    params.require(:user).permit(:first_name, :last_name, :phone, :description, :level, :location, :language, :photo, :photo_cache)
   end
 end

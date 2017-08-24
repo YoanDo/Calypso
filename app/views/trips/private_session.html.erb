@@ -2,7 +2,24 @@
 
 <%= @trip.title %>
 
-<%= link_to 'See full details', trip_path(@trip), class: 'btn btn-info'%>
+<%= link_to 'See trip details', trip_path(@trip), class: 'btn btn-info'%>
+<% if @trip.user != current_user %>
+  <%= link_to "Cancel", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+<% end %>
+<% if @trip.user == current_user %>
+  <%= link_to "Cancel trip", cancel_trip_path, class: 'btn btn-info' %>
+<% end %>
+
+<h3>Participants: </h3>
+<% @trip.participants.each do |participant| %>
+  <% if participant.status == 'accepted' %>
+    <ul>
+      <li>Name: <%= participant.user.first_name %> <%= participant.user.last_name %></li>
+      <li>Email: <%= participant.user.email %></li>
+      <li>Phone number: <%= participant.user.phone %></li>
+    </ul>
+  <% end %>
+<% end %>
 
 <!-- Chat box -->
 

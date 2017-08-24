@@ -5,6 +5,7 @@
         <%= f.error_notification %>
         <%= f.input :first_name, required: true %>
         <%= f.input :last_name, required: true %>
+        <%= f.input :phone, label: 'Phone number (displayed only to people you travel with)' %>
         <%= f.input :description, required: true, label: 'Profile', placeholder: 'Tell us about yourself !', as: :text, :input_html => {:rows => 5} %>
         <%= f.input :level, required: true, label: 'Surf level', collection: ['Beginner', 'Intermediate', 'Advanced' ] %>
         <%= f.input :location, required: true %>
@@ -17,5 +18,3 @@
     </Div>
   </div>
 </div>
-
-
