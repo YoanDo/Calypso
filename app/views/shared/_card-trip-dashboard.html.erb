@@ -8,7 +8,7 @@
       <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
       <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
       <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count %> spots left</span></p>
-      <div class="btn" data-toggle="collapse" data-target="#demo">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+      <div class="btn" data-toggle="collapse" data-target="#requests<%= trip.id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
     </div>
     <div class="card-trip__weather">
       <p>
@@ -18,11 +18,9 @@
     </div>
   </div>
 
-  <div class="collapse" id="demo">
+  <div class="collapse" id="requests<%= trip.id %>">
   <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
   <% for participant in participants %>
-
-
 
     <div class="list-requests">
 
@@ -61,8 +59,6 @@
     <% end %>
   </div>
 </div>
-</div>
-
 
 
 

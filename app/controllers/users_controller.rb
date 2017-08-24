@@ -13,9 +13,10 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to user_path(@user)
   end
-  
+
   def dashboard
   @trips = current_user.trips
+  @trips_day_up = @trips.where('ends_at >= ?', Date.today).order(starts_at: :asc)
   @participants = current_user.participants
   @user = current_user
     if @user.nil?
