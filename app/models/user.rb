@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :trips, :dependent => :destroy
   has_many :participants, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
 
   mount_uploader :photo, PhotoUploader
 
