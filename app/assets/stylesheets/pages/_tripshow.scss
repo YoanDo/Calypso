@@ -45,7 +45,6 @@
 
 .trip-title{
 width: 60vw;
-// flex: 1 0 auto;
 text-align: center;
 margin-left: 0;
 text-transform: uppercase;
@@ -62,8 +61,6 @@ text-transform: uppercase;
   width: 100%;
   padding-top: 0;
   padding-left: 2%;
-  // border-top: solid $black 1px;
-  // border-bottom: solid $black 1px;
   text-align:left;
 }
 
@@ -88,7 +85,6 @@ text-transform: uppercase;
   margin-top: 5%;
   padding-top: 0px;
   padding-bottom: 2%
-  // border-top: 1px solid $gray;
 }
 
 .surfer-box-cont h3 {
@@ -98,7 +94,6 @@ text-transform: uppercase;
 
 .surfer-box-cont span {
   font-style: italic;
-  // padding-left: 5vw;
   text-align: left;
   margin-right: 100%;
   color: gray;
@@ -125,7 +120,6 @@ text-transform: uppercase;
 .trip-right {
   width: 30vw;
   height: 100%;
-  // background-color: blue;
   color: white;
   padding: 2%;
   margin-right: 15%;
@@ -149,8 +143,7 @@ text-transform: uppercase;
   width: 15vw;
   // height: 100%;
   padding: 2%;
-  // border-top-right-radius: 2px;
-  // border-bottom-right-radius: 3px;
+
 }
 
 .host-info p {
@@ -187,10 +180,6 @@ text-transform: uppercase;
   justify-content: center;
   padding-top: 1%;
   padding-bottom: 1%;
-  // height: 20vh;
-  // background-color: $black;
-  // background-image: url(image-path("bg-trips.jpeg"));
-  // background-size: cover;
 }
 
 .join-the-team-title {
@@ -217,58 +206,6 @@ text-transform: uppercase;
   padding: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .host-info {
-//   display: flex;
-//   text-align: center;
-//   align-items: center;
-//   flex-direction: column;
-//   // max-width: 10vw;
-//   width: 15vw;
-//   height: 100%;
-//   background-color: $black;
-//   padding: 2%;
-//   // border-top-right-radius: 2px;
-//   // border-bottom-right-radius: 3px;
-// }
-
-// .host-info p {
-//   color: white;
-//   margin: 0;
-// }
-
-// .host-info hr {
-//   margin: 5%;
-// }
-
 .img-trip-host{
   min-width: 50px;
   min-height: 50px;
@@ -286,14 +223,6 @@ text-transform: uppercase;
   padding-left: 54px;
 }
 
-// .trip-title{
-// width: 60vw;
-// // flex: 1 0 auto;
-// text-align: center;
-// margin: auto;
-// text-transform: uppercase;
-
-// }
 
 
 .trip-edit {
@@ -311,16 +240,6 @@ text-transform: uppercase;
   margin-right: 2%;
   text-align: center
 }
-// desc
-// .trip-description {
-//   flex-direction: row;
-//   text-align: center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100vw;
-//   height: 15vh;
-// }
 
 
 .trip-infos {
@@ -331,15 +250,6 @@ text-transform: uppercase;
   padding-bottom: 1%;
   height: 20vh;
 }
-
-// .trip-description {
-//   width: 100%;
-//   padding-top: 0;
-//   padding-left: 2%;
-//   border-top: solid $black 1px;
-//   border-bottom: solid $black 1px;
-//   height: 100%
-// }
 
 
 .more-description span {
@@ -354,12 +264,6 @@ text-transform: uppercase;
 .more-description h3 {
   margin-top: 1%;
 }
-
-
-
-
-
-
 
 
 .btn-primary-colored {
