@@ -1,0 +1,42 @@
+<h1>private session</h1>
+
+<%= @trip.title %>
+
+<%= link_to 'See full details', trip_path(@trip), class: 'btn btn-info'%>
+
+<!-- Chat box -->
+
+<div class="comment-box">
+  <strong>Chat</strong>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <%= render 'messages/form', trip: @trip, message: @message %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
+      <div class="board-outline" id="message-board-public">
+      <!-- Action-cable here (JS) -->
+      <% @messages.each do |message| %>
+        <%= render 'messages/show', message: message %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= @trip.id %> }, {
+        received: function(data) {
+          var new_message = data.message;
+          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
+          document.querySelector("#message_content").value = '';
+        }
+      });
+    });
+  </script>
+<% end %>

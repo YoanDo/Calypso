@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_trip, only: [:show, :edit, :update]
+  before_action :set_trip, only: [:show, :edit, :update, :private_session]
 
   def index
     @trips = Trip.search(params[:search])
@@ -49,6 +49,15 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def private_session
+    unless @trip.has_participant(current_user)[:status] == 'accepted'
+      redirect_to trip_path(@trip)
+    end
+    @message = Message.new
+    @messages = @trip.messages.order(created_at: :desc)
+    @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
   end
 
   private
