@@ -1,0 +1,69 @@
+<div class="card-border">
+
+  <div class="card-dashboard__trip">
+    <div class="card-trip__time">
+      <p><%= trip.starts_at.strftime('%R') %></p>
+    </div>
+    <div class="u-add-padding-left u-flex-grow">
+      <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
+      <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+      <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count %> spots left</span></p>
+      <div class="btn" data-toggle="collapse" data-target="#demo">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+    </div>
+    <div class="card-trip__weather">
+      <p>
+        <i class="fa fa-tint u-font-big" aria-hidden="true"></i>
+        <i class="fa fa-sun-o u-font-big" aria-hidden="true"></i><br>
+      </p>
+    </div>
+  </div>
+
+  <div class="collapse" id="demo">
+  <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
+  <% for participant in participants %>
+
+
+
+    <div class="list-requests">
+
+      <% if participant.trip.user.facebook_picture_url? %>
+      <%= link_to user_path(participant.user.id) do %>
+      <%= image_tag participant.trip.user.facebook_picture_url, class: "img-circle img-small" %>
+      <% end %>
+      <% else %>
+      <%= link_to user_path(participant.user.id) do %>
+      <%= image_tag participant.trip.user.facebook_picture_url, class: "img-circle img-small" %>
+      <% end %>
+
+      <% end %>
+      <div class="u-add-padding-left u-width-20">
+        <% if participant.user.first_name? %>
+        <strong> <%= participant.user.first_name%> <%= participant.user.last_name%> </strong> <%= participant.created_at.strftime('%v') %></p>
+        <% else %>
+        <%= participant.trip.user.first_name%> <%= participant.trip.user.last_name%>
+        <% end %>
+      </div>
+      <div class="u-add-padding-left u-flex-grow">
+        <p class="text-justify text-message"><%= participant.message %></p>
+      </div>
+      <% if participant.status == "pending" %>
+      <div class="u-add-padding-left">
+        <%= link_to "Accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch, :class=>"btn-accept" %>
+      </div>
+      <div class="u-add-padding-left">
+        <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch, :class=>"btn-decline"%>
+      </div>
+      <% else %>
+      <p><%= participant.status.capitalize %></p>
+      <% end %>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+</div>
+
+
+
+
+

@@ -52,37 +52,35 @@
 
 .btn-accept {
   min-width: 55px;
-  color: green;
+  color: rgba(255, 116, 97, .90);
   background-color: white;
-  border: 2px solid green;
-  border-radius: 15px;
+  border: 2px solid rgba(255, 116, 97, .90);
+  border-radius: 5px;
   padding: 4px 10px;
-  margin: 0 auto;
   opacity: .7;
-  margin-bottom: 5px;
 }
 
 .btn-accept:hover{
   color: white;
-  background-color: green;
-  border: 2px solid green;
+  background-color: rgba(255, 116, 97, 1);
+  border: 2px solid rgba(255, 116, 97, 1);;
   opacity: 1;
 }
 
 .btn-decline {
   min-width: 55px;
-  color: red;
+  color: rgb(190, 190, 190);
   background-color: white;
-  border: 2px solid red;
-  border-radius: 15px;
+  border: 2px solid rgb(190, 190, 190);;
+  border-radius: 5px;
   padding: 4px 10px;
-  margin: 0 auto;
   opacity: .7;
 }
 
 .btn-decline:hover{
   color: white;
-  background-color: red;
-  border: 2px solid red;
+  background-color: rgb(190, 190, 190);
+  border: 2px solid rgb(190, 190, 190);
   opacity: 1;
 }
+
