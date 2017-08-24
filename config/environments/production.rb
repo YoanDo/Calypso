@@ -83,5 +83,9 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
+
+  # action cable
   config.active_record.dump_schema_after_migration = false
+  config.web_socket_server_url = "wss://www.calypso.surf/cable"
+  config.action_cable.allowed_request_origins = ['https://www.calypso.surf', 'http://www.calypso.surf']
 end

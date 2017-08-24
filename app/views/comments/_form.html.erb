@@ -1,0 +1,13 @@
+<%= simple_form_for([ trip, comment ], remote: true) do |f| %>
+  <div class="form-inputs">
+    <% if trip.user == current_user %>
+      <%= f.input :content, label: false, placeholder: "Type your answer here" %>
+    <% else %>
+      <%= f.input :content, label: false, placeholder: "What question do you have for #{@trip.user.first_name}?" %>
+    <% end %>
+  </div>
+  <div class="form-actions" id="send_button">
+    <%= f.button :submit, "Send", input_html: {class: "btn btn-info"} %>
+  </div>
+<% end %>
+

@@ -6,9 +6,14 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.trip = @trip
     if @comment.save
-      redirect_to trip_path(@trip)
+      ActionCable.server.broadcast "comments_trip_#{@trip.id}",
+        comment: (render(:partial => 'comments/show', :formats => [:html], :locals => { comment: @comment }))
+      head :ok
     else
-      render "trips/show"
+      respond_to do |format|
+        format.html { render "trips/show" }
+        format.js
+      end
     end
   end
 
@@ -22,3 +27,5 @@ class CommentsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
   end
 end
+
+

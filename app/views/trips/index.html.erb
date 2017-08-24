@@ -1,12 +1,64 @@
+<div id="map" style="width: 100%; height: 300px;"></div>
 
-<div class="container">
-  <% @trips_day.each do |day, trips| %>
-    <div class="date">
-    <h3><%= day.strftime('%v') %></h3>
-    </div>
-    <% for trip in trips %>
-      <%= render "shared/cardtrip", trip: trip %>
-    <% end %>
-   <% end %>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+<div class="contgrey">
+<%= render 'shared/search' %>
 </div>
 
+<div class="container">
+  <h1>/PARIS</h1>
+  <div class="list-trips">
+    <% @trips_day.each do |day, trips| %>
+    <div class="date">
+      <h3><%= day.strftime('%v') %></h3>
+    </div>
+    <% for trip in trips %>
+
+    <div class="list-cards">
+      <%= link_to trip_path(trip) do %>
+      <%= render "shared/cardtrip", trip: trip %>
+      <% end %>
+    </div>
+
+    <% end %>
+    <% end %>
+    <div class="list-calendar">
+     <!-- <div class='calendar' ng-controller='calendarController as calendar'>
+      <div class='calendar_left'>
+        <div class='header'>
+          <i class='material-icons' ng-click='calendar.prev()'><</i>
+          <h1>August</h1>
+          <i class='material-icons' ng-click='calendar.next()'>></i>
+        </div>
+        <div class='days'>
+          <div class='day_item'>Mon</div>
+          <div class='day_item'>Tue</div>
+          <div class='day_item'>Wed</div>
+          <div class='day_item'>Thu</div>
+          <div class='day_item'>Fri</div>
+          <div class='day_item'>Sat</div>
+          <div class='day_item'>Sun</div>
+        </div>
+        <div class='dates'></div>
+      </div>
+    </div> -->
+  </div>
+</div>
+</div>

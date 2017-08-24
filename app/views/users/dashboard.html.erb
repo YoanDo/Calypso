@@ -3,7 +3,7 @@
   <%= render 'shared/navbar-dashboard' %>
 
   <div class="container-dashboard">
-    <h3>Overiew</h3>
+    <h3>Overview</h3>
 
     <div class="grid">
       <div class="grid-notifications">
@@ -26,28 +26,58 @@
           Bookings
         </div>
         <div class="grid__container">
-        <% @user.participants.each do |participant| %>
+          <% @user.participants.each do |participant| %>
+          <%= link_to trip_path(participant.trip) do %>
           <div class="grid__card-bookings">
             <div class="grid__card-bookings__info">
-              <%= participant.trip.title %><br>
-              <span class="green"><%= participant.status %></span>
+              <div class="grid__card-bookings__title">
+                <%= participant.trip.title %>
+              </div>
+              <span class="green"><%= participant.status.capitalize %></span>
             </div>
-            <div class="grid__card-bookings__host-img">
-              <%= participant.trip.user.facebook_picture_url %>
-            </div>
-            <div class="grid__card-bookings__host-name">
-              <%= participant.trip.user.first_name %>
-            </div>
-            <div class="grid__card-bookings__date">
-              <%= participant.trip.starts_at %>
+            <div class="grid__card-bookings__info-user">
+              <% if participant.trip.user.facebook_picture_url == nil %>
+              <div style="background-image: url('http://esq.h-cdn.co/assets/16/47/980x490/landscape-1479854207-kelly-slater.jpg')", class="grid__card-bookings__host-img img-circle img-small img-random">
+              </div>
+              <% else %>
+              <div class="grid__card-bookings__host-img">
+                <%= image_tag participant.trip.user.facebook_picture_url, class: "img-circle img-small" %>
+              </div>
+              <% end %>
+              <div class="grid__card-bookings__host-name">
+                <%= participant.trip.user.first_name %> <%= participant.trip.user.last_name %>
+              </div>
+              <i class="fa fa-clock-o u-font-size-bigger u-color-light-grey u-text-align-right u-flex-grow" aria-hidden="true"></i>
+              <div class="grid__card-bookings__date">
+                <%= participant.trip.starts_at.strftime("%m/%d/%Y") %>
+              </div>
             </div>
           </div>
+          <% end %>
           <% end %>
         </div>
       </div>
       <div class="grid-trips">
         <div class="grid__title">
           Trips
+        </div>
+        <div class="grid__container">
+        <% @user.trips.each do |trip| %>
+        <%= link_to trip_path(trip) do %>
+        <div class="grid__card-trips">
+        <div class="grid__card-bookings__info">
+          <div class="grid__card-bookings__title">
+            <%= trip.title %>
+          </div>
+          <%= trip.participants.count %>/<%= trip.nb_participant %> seats booked<br>
+          <%= trip.starts_at.strftime("%I:%M%p - %m/%d/%Y") %>
+        </div>
+
+
+
+        </div>
+        <% end %>
+        <% end %>
         </div>
       </div>
       <div class="grid-reviews">
