@@ -2,7 +2,7 @@
   <div class="card-trip__time">
     <p><%= trip.starts_at.strftime('%R') %></p>
   </div>
-  <div class="card-trip__info">
+  <div class="u-add-padding-left u-flex-grow">
     <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
     <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
     <p>Hosted by <%= trip.user.first_name %></p>
