@@ -1,0 +1,255 @@
+.banner-trip {
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 15vh;
+  margin: 0;
+}
+
+.host-info {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  // max-width: 10vw;
+  width: 15vw;
+  height: 100%;
+  background-color: $black;
+  padding: 2%;
+  // border-top-right-radius: 2px;
+  // border-bottom-right-radius: 3px;
+}
+
+.host-info p {
+  color: white;
+  margin: 0;
+}
+
+.host-info hr {
+  margin: 5%;
+}
+
+.img-trip-host{
+  min-width: 50px;
+  min-height: 50px;
+  background-position: cover;
+  margin-top: 2%;
+}
+
+
+.trip-title-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 2;
+  padding-left: 54px;
+}
+
+.trip-title{
+width: 60vw;
+// flex: 1 0 auto;
+text-align: center;
+margin: auto;
+text-transform: uppercase;
+
+}
+
+
+.trip-edit {
+  margin-right: 2%;
+  width: 100%;
+  text-align: right;
+  white-space: nowrap;
+
+  p {
+    color: white;
+    white-space: nowrap
+  }
+}
+.trip-status {
+  margin-right: 2%;
+  text-align: center
+}
+// desc
+// .trip-description {
+//   flex-direction: row;
+//   text-align: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100vw;
+//   height: 15vh;
+// }
+
+
+.trip-infos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 20vh;
+}
+
+.trip-description {
+  width: 100%;
+  padding-top: 0;
+  padding-left: 2%;
+  border-top: solid $black 1px;
+  border-bottom: solid $black 1px;
+  height: 100%
+}
+
+
+.more-description span {
+  font-style: italic;
+  margin: auto;
+}
+
+.more-description {
+  padding-right: 3%;
+}
+
+.more-description h3 {
+  margin-top: 1%;
+}
+
+
+//TEAM
+
+.surfers-box {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  // border-top: 1px solid $gray;
+}
+
+.surfer-box-cont h3 {
+  padding-left: 15vw;
+}
+
+.surfer-box-cont span {
+  font-style: italic;
+  margin: auto;
+  padding-left: 5vw;
+}
+.surfers-profile {
+  text-align: center
+}
+
+.available-seat {
+  width: 200px;
+  height: 100%;
+  text-align: center;
+}
+
+.empty-user {
+    background-image: url(image-path("user.png"));
+    background-position: center center;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+
+
+//JOIN
+
+.join-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 20vh;
+  // background-color: $black;
+  background-image: url(image-path("bg-trips.jpeg"));
+  background-size: cover;
+}
+
+.joint-the-team-title {
+  // background-color: $black;
+  width: 50vw;
+  text-align: right;
+  padding-right: 2%;
+}
+
+.join-the-team-title h1 {
+  color: $orange;
+  text-transform: uppercase;
+  font-family: 'Gotham-black'
+}
+.join-the-team-title span {
+  color: #FF7461;
+  text-transform: uppercase;
+  font-family: "Gotham-black";
+  font-size: 78px;
+  line-height: 0;
+}
+
+.join-team-action {
+  width: 50vw;
+  padding: 10%
+}
+
+
+.btn-primary-colored {
+  border: solid 2px rgba(255, 116, 97, 1.0);
+  color: white;
+  background-color: rgba(255, 116, 97, 1.0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
+  margin: 1%
+}
+
+.comment-box {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 30vh;
+  width: 60%;
+  margin: auto;
+}
+
+.question-box {
+  width: 60vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
