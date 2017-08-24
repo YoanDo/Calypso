@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_trip, only: [:show, :edit, :update, :private_session]
+  before_action :set_trip, only: [:show, :edit, :update, :private_session, :cancel]
 
   def index
     @trips = Trip.search(params[:search])
@@ -58,6 +58,14 @@ class TripsController < ApplicationController
     @message = Message.new
     @messages = @trip.messages.order(created_at: :desc)
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
+  end
+
+  def cancel
+    unless @trip.user == current_user
+      redirect_to trip_path(@trip)
+    end
+    @trip.status = 'cancelled'
+    redirect_to root_path
   end
 
   private
