@@ -1,7 +1,12 @@
+
+
 .trip-show h4 {
   text-align: left;
 }
 
+.trip-edit {
+  // margin-top: 0;
+}
 
 .banner-trip {
   flex-direction: row;
@@ -19,7 +24,7 @@
 //   color: $orange
 // }
 
-.trip-main{
+.trip-main {
   flex-direction: row;
   text-align: center;
   display: flex;
@@ -71,14 +76,22 @@ text-transform: uppercase;
 .trip-description {
   margin-top: 2%;
   width: 100%;
+  max-width: 400px;
   padding-top: 0;
   padding-left: 2%;
   text-align:left;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 400px;     /* fallback */
+   max-height: 400px;      /* fallback */
+   -webkit-line-clamp: 8; /* number of lines to show */
+   -webkit-box-orient: vertical;
 }
 
 .more-description span {
   font-style: italic;
-  margin: 0auto;
+  margin: 0 auto;
   color: $gray;
 }
 
@@ -251,10 +264,10 @@ text-transform: uppercase;
   text-align: right;
   white-space: nowrap;
 
-  p {
-    color: white;
-    white-space: nowrap
-  }
+  // p {
+  //   color: white;
+  //   white-space: nowrap
+  // }
 }
 .trip-status {
   margin-right: 2%;
