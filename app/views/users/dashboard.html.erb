@@ -10,6 +10,7 @@
         <div class="grid__title">
           Notifications
         </div>
+        <div class="grid__display-notifications">
         <div class="grid__container">
           <div class="grid__container-notifications">
             Florent has joined your last trip.
@@ -20,14 +21,16 @@
             Julien has joined your last trip.
           </div>
         </div>
+        </div>
       </div>
       <div class="grid-bookings">
         <div class="grid__title">
           Bookings
         </div>
+        <div class="grid__display">
         <div class="grid__container">
           <% @user.participants.each do |participant| %>
-          <%= link_to trip_path(participant.trip) do %>
+          <%#= link_to trip_path(participant.trip) do %>
           <div class="grid__card-bookings">
             <div class="grid__card-bookings__info">
               <div class="grid__card-bookings__title">
@@ -47,23 +50,25 @@
               <div class="grid__card-bookings__host-name">
                 <%= participant.trip.user.first_name %> <%= participant.trip.user.last_name %>
               </div>
-              <i class="fa fa-clock-o u-font-size-bigger u-color-light-grey u-text-align-right u-flex-grow" aria-hidden="true"></i>
+              <i class="fa fa-calendar-o u-font-size-bigger u-color-light-grey u-text-align-right u-flex-grow" aria-hidden="true"></i>
               <div class="grid__card-bookings__date">
                 <%= participant.trip.starts_at.strftime("%m/%d/%Y") %>
               </div>
-            </div>
           </div>
+          </div>
+          <%# end %>
           <% end %>
-          <% end %>
+        </div>
         </div>
       </div>
       <div class="grid-trips">
         <div class="grid__title">
           Trips
         </div>
+        <div class="grid__display">
         <div class="grid__container">
         <% @trips_day_up.each do |trip| %>
-        <%= link_to mytrips_users_path do %>
+        <%#= link_to mytrips_users_path do %>
         <div class="grid__card-trips">
         <div class="grid__card-bookings__info">
           <div class="grid__card-bookings__title">
@@ -72,12 +77,10 @@
           <%= trip.participants.count %>/<%= trip.nb_participant %> seats booked<br>
           <%= trip.starts_at.strftime("%I:%M%p - %m/%d/%Y") %>
         </div>
-
-
-
         </div>
+        <%# end %>
         <% end %>
-        <% end %>
+        </div>
         </div>
       </div>
       <div class="grid-reviews">

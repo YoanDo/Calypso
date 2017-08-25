@@ -2,12 +2,16 @@
   display: flex;
   flex-direction: column;
   width: 30%;
-  padding: 20px 30px;
+  padding: 20px 10px 20px 30px;
   border-radius: 5px;
   border: 1px solid RGB(220, 220, 220);
   margin-top: 20px;
   position: relative;
 
+}
+
+.card-dashboard__booking a {
+  width: 80%;
 }
 
 .u-display-flex-space-between {
@@ -32,7 +36,29 @@
 
 .card-booking__options {
   position: absolute;
-  top: 25px;
-  right: 20px;
+  top: 0px;
+  right: 8px;
   font-size: 5px;
+  height: 20px;
+  text-align: right;
+  width: 30px;
+  &:hover {
+  cursor: pointer;
+  }
+}
+
+.card-booking__options-menu {
+  position: absolute;
+  top: 40px;
+  right: -30px;
+  border: 1px solid RGB(220, 220, 220);
+  border-radius: 2px;
+  padding: 15px 20px;
+  background: RGB(255, 255, 255);
+}
+
+.border-bottom {
+  padding-bottom: 10px;
+  border-bottom: 1px solid RGB(220, 220, 220);
+  margin-bottom: 10px;
 }
