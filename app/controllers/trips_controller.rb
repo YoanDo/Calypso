@@ -3,14 +3,17 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :private_session, :cancel]
 
   def index
+    date = params["date"]? params["date"] : Date.today
     if params["nearfrom"]
       @tripsloc = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
-      @trips = @tripsloc.find_all { |t|  t.ends_at >= Date.today}.sort_by{|e| e[:starts_at]}
+      @trips = @tripsloc.find_all { |t|  t.ends_at >= date}.sort_by{|e| e[:starts_at]}
     else
-      @trips = Trip.where('ends_at >= ?', Date.today).order(starts_at: :asc)
+      @trips = Trip.where('ends_at >= ?', date).order(starts_at: :asc)
     end
     @trips_day = @trips.group_by { |t| t.starts_at.to_date }
-    @hash = Gmaps4rails.build_markers(@trips) do |trip, marker|
+
+    @tripsmap = @trips.find_all { |t| !t.from.latitude.nil?}
+    @hash = Gmaps4rails.build_markers(@tripsmap) do |trip, marker|
       marker.lat trip.from.latitude
       marker.lng trip.from.longitude
     end

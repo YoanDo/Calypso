@@ -48,7 +48,18 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <div class="menu menu--adsila">
+        <%= link_to new_trip_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+          <span class="menu__item-name">CREATE</span>
+          <% end %>
+        <%= link_to trips_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+          <span class="menu__item-name">EXPLORE</span>
+          <% end %>
+        <%= link_to new_user_session_path, class: "navbar-wagon-item navbar-wagon-link menu__item" do %>
+          <span class="menu__item-name">LOGIN</span>
+        <% end %>
+        </div>
     <% end %>
   </div>
 
@@ -58,9 +69,17 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "CREATE", new_trip_path %></li>
+        <li><%= link_to "EXPLORE", new_trip_path %></li>
+        <li><%= link_to "MY TRIP", dashboard_users_path %></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete  %></li>
+      <% else %>
+        <li><%= link_to "CREATE", new_trip_path %></li>
+        <li><%= link_to "EXPLORE", new_trip_path %></li>
+        <li><%= link_to "LOGIN", new_user_session_path %></li>
+      <% end %>
       </ul>
     </div>
   </div>
