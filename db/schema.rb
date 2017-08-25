@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20170824195513) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-
   create_table "locations", force: :cascade do |t|
     t.string   "address"
     t.float    "latitude"
@@ -45,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170824195513) do
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_messages_on_trip_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-
   end
 
   create_table "participants", force: :cascade do |t|
