@@ -1,6 +1,8 @@
 
 .search {
   width: 100%;
+
+
 }
 
 .search .form-group-navbar-home {
@@ -39,10 +41,7 @@
   border-radius: 2px;
 }
 
-.search .input-group-addon:last-child{
-  color: white;
-}
 
-.search .input-group-addon:last-child:hover {
-  color: $orange;
+.search i {
+  color: white;
 }
