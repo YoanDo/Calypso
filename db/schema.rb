@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824124414) do
+ActiveRecord::Schema.define(version: 20170824195513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20170824124414) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "direction"
+    t.integer  "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_locations_on_trip_id", using: :btree
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "content"
     t.integer  "trip_id"
@@ -33,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170824124414) do
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_messages_on_trip_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   end
 
   create_table "participants", force: :cascade do |t|
@@ -46,10 +59,18 @@ ActiveRecord::Schema.define(version: 20170824124414) do
     t.index ["user_id"], name: "index_participants_on_user_id", using: :btree
   end
 
+  create_table "spots", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "id_surfline"
+    t.string   "address"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string   "title"
-    t.string   "from"
-    t.string   "to"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "estimated_duration"
@@ -63,8 +84,6 @@ ActiveRecord::Schema.define(version: 20170824124414) do
     t.string   "equipment"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.float    "latitude"
-    t.float    "longitude"
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 
@@ -100,6 +119,7 @@ ActiveRecord::Schema.define(version: 20170824124414) do
 
   add_foreign_key "comments", "trips"
   add_foreign_key "comments", "users"
+  add_foreign_key "locations", "trips"
   add_foreign_key "messages", "trips"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "trips"

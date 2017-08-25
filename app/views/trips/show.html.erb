@@ -17,7 +17,7 @@
 <div class="banner-trip">
   <div class="trip-title-container">
     <div class="trip-cities">
-      <h3><%= @trip.from %> - <%= @trip.to %> (<%= @trip.estimated_duration %>h trip) <br>
+      <h3><%= @trip.from.address %> - <%= @trip.to.address %> (<%= @trip.estimated_duration %>h trip) <br>
       Departure: <%= @trip.starts_at.strftime("%A %e %b %Y - %k:%M") %> </h3>
     </div>
   </div>
@@ -140,27 +140,29 @@
 </div>
 <!-- JS  -->
 <% content_for(:after_js) do %>
-<script>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length === 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
-App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
-received: function(data) {
-var new_comment = data.comment;
-document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
-document.querySelector("#comment_content").value = '';
-}
-});
-});
-</script>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length === 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(11);
+        }
+      });
+
+      App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
+        received: function(data) {
+          const new_comment = data.comment;
+          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+          document.querySelector("#comment_content").value = '';
+        }
+      });
+
+    });
+  </script>
 <% end %>
 </div>
