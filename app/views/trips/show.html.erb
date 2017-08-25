@@ -67,6 +67,7 @@
 
   <div class="trip-right">
   <% if @trip.user != current_user %>
+    <%= link_to user_path(@trip.user) do %>
     <div class="host-info">
     <h4>Trip leader</h4>
       <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
@@ -78,7 +79,7 @@
         (review) </p>
       </div>
     </div>
-
+  <% end %>
     <div class="join-trip">
       <div class="join-the-team-title">
         <h1><span>JOIN</span><br>
