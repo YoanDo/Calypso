@@ -35,9 +35,7 @@ class UsersController < ApplicationController
   end
 
   def mymessages
-    @trips = current_user.trips
-    @trips_day_past = @trips.where('ends_at <= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
-    @trips_day_up = @trips.where('ends_at >= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
+    @user= current_user
   end
 
   private

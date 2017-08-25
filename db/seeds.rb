@@ -29,6 +29,8 @@ js['data']['spots'].each do |spot|
   s.id_surfline = spot["_id"]
   s.save
   count += 1
+  sleep(0.02)
+  puts "#{s.name}"
 end
 
 puts "you have #{count} spot in your databas"
