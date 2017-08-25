@@ -1,3 +1,4 @@
+<div class="trip-show">
 <% content_for :meta_title, "#{@trip.title} - On calypso.surf" %>
 <% content_for :meta_description, @trip.description %>
 <!-- map -->
@@ -29,7 +30,7 @@
     <!-- title -->
     <div class="trip-info">
       <div class="trip-title">
-        <h3><%= @trip.title %> </h3>
+        <h4><%= @trip.title %> </h4>
       </div>
       <!-- description -->
       <div class="trip-description">
@@ -41,7 +42,7 @@
     </div>
     <!-- team -->
     <div class="surfer-box-cont">
-      <h3>C u r r e n t - t e a m </h3>
+      <h4>C u r r e n t - t e a m </h4>
       <% if @remaining_spots > 0 %>
       <span>
         <%= @remaining_spots %> seats remaining
@@ -70,7 +71,7 @@
   <!-- right -->
   <div class="trip-right">
     <div class="host-info">
-    <h3>Trip leader</h3>
+    <h4>Trip leader</h4>
       <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
       </div>
       <div class="info-trip-host">
@@ -162,3 +163,4 @@ document.querySelector("#comment_content").value = '';
 });
 </script>
 <% end %>
+</div>
