@@ -45,10 +45,12 @@
         <% @trip.participants.each do |participant| %>
         <% if participant.status == 'accepted' %>
         <div class="surfers-profile">
+        <%= link_to user_path(participant.user) do %>
           <div class="banner-avatar img-circle" style="background-image: url(<%= participant.user.facebook_picture_url.gsub('square', 'large') %>)">
           </div>
           <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
         </div>
+          <% end %>
         <% end %>
         <% end %>
         <% @remaining_spots.times do %>
