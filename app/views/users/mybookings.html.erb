@@ -7,36 +7,46 @@
     <div class="u-display-flex-space-between">
       <% @participants.each do |participant| %>
       <div class="card-dashboard__booking">
-      <div class="card-booking__options">
-        <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>
-      </div>
-        <h4> <%= participant.trip.title %></h4>
-        <div class="u-display-flex u-padding">
-          <%= participant.trip.from %>&nbsp;
-          <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;
-          <%= participant.trip.to %>
+      <div class="dropdown">
+        <div class="card-booking__options dropdown-toggle", id= "options<%=participant.id%>", data-toggle= "dropdown">
+          <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>
         </div>
-        <div class="u-display-flex u-padding">
-          <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
-          <%= participant.trip.starts_at.strftime('%v') %>
-        </div>
-        <div class="u-display-flex u-padding">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
-        <%= participant.trip.starts_at.strftime('%R') %>&nbsp; -
-        <%= participant.trip.ends_at.strftime('%R') %>
-        </div>
-        <div class="u-padding">
-        <strong>Status: <%= participant.status.capitalize %></strong>
-        </div>
-        <% participant.trip.participants.each do |participant| %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to "Invite a friend" %>
+          </li>
+          <li>
+            <%= link_to "Cancel booking", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch %>
+          </li>
+          </ul>
+          </div>
+          <%= link_to trip_path(participant.trip) do %>
+          <h4> <%= participant.trip.title %></h4>
+          <% end %>
+          <div class="u-display-flex u-padding">
+            <%= participant.trip.from %>&nbsp;
+            <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;
+            <%= participant.trip.to %>
+          </div>
+          <div class="u-display-flex u-padding">
+            <i class="fa fa-calendar-o u-font-size-bigger u-color-light-grey" aria-hidden="true"></i>&nbsp;
+            <%= participant.trip.starts_at.strftime('%v') %>
+          </div>
+          <div class="u-display-flex u-padding">
+            <i class="fa fa-clock-o u-font-size-bigger u-color-light-grey" aria-hidden="true"></i>&nbsp;
+            <%= participant.trip.starts_at.strftime('%I:%M %p') %>&nbsp; -
+            <%= participant.trip.ends_at.strftime('%I:%M %p') %>
+          </div>
+          <div class="u-padding">
+            <h4><%= participant.status.capitalize %></h4>
+          </div>
+          <% participant.trip.participants.each do |participant| %>
           <% if participant.status == 'declined' %>
           <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
           <% end %>
+          <% end %>
+        </div>
         <% end %>
-
-        <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch %>
       </div>
-      <% end %>
     </div>
   </div>
-</div>

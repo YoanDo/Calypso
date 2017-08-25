@@ -9,6 +9,10 @@
   background: RGB(249, 249, 249);
 }
 
+.container-dashboard h3 {
+  margin-bottom: 30px;
+}
+
 .container-small {
   width: 90%;
   margin: auto;
@@ -62,6 +66,21 @@
   padding: 20px;
 }
 
+.grid__display {
+  max-height: 420px;
+  overflow-y: scroll;
+}
+
+.grid__display-notifications {
+  max-height: 840px;
+  overflow-y: scroll;
+}
+
+.grid__display-reviews {
+  max-height: 420px;
+  overflow-y: scroll;
+}
+
 .grid__container {
   width: 90%;
   margin: auto;
@@ -79,9 +98,9 @@
   border-radius: 10px;
   margin: 20px 0;
   position: relative;
-  &:hover {
-    border: 3px solid $orange;
-  }
+  // &:hover {
+  //   border: 3px solid $orange;
+  // }
 }
 
 .grid__card-bookings {
@@ -91,9 +110,9 @@
   border-radius: 10px;
   margin: 20px 0;
   position: relative;
-  &:hover {
-    border: 3px solid $orange;
-  }
+  // &:hover {
+  //   border: 3px solid $orange;
+  // }
 }
 
 a .grid__card-bookings {

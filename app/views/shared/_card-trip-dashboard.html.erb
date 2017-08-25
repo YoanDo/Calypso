@@ -5,8 +5,11 @@
       <p><%= trip.starts_at.strftime('%R') %></p>
     </div>
     <div class="u-add-padding-left u-flex-grow">
+
       <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
+      <%= link_to trip_path(trip) do %>
       <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+      <% end %>
       <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count %> spots left</span></p>
       <div class="btn" data-toggle="collapse" data-target="#requests<%= trip.id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
     </div>
