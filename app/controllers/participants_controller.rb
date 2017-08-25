@@ -13,6 +13,7 @@ class ParticipantsController < ApplicationController
     else
       @comment = Comment.new
       @comments = @trip.comments
+      @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
       render "trips/show"
 
     end
