@@ -10,6 +10,14 @@
   background: RGB(255, 255, 255);
 }
 
+.card-trip__weather {
+  width: 20%;
+}
+
+.float-right {
+  float: right;
+}
+
 .card-trip__time {
   align-self: flex-start;
 }
