@@ -30,7 +30,7 @@
         <div class="grid__display">
         <div class="grid__container">
           <% @user.participants.each do |participant| %>
-          <%#= link_to trip_path(participant.trip) do %>
+          <%= link_to trip_path(participant.trip) do %>
           <div class="grid__card-bookings">
             <div class="grid__card-bookings__info">
               <div class="grid__card-bookings__title">
@@ -56,7 +56,7 @@
               </div>
           </div>
           </div>
-          <%# end %>
+          <% end %>
           <% end %>
         </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="grid__display">
         <div class="grid__container">
         <% @trips_day_up.each do |trip| %>
-        <%#= link_to mytrips_users_path do %>
+        <%= link_to trip_path(trip) do %>
         <div class="grid__card-trips">
         <div class="grid__card-bookings__info">
           <div class="grid__card-bookings__title">
@@ -78,7 +78,7 @@
           <%= trip.starts_at.strftime("%I:%M%p - %m/%d/%Y") %>
         </div>
         </div>
-        <%# end %>
+        <% end %>
         <% end %>
         </div>
         </div>

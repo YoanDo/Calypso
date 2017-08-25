@@ -94,25 +94,25 @@
 .grid__card-trips {
   height: 110px;
   width: 100%;
-  border: 3px solid #F6F6F6;
+  border: 3px solid #E0E4E4;
   border-radius: 10px;
   margin: 20px 0;
   position: relative;
-  // &:hover {
-  //   border: 3px solid $orange;
-  // }
+  &:hover {
+    border: 3px solid $orange;
+  }
 }
 
 .grid__card-bookings {
   height: 170px;
   width: 100%;
-  border: 3px solid #F6F6F6;
+  border: 3px solid #E0E4E4;
   border-radius: 10px;
   margin: 20px 0;
   position: relative;
-  // &:hover {
-  //   border: 3px solid $orange;
-  // }
+  &:hover {
+    border: 3px solid $orange;
+  }
 }
 
 a .grid__card-bookings {

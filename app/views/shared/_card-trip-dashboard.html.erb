@@ -33,7 +33,7 @@
       <% end %>
       <% else %>
       <%= link_to user_path(participant.user.id) do %>
-      <%= image_tag participant.trip.user.facebook_picture_url, class: "img-circle img-small" %>
+      <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
       <% end %>
 
       <% end %>
