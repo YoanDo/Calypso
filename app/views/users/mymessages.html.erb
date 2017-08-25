@@ -1,3 +1,11 @@
 <%= render 'shared/navbar-dashboard' %>
 
-Hello
+<div class="container">
+
+
+<% @user.trips.each do |trip| %>
+<%= trip.title %>
+
+</div>
+
+<% end %>

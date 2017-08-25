@@ -12,7 +12,7 @@
     <%= render "shared/card-trip-dashboard", trip: trip %>
     <% end %>
     <% end %>
-    <div class="logo-footer">PAST TRIPS</div>
+    <h3>PAST TRIPS</h3>
     <% @trips_day_past.each do |day, trips| %>
     <div class="date">
       <h3><%= day.strftime('%v') %></h3>
