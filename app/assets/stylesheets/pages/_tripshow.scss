@@ -10,6 +10,11 @@
   margin: 0;
 }
 
+// .banner-trip p {
+//   text-transform: uppercase;
+//   color: $orange
+// }
+
 .trip-main{
   flex-direction: row;
   text-align: center;
@@ -17,7 +22,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 62vh;
+  height: 48vh;
   margin: 0;
 }
 
@@ -28,7 +33,10 @@
   padding: 0 2%;
   padding-left: 15%;
   position: relative;
-  z-index : 1;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 // .trip-left:before {
@@ -110,7 +118,7 @@ text-transform: uppercase;
 
 .empty-user {
     background-image: url(image-path("user.png"));
-    background-position: center;
+    background-size: cover;
     height: 100px;
     width: 100px;
     margin: auto;
@@ -123,6 +131,9 @@ text-transform: uppercase;
   color: white;
   padding: 2%;
   margin-right: 15%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .trip-infos {
@@ -149,6 +160,10 @@ text-transform: uppercase;
 .host-info p {
   color: $black;
   margin: 0;
+  margin-top: -23%;
+}
+.host-info h3 {
+  font-size: 16px;
 }
 
 .host-info hr {
@@ -192,12 +207,13 @@ text-transform: uppercase;
   color: $orange;
   text-transform: uppercase;
   font-family: 'Gotham-black';
+  font-size: 32px;
 }
 .join-the-team-title span {
   color: #FF7461;
   text-transform: uppercase;
   font-family: "Gotham-black";
-  font-size: 78px;
+  font-size: 70px;
   line-height: 0;
 }
 
@@ -266,6 +282,12 @@ text-transform: uppercase;
 }
 
 
+.qanda {
+  margin: auto 10%;
+}
+.qanda hr {
+  border: solid 1px $gray;
+}
 .btn-primary-colored {
   border: solid 2px rgba(255, 116, 97, 1.0);
   color: white;
@@ -294,15 +316,24 @@ text-transform: uppercase;
 
 .question-box {
   width: 60vw;
+  margin-left: 0%;
+
 }
 
 
+.container-message {
+  max-height: 40vh;
+  overflow: scroll;
+}
 
+.container-comment {
+  width: 100%;
+  margin: auto;
+}
 
-
-
-
-
+.marg-correction {
+    margin-left: 0%;
+}
 
 
 
