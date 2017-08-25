@@ -2,10 +2,10 @@
 <% content_for :meta_description, @trip.description %>
 
 <!-- map -->
-<div id="map" style="width: 100%; height: 30vh;"></div>
+<div id="map" style="width: 100%; height: 20vh;"></div>
 <!-- cloison -->
 <div class="block-center">
-  <div class="trip-edit">
+<div class="trip-edit">
     <% if @trip.user == current_user %>
     <p>edit<%= link_to edit_trip_path(@trip) do%>
     <i class="fa fa-pencil" aria-hidden="true"></i></p>
@@ -13,70 +13,78 @@
     <% end %>
   </div>
 </div>
-<!-- banner infos -->
+<!-- info A/R -->
 <div class="banner-trip">
   <div class="trip-title-container">
-    <div class="trip-title">
-      <h1> <%= @trip.title %> </h1>
-    </div>
     <div class="trip-cities">
-      <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip) <br>
-      Date: <%= @trip.starts_at %> </p>
+      <h3>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip) <br>
+      Date: <%= @trip.starts_at %> </h3>
     </div>
   </div>
   <div class="trip-status">
     <p>Trip status: <br> <%= @trip.status %></p>
   </div>
 </div>
-<!-- description -->
-<div class="trip-infos">
-  <div class="host-info">
-    <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
+
+<div class="trip-main">
+  <div class="trip-left">
+    <!-- title -->
+    <div class="trip-title">
+      <h3><%= @trip.title %> </h3>
     </div>
-    <div class="info-trip-host">
-      <hr>
-      <p><%= @trip.user.first_name %> <%= @trip.user.last_name %>
-      </div>
-    </div>
+    <!-- description -->
     <div class="trip-description">
-      <h3>T H E  -  T R I P</h3>
       <div class="more-description">
         <p><%= @trip.description  %></p>
         <span>About the car:<br><%= @trip.car %></span>
       </div>
     </div>
-  </div>
-  <!-- MEMBERS -->
-  <div class="surfer-box-cont">
-    <h3>C u r r e n t - t e a m </h3>
-    <div class="surfers-box">
-      <% @trip.participants.each do |participant| %>
-      <% if participant.status == 'accepted' %>
-      <div class="surfers-profile">
-        <div class="banner-avatar img-circle" style="background-image: url(<%= participant.user.facebook_picture_url.gsub('square', 'large') %>)">
+    <!-- team -->
+    <div class="surfer-box-cont">
+      <h3>C u r r e n t - t e a m </h3>
+      <% if @remaining_spots > 0 %>
+      <span>
+        <%= @remaining_spots %> seats remaining
+      </span>
+      <% end %>
+      <div class="surfers-box">
+        <% @trip.participants.each do |participant| %>
+        <% if participant.status == 'accepted' %>
+        <div class="surfers-profile">
+          <div class="banner-avatar img-circle" style="background-image: url(<%= participant.user.facebook_picture_url.gsub('square', 'large') %>)">
+          </div>
+          <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
         </div>
-        <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
-      </div>
-      <% end %>
-      <% end %>
-      <% @remaining_spots.times do %>
-      <div class="available-seat">
-        <div class="empty-user img-circle">
+        <% end %>
+        <% end %>
+        <% @remaining_spots.times do %>
+        <div class="available-seat">
+          <div class="empty-user img-circle">
+          </div>
+          <p>Available seat</p>
         </div>
-        <p>Available seat</p>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-    <% if @remaining_spots > 0 %>
-    <span><%= @remaining_spots %> seats remaining</span>
-    <% end %>
+
   </div>
-  <!-- JOIN -->
-  <div class="join-team">
-    <div class="join-the-team-title">
-      <h1><span>JOIN</span><br>
-      the team</h1>
-    </div>
+  </div>
+
+
+  <div class="trip-right">
+    <div class="host-info">
+      <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
+      </div>
+      <div class="info-trip-host">
+        <hr>
+        <p><%= @trip.user.first_name %> <%= @trip.user.last_name %>
+        </div>
+      </div>
+      <div class="join-trip">
+      <div class="join-the-team-title">
+        <h1><span>JOIN</span><br>
+        the team</h1>
+      </div>
+      <div class="join-team">
     <div class="join-team-action">
       <% if @trip.has_participant(current_user)[:status] == false %>        <%= simple_form_for([@trip, @participant]) do |f| %>
       <div class="form-inputs">
@@ -102,8 +110,10 @@
       <% end %>
     </div>
   </div>
+    </div>
+    </div>
+</div>
   <!-- CHAT -->
-
   <h2>Questions and answers</h2>
    <!-- previous messages -->
   <div class="container">

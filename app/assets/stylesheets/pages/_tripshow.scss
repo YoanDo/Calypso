@@ -1,3 +1,4 @@
+
 .banner-trip {
   flex-direction: row;
   text-align: center;
@@ -5,8 +6,132 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 15vh;
+  height: 10vh;
   margin: 0;
+}
+
+.trip-main{
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 62vh;
+  margin: 0;
+}
+
+//left box
+.trip-left {
+  width: 70vw;
+  height: 100%;
+  padding: 0 2%;
+  padding-left: 15%;
+  position: relative;
+  z-index : 1;
+}
+
+// .trip-left:before {
+//   content : "";
+//   position: absolute;
+
+//   left: 50%;
+//   top  : 0;
+//   right: 0;
+//   height  : 1px;
+//   width   : 50%;  /* or 100px */
+//   border-top: 1px solid magenta;
+// }
+
+.trip-title{
+width: 60vw;
+text-align: center;
+margin-left: 0;
+text-transform: uppercase;
+}
+
+.trip-title h3 {
+  text-align: left;
+  margin-top: 0%;
+  margin-left: 0%;
+}
+
+.trip-description {
+  margin-top: 2%;
+  width: 100%;
+  padding-top: 0;
+  padding-left: 2%;
+  text-align:left;
+}
+
+.more-description span {
+  font-style: italic;
+  margin: 0auto;
+  color: $gray;
+}
+
+
+//TEAM
+
+.surfer-box-cont {
+  margin-top: 5%;
+}
+.surfers-box {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  padding-top: 0px;
+  padding-bottom: 2%
+}
+
+.surfer-box-cont h3 {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.surfer-box-cont span {
+  font-style: italic;
+  text-align: left;
+  margin-right: 100%;
+  color: gray;
+}
+.surfers-profile {
+  text-align: center;
+}
+
+.available-seat {
+  width: 170px;
+  height: 100%;
+  text-align: center;
+}
+
+.empty-user {
+    background-image: url(image-path("user.png"));
+    background-position: center;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+//rightbox
+.trip-right {
+  width: 30vw;
+  height: 100%;
+  color: white;
+  padding: 2%;
+  margin-right: 15%;
+}
+
+.trip-infos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 20vh;
 }
 
 .host-info {
@@ -16,20 +141,69 @@
   flex-direction: column;
   // max-width: 10vw;
   width: 15vw;
-  height: 100%;
-  background-color: $black;
+  // height: 100%;
   padding: 2%;
-  // border-top-right-radius: 2px;
-  // border-bottom-right-radius: 3px;
+
 }
 
 .host-info p {
-  color: white;
+  color: $black;
   margin: 0;
 }
 
 .host-info hr {
-  margin: 5%;
+  border: 1px solid $gray;
+  margin-top: 12px;
+  margin-bottom: 7px;
+}
+
+.img-trip-host{
+  min-width: 50px;
+  min-height: 50px;
+  background-position: cover;
+}
+
+.join-trip {
+  margin-top: 10%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+//JOIN
+
+.join-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.join-the-team-title {
+  // background-color: $black;
+  text-align: left;
+  padding-right: 2%;
+}
+
+.join-the-team-title h1 {
+  color: $orange;
+  text-transform: uppercase;
+  font-family: 'Gotham-black';
+}
+.join-the-team-title span {
+  color: #FF7461;
+  text-transform: uppercase;
+  font-family: "Gotham-black";
+  font-size: 78px;
+  line-height: 0;
+}
+
+.join-team-action {
+  width: 100%;
+  padding: 0;
 }
 
 .img-trip-host{
@@ -49,14 +223,6 @@
   padding-left: 54px;
 }
 
-.trip-title{
-width: 60vw;
-// flex: 1 0 auto;
-text-align: center;
-margin: auto;
-text-transform: uppercase;
-
-}
 
 
 .trip-edit {
@@ -74,16 +240,6 @@ text-transform: uppercase;
   margin-right: 2%;
   text-align: center
 }
-// desc
-// .trip-description {
-//   flex-direction: row;
-//   text-align: center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100vw;
-//   height: 15vh;
-// }
 
 
 .trip-infos {
@@ -93,15 +249,6 @@ text-transform: uppercase;
   padding-top: 1%;
   padding-bottom: 1%;
   height: 20vh;
-}
-
-.trip-description {
-  width: 100%;
-  padding-top: 0;
-  padding-left: 2%;
-  border-top: solid $black 1px;
-  border-bottom: solid $black 1px;
-  height: 100%
 }
 
 
@@ -116,86 +263,6 @@ text-transform: uppercase;
 
 .more-description h3 {
   margin-top: 1%;
-}
-
-
-//TEAM
-
-.surfers-box {
-  display: flex;
-  text-align: center;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 10px;
-  // border-top: 1px solid $gray;
-}
-
-.surfer-box-cont h3 {
-  padding-left: 15vw;
-}
-
-.surfer-box-cont span {
-  font-style: italic;
-  margin: auto;
-  padding-left: 5vw;
-}
-.surfers-profile {
-  text-align: center
-}
-
-.available-seat {
-  width: 200px;
-  height: 100%;
-  text-align: center;
-}
-
-.empty-user {
-    background-image: url(image-path("user.png"));
-    background-position: center center;
-    height: 150px;
-    width: 150px;
-    margin: auto;
-}
-
-
-//JOIN
-
-.join-team {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  height: 20vh;
-  // background-color: $black;
-  background-image: url(image-path("bg-trips.jpeg"));
-  background-size: cover;
-}
-
-.joint-the-team-title {
-  // background-color: $black;
-  width: 50vw;
-  text-align: right;
-  padding-right: 2%;
-}
-
-.join-the-team-title h1 {
-  color: $orange;
-  text-transform: uppercase;
-  font-family: 'Gotham-black'
-}
-.join-the-team-title span {
-  color: #FF7461;
-  text-transform: uppercase;
-  font-family: "Gotham-black";
-  font-size: 78px;
-  line-height: 0;
-}
-
-.join-team-action {
-  width: 50vw;
-  padding: 10%
 }
 
 

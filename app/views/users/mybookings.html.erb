@@ -1,16 +1,42 @@
 
-  <%= render 'shared/navbar-dashboard' %>
+<%= render 'shared/navbar-dashboard' %>
 
- <% @participants.each do |participant| %>
-  <div>
-  <h1> <%= participant.trip.title %></h1>
-  <%= participant.trip.from %><br>
-  <%= participant.trip.to %><br>
-  <%= participant.trip.starts_at %><br>
-  <%= participant.trip.ends_at %><br>
+<div class="container">
+  <div class="container-small u-margin-top">
+    <h3>YOUR BOOKINGS</h3>
+    <div class="u-display-flex-space-between">
+      <% @participants.each do |participant| %>
+      <div class="card-dashboard__booking">
+      <div class="card-booking__options">
+        <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </div>
+        <h4> <%= participant.trip.title %></h4>
+        <div class="u-display-flex u-padding">
+          <%= participant.trip.from %>&nbsp;
+          <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;
+          <%= participant.trip.to %>
+        </div>
+        <div class="u-display-flex u-padding">
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+          <%= participant.trip.starts_at.strftime('%v') %>
+        </div>
+        <div class="u-display-flex u-padding">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
+        <%= participant.trip.starts_at.strftime('%R') %>&nbsp; -
+        <%= participant.trip.ends_at.strftime('%R') %>
+        </div>
+        <div class="u-padding">
+        <strong>Status: <%= participant.status.capitalize %></strong>
+        </div>
+        <% participant.trip.participants.each do |participant| %>
+          <% if participant.status == 'declined' %>
+          <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
+          <% end %>
+        <% end %>
 
-  <strong><%= participant.status %></strong>
-  <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch %>
-  <hr>
+        <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "cancelled"), method: :patch %>
+      </div>
+      <% end %>
+    </div>
   </div>
- <% end %>
+</div>

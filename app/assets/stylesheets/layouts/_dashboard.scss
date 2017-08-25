@@ -9,6 +9,11 @@
   background: RGB(249, 249, 249);
 }
 
+.container-small {
+  width: 90%;
+  margin: auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -158,4 +163,7 @@ a .grid__card-trips {
   color: RGB(233, 233, 233);
 }
 
+.u-margin-top {
+  margin-top: 30px;
+}
 
