@@ -27,9 +27,9 @@
 
     <div class="list-requests">
 
-      <% if participant.trip.user.facebook_picture_url? %>
+      <% if participant.user.facebook_picture_url? %>
       <%= link_to user_path(participant.user.id) do %>
-      <%= image_tag participant.trip.user.facebook_picture_url, class: "img-circle img-small" %>
+      <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
       <% end %>
       <% else %>
       <%= link_to user_path(participant.user.id) do %>
