@@ -13,7 +13,7 @@
         <% end %>
       </div>
       <div class="">
-        <p>From: <%= @trip.from %> - To: <%= @trip.to %> (<%= @trip.estimated_duration %>h trip)</p>
+        <p>From: <%= @trip.from.address %> - To: <%= @trip.to.address %> (<%= @trip.estimated_duration %>h trip)</p>
         <p>Date: <%= @trip.starts_at %> </p>
       </div>
       <h3>Current participants</h3>
@@ -130,7 +130,7 @@
         if (markers.length === 0) {
           handler.getMap().setZoom(2);
         } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
+          handler.getMap().setZoom(11);
         }
       });
 

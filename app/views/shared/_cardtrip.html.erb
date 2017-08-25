@@ -4,7 +4,7 @@
   </div>
   <div class="card-trip__info">
     <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
-    <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+    <h3><%= trip.from.address %> <<strong>/</strong>> <%= trip.to.address %></h3>
     <p>Hosted by <%= trip.user.first_name %></p>
     <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count %> spots left</span></p>
   </div>

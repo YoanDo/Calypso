@@ -2,7 +2,23 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <h1>Edit your trip</h1>
-      <%= render 'form' %>
+      <%= simple_form_for(@trip) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :title, placeholder: "The title of your trip" %>
+          <%= f.input :from, input_html: {class: "autocomplete-location", value: f.object.from.address || "" }%>
+          <%= f.input :to, input_html: {class: "autocomplete-location", value: f.object.to.address || ""} %>
+          <%= f.input :starts_at %>
+          <%= f.input :ends_at %>
+          <%= f.input :description, label: "Trips info", placeholder: "The description of your trip (details about the destination, schedule, ...)", as: :text, :input_html => {:rows => 5} %>
+          <%= f.input :nb_participant, label: "Number of seats available" %>
+          <%= f.input :category, collection: CATEGORY %>
+          <%= f.input :car, placeholder: "The description of your car (model, available space for equipment, ...)", as: :text, :input_html => {:rows => 3} %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Send", class: "btn btn-info" %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
