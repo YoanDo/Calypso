@@ -8,7 +8,7 @@
 
       <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
       <%= link_to trip_path(trip) do %>
-      <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
+      <h3><%= trip.from.address %> <<strong>/</strong>> <%= trip.to.address %></h3>
       <% end %>
       <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> spots left</span></p>
       <div class="btn" data-toggle="collapse" data-target="#requests<%= trip.id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>

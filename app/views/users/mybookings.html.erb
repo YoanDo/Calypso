@@ -24,9 +24,9 @@
           <h4> <%= participant.trip.title %></h4>
           <% end %>
           <div class="u-display-flex u-padding">
-            <%= participant.trip.from %>&nbsp;
+            <%= participant.trip.from.address %>&nbsp;
             <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;
-            <%= participant.trip.to %>
+            <%= participant.trip.to.address %>
           </div>
           <div class="u-display-flex u-padding">
             <i class="fa fa-calendar-o u-font-size-bigger u-color-light-grey" aria-hidden="true"></i>&nbsp;
