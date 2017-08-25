@@ -12,3 +12,18 @@
   top: 0px;
   right: 0px;
 }
+
+.cont-search {
+  // background-image: url(image-path("search.jpeg"));
+  background-color: $black;
+  width: 100vw;
+  height: 5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
