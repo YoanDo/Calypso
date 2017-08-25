@@ -13,9 +13,10 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to user_path(@user)
   end
-  
+
   def dashboard
   @trips = current_user.trips
+  @trips_day_up = @trips.where('ends_at >= ?', Date.today).order(starts_at: :asc)
   @participants = current_user.participants
   @user = current_user
     if @user.nil?
@@ -36,6 +37,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :description, :level, :location, :language, :photo, :photo_cache)
+    params.require(:user).permit(:first_name, :last_name, :phone, :description, :level, :location, :language, :photo, :photo_cache)
   end
 end

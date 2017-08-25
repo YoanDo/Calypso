@@ -1,0 +1,357 @@
+.trip-show h4 {
+  text-align: left;
+}
+
+
+.banner-trip {
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 10vh;
+  margin: 0;
+}
+
+// .banner-trip p {
+//   text-transform: uppercase;
+//   color: $orange
+// }
+
+.trip-main{
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 48vh;
+  margin: 0;
+}
+
+//left box
+.trip-left {
+  width: 70vw;
+  height: 100%;
+  padding: 0 2%;
+  padding-left: 15%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+// .trip-left:before {
+//   content : "";
+//   position: absolute;
+
+//   left: 50%;
+//   top  : 0;
+//   right: 0;
+//   height  : 1px;
+//   width   : 50%;  /* or 100px */
+//   border-top: 1px solid magenta;
+// }
+
+.trip-title{
+width: 60vw;
+text-align: center;
+margin-left: 0;
+text-transform: uppercase;
+}
+
+.trip-title h3 {
+  text-align: left;
+  margin-top: 0%;
+  margin-left: 0%;
+}
+
+.trip-description {
+  margin-top: 2%;
+  width: 100%;
+  padding-top: 0;
+  padding-left: 2%;
+  text-align:left;
+}
+
+.more-description span {
+  font-style: italic;
+  margin: 0auto;
+  color: $gray;
+}
+
+
+//TEAM
+
+.surfer-box-cont {
+  margin-top: 5%;
+}
+.surfers-box {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  padding-top: 0px;
+  padding-bottom: 2%
+}
+
+.surfer-box-cont h3 {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.surfer-box-cont span {
+  font-style: italic;
+  text-align: left;
+  margin-right: 100%;
+  color: gray;
+}
+.surfers-profile {
+  text-align: center;
+}
+
+.available-seat {
+  width: 170px;
+  height: 100%;
+  text-align: center;
+}
+
+.empty-user {
+    background-image: url(image-path("user.png"));
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+//rightbox
+.trip-right {
+  width: 30vw;
+  height: 100%;
+  color: white;
+  padding: 2%;
+  margin-right: 15%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.trip-infos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 20vh;
+}
+
+.host-info {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  // max-width: 10vw;
+  width: 15vw;
+  // height: 100%;
+  padding: 2%;
+
+}
+
+.host-info p {
+  color: $black;
+  margin: 0;
+  margin-top: -23%;
+}
+.host-info h3 {
+  font-size: 16px;
+}
+
+.host-info hr {
+  border: 1px solid $gray;
+  margin-top: 12px;
+  margin-bottom: 7px;
+}
+
+.img-trip-host{
+  min-width: 50px;
+  min-height: 50px;
+  background-position: cover;
+}
+
+.join-trip {
+  margin-top: 10%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+//JOIN
+
+.join-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.join-the-team-title {
+  // background-color: $black;
+  text-align: left;
+  padding-right: 2%;
+}
+
+.join-the-team-title h1 {
+  color: $orange;
+  text-transform: uppercase;
+  font-family: 'Gotham-black';
+  font-size: 32px;
+}
+.join-the-team-title span {
+  color: #FF7461;
+  text-transform: uppercase;
+  font-family: "Gotham-black";
+  font-size: 70px;
+  line-height: 0;
+}
+
+.join-team-action {
+  width: 100%;
+  padding: 0;
+}
+
+.img-trip-host{
+  min-width: 50px;
+  min-height: 50px;
+  background-position: cover;
+  margin-top: 2%;
+}
+
+
+.trip-title-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 2;
+  padding-left: 54px;
+}
+
+
+
+.trip-edit {
+  margin-right: 2%;
+  width: 100%;
+  text-align: right;
+  white-space: nowrap;
+
+  p {
+    color: white;
+    white-space: nowrap
+  }
+}
+.trip-status {
+  margin-right: 2%;
+  text-align: center
+}
+
+
+.trip-infos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 20vh;
+}
+
+
+.more-description span {
+  font-style: italic;
+  margin: auto;
+}
+
+.more-description {
+  padding-right: 3%;
+}
+
+.more-description h3 {
+  margin-top: 1%;
+}
+
+
+.qanda {
+  margin: auto 10%;
+}
+.qanda hr {
+  border: solid 1px $gray;
+}
+.btn-primary-colored {
+  border: solid 2px rgba(255, 116, 97, 1.0);
+  color: white;
+  background-color: rgba(255, 116, 97, 1.0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
+  margin: 1%
+}
+
+.comment-box {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 30vh;
+  width: 60%;
+  margin: auto;
+}
+
+.question-box {
+  width: 60vw;
+  margin-left: 0%;
+
+}
+
+
+.container-message {
+  max-height: 40vh;
+  overflow: scroll;
+}
+
+.container-comment {
+  width: 100%;
+  margin: auto;
+}
+
+.marg-correction {
+    margin-left: 0%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

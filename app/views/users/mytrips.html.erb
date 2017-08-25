@@ -1,39 +1,26 @@
 
 <%= render 'shared/navbar-dashboard' %>
 
-<div class="block-center">
-</div>
-
-<div class="logo-footer">UPCOMMING TRIP/</div>
-
 <div class="container">
-  <% @trips_day_up.each do |day, trips| %>
-      <div class="date">
-        <h3><%= day.strftime('%v') %></h3>
-      </div>
+  <div class="container-small u-margin-top">
+    <h3>UPCOMING TRIPS</h3>
+    <% @trips_day_up.each do |day, trips| %>
+    <div class="date">
+      <h3><%= day.strftime('%v') %></h3>
+    </div>
     <% for trip in trips %>
-        <%= render "shared/cardtrip", trip: trip %>
-        <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
-          <% for participant in participants %>
-            <%= render "shared/cardparticipant", participant: participant %>
-          <% end %>
-        <% end %>
-      <% end %>
-  <% end %>
-</div>
-
-<div class="block-center">
-</div>
-
-<div class="logo-footer">PAST TRIP/</div>
-
-<div class="container">
-  <% @trips_day_past.each do |day, trips| %>
-      <div class="date">
-        <h3><%= day.strftime('%v') %></h3>
-      </div>
+    <%= render "shared/card-trip-dashboard", trip: trip %>
+    <% end %>
+    <% end %>
+    <div class="logo-footer">PAST TRIPS</div>
+    <% @trips_day_past.each do |day, trips| %>
+    <div class="date">
+      <h3><%= day.strftime('%v') %></h3>
+    </div>
     <% for trip in trips %>
-      <%= render "shared/cardtrip", trip: trip %>
-      <% end %>
-  <% end %>
+    <%= render "shared/card-trip", trip: trip %>
+    <% end %>
+    <% end %>
+  </div>
 </div>
+
