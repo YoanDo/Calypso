@@ -6,7 +6,7 @@
     <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
     <h3><%= trip.from %> <<strong>/</strong>> <%= trip.to %></h3>
     <p>Hosted by <%= trip.user.first_name %></p>
-    <p><%= trip.participants.count %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.count { |participant| participant.status == 'accepted'} %> spots left</span></p>
+    <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> spots left</span></p>
   </div>
   <div class="card-trip__weather">
     <p>
