@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
   def index
     @date = params["date"] ? Date.strptime(params["date"], "%m/%d/%Y") : Date.today
-    if params["nearfrom"]
+    if params["nearfrom"].presence
       @trips = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
       @nb_result = @trips.count
     else

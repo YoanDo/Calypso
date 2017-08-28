@@ -1,8 +1,14 @@
-<div class="cont-search">
-  <%= render 'shared/search' %>
-</div>
-
 <div class="container">
+
+<div class="form-group form-inline" id="index-search">
+      <%= form_tag trips_path, method: :get, class: "form-group-navbar-home", id: "search-city"  do %>
+      <%= text_field_tag :nearfrom, params[:nearfrom], class:'autocomplete-location form-control', id: "search-box", placeholder: "City or postal code"  %>
+      <%= button_tag "nearfrom", name: nil, class:"input-group-addon form-group-navbar-button hidden" do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <% end %>
+      <% end %>
+    </div>
+
   <% if @nb_result == 0 %>
     <p><strong> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     No result for your search</strong></p>
@@ -15,7 +21,7 @@
   <div class="list-trips">
     <% @trips_day.each do |day, trips| %>
     <div class="date">
-      <h4><%= day.strftime('%A, %B %d') %></h4>
+      <h4 class='u-add-margin-top'><%= day.strftime('%A, %B %d') %></h4>
     </div>
     <% for trip in trips %>
 
@@ -31,10 +37,8 @@
 
       <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
       <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
-      <input name="date" type="hidden" id="select_date">
-      <% if params["nearfrom"].nil? %>
+        <input name="date" type="hidden" id="select_date">
         <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
-      <% end %>
       <% end %>
 
 
@@ -47,6 +51,12 @@
               );
               $('#form_date_picker').trigger('submit')
           });
+            $('#search-box').keydown(function (e) {
+        if (e.which === 13) {
+        $('#search-city').trigger('submit')
+            return true;
+        }
+    });
         <% end %>
       <% end %>
     </div>
