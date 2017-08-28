@@ -6,15 +6,12 @@ class TripsController < ApplicationController
     @date = params["date"] ? Date.strptime(params["date"], "%m/%d/%Y") : Date.today
     if params["nearfrom"]
       @trips = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
-      if  @trips.count == 0
-        @nb_result = @trips.count
-        @trips = Trip.all.map
-      end
+      @nb_result = @trips.count
     else
       @trips = Trip.all.map
       @nb_result = @trips.count
     end
-    @trips_day = @trips.find_all { |t|  t.starts_at >= date}.sort_by{|e| e[:starts_at]}.group_by { |t| t.starts_at.to_date }
+    @trips_day = @trips.find_all { |t|  t.starts_at >= @date}.sort_by{|e| e[:starts_at]}.group_by { |t| t.starts_at.to_date }
     #map
     @tripsmap = @trips.find_all { |t| !t.from.latitude.nil?}
     @hash = Gmaps4rails.build_markers(@tripsmap) do |trip, marker|
