@@ -1,21 +1,25 @@
-<div class="cont-search">
-  <%= render 'shared/search' %>
+<div class="container">
+
+<div class="form-group form-inline" id="index-search">
+      <%= form_tag trips_path, method: :get, class: "form-group-navbar-home", id: "search-city"  do %>
+      <span class="gotham-font"><i class="fa fa-search" aria-hidden="true"> </i>  </span> <%= search_field_tag :nearfrom, params[:nearfrom], class:'autocomplete-location search-bar', id: "search-box", placeholder: "City departure"  %>
+      <%= button_tag "nearfrom", name: nil, class:"input-group-addon form-group-navbar-button hidden" do %>
+      <% end %>
+      <% end %>
+    </div>
 </div>
 
 <div class="container">
-  <% if @nb_result == 0 %>
+  <div class="list-trips">
+  <% if @trips_day.empty? %>
     <p><strong> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
     No result for your search</strong></p>
     <p>Do you want to create one ?</p>
     <%= link_to "Create a trip", new_trip_path, { class: "btn-info" } %>
   <% end %>
-</div>
-
-<div class="container">
-  <div class="list-trips">
     <% @trips_day.each do |day, trips| %>
     <div class="date">
-      <h4><%= day.strftime('%A, %B %d') %></h4>
+      <h4 class='u-add-margin-top'><%= day.strftime('%A, %B %d') %></h4>
     </div>
     <% for trip in trips %>
 
@@ -35,7 +39,6 @@
       <% unless params["nearfrom"].nil?  %>
         <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
       <% end %>
-      <% end %>
 
 
       <% content_for(:after_js) do %>
@@ -47,6 +50,12 @@
               );
               $('#form_date_picker').trigger('submit')
           });
+            $('#search-box').keydown(function (e) {
+        if (e.which === 13) {
+        $('#search-city').trigger('submit')
+            return true;
+        }
+    });
         <% end %>
       <% end %>
     </div>
