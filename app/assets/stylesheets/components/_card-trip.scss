@@ -32,12 +32,23 @@
 }
 
 .category {
-  background: $orange;
   border-radius: 3px;
   color: white !important;
   padding: 2px 6px;
   margin-left: 10px;
   font-size: 12px;
+}
+
+.category-background-orange {
+  background: RGB(115, 204, 215);
+}
+
+.category-background-purple {
+  background: RGB(117, 157, 218);
+}
+
+.category-background-green {
+  background: RGB(20, 104, 136);
 }
 
 .u-font-big {
@@ -79,4 +90,9 @@
 
 .u-add-margin-top {
   margin-top: 50px;
+}
+
+.u-font-bolder {
+  font-weight: bolder;
+  font-size: 16px;
 }
