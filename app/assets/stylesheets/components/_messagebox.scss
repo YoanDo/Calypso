@@ -1,5 +1,8 @@
 .comment-box {
-  margin-top: 30px;
+  // margin-top: 20px;
+}
+
+.comment-box p {
 }
 
 #comments {
@@ -47,6 +50,7 @@
 
 .message-content {
   padding-left: 38px;
+  text-align: left;
 }
 
 .message-userspace {
