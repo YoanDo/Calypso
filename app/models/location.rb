@@ -3,7 +3,14 @@ class Location < ApplicationRecord
 
   validates :address, presence: :true
 
-  geocoded_by :address
+  geocoded_by :address do |loc,results|
+    if geo = results.first
+      loc.city    = geo.city
+      loc.latitude = geo.latitude
+      loc.longitude = geo.longitude
+    end
+  end
+
   after_validation :geocode, if: :address?
 
   def self.search(location)
