@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20170828123312) do
     t.index ["user_id"], name: "index_participants_on_user_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string  "comment"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
   create_table "spots", force: :cascade do |t|
     t.string   "name"
     t.float    "latitude"
@@ -123,5 +130,6 @@ ActiveRecord::Schema.define(version: 20170828123312) do
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "trips"
   add_foreign_key "participants", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "trips", "users"
 end

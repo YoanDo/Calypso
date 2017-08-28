@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'mybookings', on: :collection
     get 'mymessages', on: :collection
     get 'dashboard', on: :collection
+    resources :reviews, only: [ :create ]
   end
 
   root to: 'pages#home'
