@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :private_session, :cancel]
 
   def index
-    date = params["date"]? params["date"] : Date.today
+    @date = params["date"] ? Date.strptime(params["date"], "%m/%d/%Y") : Date.today
     if params["nearfrom"]
       @trips = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
       if  @trips.count == 0

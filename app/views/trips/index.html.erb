@@ -31,16 +31,21 @@
     <% end %>
     <div class="list-calendar">
 
-      <div id="datepicker" data-date="<%= DateTime.now %>"></div>
-      <input type="hidden" id="my_hidden_input">
+      <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
+      <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
+      <input name="date" type="hidden" id="select_date">
+      <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+      <% end %>
+
 
       <% content_for(:after_js) do %>
         <%= javascript_tag do %>
           $('#datepicker').datepicker();
           $('#datepicker').on('changeDate', function() {
-            $('#my_hidden_input').val(
+            $('#select_date').val(
               $('#datepicker').datepicker('getFormattedDate')
               );
+              $('#form_date_picker').trigger('submit')
           });
         <% end %>
       <% end %>
