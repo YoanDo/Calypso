@@ -18,7 +18,6 @@ class TripsController < ApplicationController
     @comments = @trip.comments.order(created_at: :desc)
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
-
     if @trip.to.latitude.present?
       @spots = Spot.near(@trip.to.address, 20)
       @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
@@ -39,6 +38,8 @@ class TripsController < ApplicationController
     if @trip.save
       Location.create(address:params[:trip][:to], direction: "to", trip: @trip)
       Location.create(address:params[:trip][:from], direction: "from", trip: @trip)
+      @trip.calcul_itinary()
+      @trip.save
       redirect_to trip_path(@trip)
     else
       render :new
@@ -49,11 +50,14 @@ class TripsController < ApplicationController
   end
 
   def update
+  @trip.estimated_duration = @trip.calcul_itinary(params[:trip][:from], params[:trip][:to])
     if @trip.update(trip_params)
       @trip.to.address = params[:trip][:to]
       @trip.to.save
       @trip.from.address = params[:trip][:from]
       @trip.from.save
+      @trip.calcul_itinary()
+      @trip.save
       redirect_to trip_path(@trip)
     else
       render :new
