@@ -32,7 +32,7 @@
       <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
       <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
       <input name="date" type="hidden" id="select_date">
-      <% if params["nearfrom"].nil? %>
+      <% unless params["nearfrom"].nil?  %>
         <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
       <% end %>
       <% end %>
