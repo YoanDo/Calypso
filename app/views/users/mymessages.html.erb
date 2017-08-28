@@ -1,11 +1,34 @@
-<%= render 'shared/navbar-dashboard' %>
-
 <div class="container">
+  <div class="row">
 
+    <!-- List of trips -->
+    <div class="col-md-3">
+      <ul>
+        <% @trips.each do |trip| %>
+          <div id="trip-<%= trip.id %>">
+            <li><%= trip.title %> / <%= trip.starts_at %> / <%= trip.status %></li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
 
-<% @user.trips.each do |trip| %>
-<%= trip.title %>
-
+    <!-- Trip chat -->
+    <div class="col-md-9">
+      <div class="row">
+        <%= render 'users/tripchat', trip: @first_trip, message: @message  %>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- JS dynamic trip navbar -->
+<% content_for(:after_js) do %>
+  <script>
+    <% @trips.each do |trip| %>
+      document.getElementById("trip-<%= trip.id %>").addEventListener("click", (event) => {
+        var chat = "<%= j render 'users/tripchat', trip: trip, message: @message  %>"
+        document.getElementById("trip-chat").innerHTML = chat;
+      });
+    <% end %>
+  </script>
 <% end %>

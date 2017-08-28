@@ -1,6 +1,7 @@
 .list-trips {
   width: 100%;
   position: relative;
+  min-height: 70vh;
 }
 
 .list-cards {
@@ -9,7 +10,7 @@
 
 .list-calendar {
   position: absolute;
-  top: 0px;
+  top: 20px;
   right: 0px;
 }
 

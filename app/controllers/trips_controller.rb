@@ -3,19 +3,15 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :private_session, :cancel]
 
   def index
-    date = params["date"]? params["date"] : Date.today
-    if params["nearfrom"]
+    @date = params["date"] ? Date.strptime(params["date"], "%m/%d/%Y") : Date.today
+    if params["nearfrom"].presence
       @trips = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
+      @nb_result = @trips.count
     else
-      @trips = Trip.all
+      @trips = Trip.all.map
+      @nb_result = @trips.count
     end
-    @trips_day = @trips.find_all { |t|  t.ends_at >= date}.sort_by{|e| e[:starts_at]}.group_by { |t| t.starts_at.to_date }
-
-    @tripsmap = @trips.find_all { |t| !t.from.latitude.nil?}
-    @hash = Gmaps4rails.build_markers(@tripsmap) do |trip, marker|
-      marker.lat trip.from.latitude
-      marker.lng trip.from.longitude
-    end
+    @trips_day = @trips.find_all { |t|  t.starts_at >= @date}.sort_by{|e| e[:starts_at]}.group_by { |t| t.starts_at.to_date }
   end
 
   def show
@@ -23,13 +19,15 @@ class TripsController < ApplicationController
     @comments = @trip.comments.order(created_at: :desc)
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
+
     if @trip.to.latitude.present?
-      @spots = Spot.near(@trip.to.address, 50)
+      @spots = Spot.near(@trip.to.address, 20)
       @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
         marker.lat spot.latitude
         marker.lng spot.longitude
       end
     end
+
   end
 
   def new
@@ -61,15 +59,6 @@ class TripsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def private_session
-    unless @trip.has_participant(current_user)[:status] == 'accepted'
-      redirect_to trip_path(@trip)
-    end
-    @message = Message.new
-    @messages = @trip.messages.order(created_at: :desc)
-    @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
   end
 
   def cancel

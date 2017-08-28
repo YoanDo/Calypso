@@ -1,32 +1,27 @@
-<div id="map" style="width: 100%; height: 300px;"></div>
+<div class="container">
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
+<div class="form-group form-inline" id="index-search">
+      <%= form_tag trips_path, method: :get, class: "form-group-navbar-home", id: "search-city"  do %>
+      <%= text_field_tag :nearfrom, params[:nearfrom], class:'autocomplete-location form-control', id: "search-box", placeholder: "City or postal code"  %>
+      <%= button_tag "nearfrom", name: nil, class:"input-group-addon form-group-navbar-button hidden" do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <% end %>
+      <% end %>
+    </div>
+
+  <% if @nb_result == 0 %>
+    <p><strong> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    No result for your search</strong></p>
+    <p>Do you want to create one ?</p>
+    <%= link_to "Create a trip", new_trip_path, { class: "btn-info" } %>
   <% end %>
-<% end %>
-
-<div class="cont-search">
-<%= render 'shared/search' %>
 </div>
 
 <div class="container">
   <div class="list-trips">
     <% @trips_day.each do |day, trips| %>
     <div class="date">
-      <h3><%= day.strftime('%v') %></h3>
+      <h4 class='u-add-margin-top'><%= day.strftime('%A, %B %d') %></h4>
     </div>
     <% for trip in trips %>
 
@@ -40,7 +35,30 @@
     <% end %>
     <div class="list-calendar">
 
+      <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
+      <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
+        <input name="date" type="hidden" id="select_date">
+        <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+      <% end %>
 
+
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $('#datepicker').datepicker();
+          $('#datepicker').on('changeDate', function() {
+            $('#select_date').val(
+              $('#datepicker').datepicker('getFormattedDate')
+              );
+              $('#form_date_picker').trigger('submit')
+          });
+            $('#search-box').keydown(function (e) {
+        if (e.which === 13) {
+        $('#search-city').trigger('submit')
+            return true;
+        }
+    });
+        <% end %>
+      <% end %>
     </div>
-</div>
+  </div>
 </div>

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :participants, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :messages, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
 
   mount_uploader :photo, PhotoUploader
 
@@ -18,7 +19,7 @@ class User < ApplicationRecord
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
-    user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
+    user_params[:token_expiry] = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)
