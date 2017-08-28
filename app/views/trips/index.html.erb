@@ -5,11 +5,9 @@
 <div class="container">
   <% if @nb_result == 0 %>
     <p><strong> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-    No result for <%= params["nearfrom"] %></strong></p>
+    No result for your search</strong></p>
     <p>Do you want to create one ?</p>
     <%= link_to "Create a trip", new_trip_path, { class: "btn-info" } %>
-    <p></p>
-    <h3>Find below all the trips</h3>
   <% end %>
 </div>
 
@@ -34,7 +32,9 @@
       <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
       <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
       <input name="date" type="hidden" id="select_date">
-      <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+      <% if params["nearfrom"].nil? %>
+        <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+      <% end %>
       <% end %>
 
 
