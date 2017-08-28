@@ -35,12 +35,31 @@ class UsersController < ApplicationController
   end
 
   def mymessages
-    @user= current_user
+    @user = current_user
+    @trips = all_trips(@user)
+    @first_trip = @trips.first
+    @message = Message.new
   end
 
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone, :description, :level, :location, :language, :photo, :photo_cache)
+  end
+
+  def all_trips(user)
+    trips = []
+
+    user.trips.each do |trip|
+      trips << trip
+    end
+
+    user.participants.each do |participant|
+      if participant.status == 'accepted'
+        trips << participant.trip
+      end
+    end
+
+    return trips.sort_by {|trip| trip.starts_at }
   end
 end
