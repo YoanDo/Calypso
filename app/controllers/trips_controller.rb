@@ -70,15 +70,6 @@ class TripsController < ApplicationController
     end
   end
 
-  def private_session
-    unless @trip.has_participant(current_user)[:status] == 'accepted'
-      redirect_to trip_path(@trip)
-    end
-    @message = Message.new
-    @messages = @trip.messages.order(created_at: :desc)
-    @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
-  end
-
   def cancel
     unless @trip.user == current_user
       redirect_to trip_path(@trip)

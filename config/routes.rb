@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :participants, only: [ :create, :update ]
     resources :messages, only: [:create]
-    get :private_session, on: :member
     get :cancel, on: :member
   end
 
