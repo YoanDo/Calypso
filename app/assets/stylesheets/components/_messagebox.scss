@@ -9,6 +9,7 @@
 
 #comment_content {
   margin-top: 15px;
+  padding-left: 38px;
 }
 
 .board-outline {
@@ -22,9 +23,14 @@
   width: 50px;
 }
 
+.message-user-image {
+  position: absolute;
+  top: 17px;
+  left: 0;
+}
+
 .message {
-  display: flex;
-  align-items: center;
+  position: relative;;
   padding: 1%;
   border-bottom: 1px solid rgba(220,224,244,0.4);
   text-align: left;
@@ -36,32 +42,39 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+
+}
+
+.message-content {
+  padding-left: 38px;
 }
 
 .message-userspace {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 100%;
 }
 .message-name {
-  padding-left: 10px;
+  padding-left: 38px;
   min-width: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+
 }
 .message-name h3 {
   font-size: 13px;
-  margin-bottom: 0px;
   white-space: nowrap;
+  margin: auto;
+  margin-right: 20px;
 }
 .message-name p {
   font-size: 12px;
   font-weight: lighter;
   font-style: italic;
   opacity: 0.6;
-  margin-bottom: 0;
   margin-left: 0 3%;
   // letter-spacing: 0.5px !important;
 }
@@ -81,6 +94,12 @@
 .message-body p {
   margin: 6px 0;
 }
+
+// .message-name p {
+//   margin-bottom: 0;
+//   margin-left: 2%;
+//   white-space: nowrap;
+// }
 
 .text-orange {
   color: $orange;

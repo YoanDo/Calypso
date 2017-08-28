@@ -1,5 +1,4 @@
-<div class="message">
-  <div class="message-userspace">
+
     <div class="message-user-image">
       <% if comment.user.facebook_picture_url? %>
         <%= image_tag comment.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
@@ -9,14 +8,13 @@
       <% end %>
    </div>
 
-  </div>
 
   <div class="message-body">
     <div class="message-name">
      <div><h3>
       <%= comment.user.first_name %> <%= comment.user.last_name %></h3>
       </div>
-      <div>
+      <div class="time">
       <p><%= comment.created_at.strftime('%d.%m.%y - %H:%M')  %></p>
       </div>
     </div>
