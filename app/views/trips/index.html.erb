@@ -23,6 +23,17 @@
 </div>
 
 <div class="container">
+  <% if @nb_result == 0 %>
+    <p><strong> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    No result for <%= params["nearfrom"] %></strong></p>
+    <p>Do you want to create one ?</p>
+    <%= link_to "Create a trip", new_trip_path, { class: "btn-info" } %>
+    <p></p>
+    <h3>Find below all the trips</h3>
+  <% end %>
+</div>
+
+<div class="container">
   <div class="list-trips">
     <% @trips_day.each do |day, trips| %>
     <div class="date">
