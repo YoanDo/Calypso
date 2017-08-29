@@ -47,12 +47,22 @@ class Trip < ApplicationRecord
     end
   end
 
-  def weather
-    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{from.latitude},#{from.longitute}").read
+  def light_weather
+    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{from.latitude},#{from.longitude}").read
     response = JSON.parse(response)
-    unless response["data"][0]["elements"][0]["duration"].nil?
-      self.estimated_duration = response["rows"][0]["elements"][0]["duration"]["value"]
+    date = self.starts_at.strftime("%Y-%m-%e")
+    light_weather = {}
+    response["data"]["weather"].each do |w|
+      if w["date"] == date
+        light_weather[:wave] = w["hourly"][5]["sigHeight_m"]
+        light_weather[:periode] = w["hourly"][5]["swellPeriod_secs"]
+        light_weather[:sweel] = w["hourly"][5]["swellHeight_m"]
+        light_weather[:sweel_direction] = w["hourly"][5]["swellDir16Point"]
+        light_weather[:wind_speed] = w["hourly"][5]["windspeedKmph"]
+        light_weather[:wind_direction] = w["hourly"][5]["winddir16Point"]
+      end
     end
+    return light_weather
   end
 
 end
