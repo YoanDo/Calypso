@@ -23,7 +23,8 @@
       <div class="trip-duration">
         <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
         <h4>
-        <%= @trip.starts_at.strftime("%A %e %b %Y - %k:%M") %> <br><span>to</span>
+        <%= @trip.starts_at.strftime("%A %e %b %Y") %> <br>
+        <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span>
         <%= @trip.ends_at.strftime("%k:%M")%>
         </h4>
         <% else %>
