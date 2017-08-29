@@ -45,29 +45,20 @@
   </div>
 
 
-      <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
-      <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
-      <input name="date" type="hidden" id="select_date">
-        <% unless params["nearfrom"].nil?  %>
-          <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
-        <% end %>
-       <% end %>
-
-
   <% content_for(:after_js) do %>
-    <script type="text/javascript">
-      $('#datepicker').datepicker();
-      $('#datepicker').on('changeDate', function() {
+  <script type="text/javascript">
+    $('#datepicker').datepicker();
+    $('#datepicker').on('changeDate', function() {
       $('#select_date').val(
-      $('#datepicker').datepicker('getFormattedDate')
-      );
+        $('#datepicker').datepicker('getFormattedDate')
+        );
       $('#form_date_picker').trigger('submit')
     });
     $('#search-box').keydown(function (e) {
-    if (e.which === 13) {
-    $('#search-city').trigger('submit')
-    return true;
-    };
+      if (e.which === 13) {
+        $('#search-city').trigger('submit')
+        return true;
+      };
     });
 
     var footer = document.getElementById("two").offsetHeight;
@@ -82,10 +73,4 @@
     window.addEventListener('load', sticky);
     window.addEventListener('resize', sticky);
   </script>
-<% end %>
-        });
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <% end %>
