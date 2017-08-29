@@ -10,11 +10,54 @@
         <%= f.input :level, required: true, label: 'Surf level', collection: ['Beginner', 'Intermediate', 'Advanced' ] %>
         <%= f.input :location, required: true %>
         <%= f.input :language, required: true %>
+        <%= f.input :follow_city, label: "Indicate your departure city if you would like to receive Facebook notifications when a trip is created", input_html: {class: "autocomplete-location"} %>
+        <!-- FB messenger sign up -->
         <%= f.input :photo, required: true %>
         <%= f.input :photo_cache, as: :hidden %>
+        <%= f.input :photo_cache, as: :hidden %>
 
-        <%= f.button :submit, 'Update', class: 'btn btn-primary' %>
+        <%= f.button :submit, 'Update', class: 'btn btn-primary', id: 'update_button' %>
       <% end %>
+      <div class="fb-messenger-checkbox"
+        origin=https://87e9710e.ngrok.io
+        page_id=1451558588261947
+        messenger_app_id=112177822805280
+        user_ref="<%= user_ref = SecureRandom.base64 %>"
+        prechecked="true"
+        allow_login="true"
+        size="large"></div>
     </Div>
   </div>
-</div>
+      </div>
+
+
+<% content_for (:after_js) do %>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '112177822805280',
+        xfbml      : true,
+        version    : 'v2.6'
+      });
+
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk')
+    );
+
+    document.getElementById("update_button").addEventListener("click", (event) => {
+      FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+        'app_id':'112177822805280',
+        'page_id':'1451558588261947',
+        'user_ref':'<%= user_ref %>'
+      });
+      console.log('sent')
+    });
+  </script>
+<% end %>

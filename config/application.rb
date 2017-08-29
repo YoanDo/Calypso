@@ -19,6 +19,8 @@ Bundler.require(*Rails.groups)
 module Calypso
   class Application < Rails::Application
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.paths.add File.join('app', 'bot'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'bot', '*')]
     config.generators do |generate|
       generate.assets false
       generate.helper false

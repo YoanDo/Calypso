@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
+  mount Facebook::Messenger::Server, at: 'bot'
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
