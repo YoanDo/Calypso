@@ -4,39 +4,54 @@
   <div class="dashboard">
 
     <div class="dashboard-trips">
-      <h4>Upcoming trips</h4>
+      <h3>Host trips</h3>
 
       <% @trips_day_up.each do |day, trips| %>
-    <div class="date">
-      <h3><%= day.strftime('%v') %></h3>
-    </div>
+      <div class="margin-trips">
+      <div class="date">
+        <h4><%= day.strftime('%A, %B %d') %></h4>
+      </div>
       <% for trip in trips %>
-        <%= trip[:type]  %>
-        <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
-      <% end %>
-    <% end %>
-
-    <h4>Past trips</h4>
-
-      <% @trips_day_past.each do |day, trips| %>
-    <div class="date">
-      <h3><%= day.strftime('%v') %></h3>
-    </div>
-    <% for trip in trips %>
       <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
-    <% end %>
-    <% end %>
+      <% end %>
+      </div>
+      <% end %>
 
+      <div class="margin-content">
+        <h3>My trips</h3>
 
-    <div class="card-user">
-    @trips.each do
-      <%= render 'shared/card-trip-dashboard' %>
+        <% @trips_day_up.each do |day, trips| %>
+        <div class="margin-trips">
+        <div class="date">
+          <h4><%= day.strftime('%A, %B %d') %></h4>
+        </div>
+
+        <% for trip in trips %>
+        <%= render "shared/card-booking-dashboard", trip: trip[:trip] %>
+        <% end %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="margin-content">
+        <h3>Past trips</h3>
+
+        <% @trips_day_past.each do |day, trips| %>
+        <div class="margin-trips">
+          <div class="date">
+            <h4><%= day.strftime('%A, %B %d') %></h4>
+          </div>
+          <% for trip in trips %>
+          <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
+          <% end %>
+        </div>
+          <% end %>
+      </div>
     </div>
-    </div>
+    <div id="line-height"></div>
 
     <div class="dashboard-notifications">
-      <h4>Notifications</h4>
-
+      <h3>Notifications</h3>
     </div>
   </div>
 </div>
