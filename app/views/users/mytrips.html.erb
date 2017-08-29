@@ -1,10 +1,12 @@
-
-<%= render 'shared/navbar-dashboard' %>
-
 <div class="container">
-  <div class="container-small u-margin-top">
-    <h3>UPCOMING TRIPS</h3>
-    <% @trips_day_up.each do |day, trips| %>
+
+
+  <div class="dashboard">
+
+    <div class="dashboard-trips">
+      <h4>Upcoming trips</h4>
+
+      <% @trips_day_up.each do |day, trips| %>
     <div class="date">
       <h3><%= day.strftime('%v') %></h3>
     </div>
@@ -13,8 +15,10 @@
         <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
       <% end %>
     <% end %>
-    <h3>PAST TRIPS</h3>
-    <% @trips_day_past.each do |day, trips| %>
+
+    <h4>Past trips</h4>
+
+      <% @trips_day_past.each do |day, trips| %>
     <div class="date">
       <h3><%= day.strftime('%v') %></h3>
     </div>
@@ -22,6 +26,20 @@
       <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
     <% end %>
     <% end %>
+
+
+    <div class="card-user">
+    @trips.each do
+      <%= render 'shared/card-trip-dashboard' %>
+    </div>
+    </div>
+
+    <div class="dashboard-notifications">
+      <h4>Notifications</h4>
+
+    </div>
   </div>
 </div>
+
+
 
