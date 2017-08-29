@@ -11,7 +11,29 @@
 }
 
 .card-trip__weather {
-  width: 20%;
+  width: 40%;
+}
+
+@media screen and (max-width: 700px) {
+  .card-trip {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  .card-trip__weather {
+    width: 100%;
+  }
+
+  .float-right {
+    float: left !important;
+  }
+
+  #card-info-trip {
+    float: left !important;
+    width: 100% !important;
+    padding-left: 10px !important;
+  }
 }
 
 .float-right {

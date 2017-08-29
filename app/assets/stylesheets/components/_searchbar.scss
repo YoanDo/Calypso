@@ -53,6 +53,14 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 700px) {
+  #index-search {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+
 #search-box {
   height: 50px !important;
   font-size: 35px !important;
@@ -62,8 +70,10 @@
   width: 50%;
 }
 
-#search-box placeholder {
-  font-style: italic !important;
+@media screen and (max-width: 900px) {
+  #search-box {
+    width: 80%;
+  }
 }
 
 #datepicker {
