@@ -2,23 +2,15 @@
   <div class="trip-left">
     <div class="trip-status">
       <div class="status-color">
-        <p> <%= @trip.status %> </p>
-      </div>
-      <div class="cat-and-edit">
-        <div>
-          <span class="category">
-            <%= @trip.category.downcase %>
-          </span>
-        </div>
-        <div class="trip-edit">
-          <% if @trip.user == current_user %>
-          <h4><%= link_to edit_trip_path(@trip) do%> edit
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-          </h4>
-          <% end %>
+        <div class="status-color going">
+          <% if  @trip.status == 'going' %>
+            <p> <i class="fa fa-circle" aria-hidden="true"></i> <%= @trip.status %> </p>
           <% end %>
         </div>
       </div>
+        <div class="category">
+            <p><%= @trip.category %></p>
+        </div>
     </div>
     <div class="trip-main-info">
       <div class="trip-cities">
@@ -130,6 +122,10 @@
     <div class="qanda">
     <hr>
     <h3 class="align-left">Q & A</h3>
+
+    <!-- previous messages -->
+    <div class="container-message">
+      <div class="board-outline" id="message-board-public">
     <!-- Chat box -->
     <div class="container-comment">
       <div class="comment-box">
@@ -138,9 +134,7 @@
         </div>
       </div>
     </div>
-        <!-- previous messages -->
-    <div class="container-message">
-      <div class="board-outline" id="message-board-public">
+
         <!-- Action-cable here (JS) -->
         <% @comments.each do |comment| %>
         <%= render 'comments/show', comment: comment %>
@@ -150,6 +144,7 @@
   </div>
   </div>
   <div class="trip-right">
+  <!-- map -->
     <div id="mapspot" class="map">
     </div>
     <div class="road-time">
@@ -191,13 +186,22 @@
       </div>
       <% else %>
       <div class="host-info">
-      pending request x to édit
+        <div class="trip-edit">
+          <% if @trip.user == current_user %>
+          <h4><%= link_to edit_trip_path(@trip) do%> edit your trip
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          </h4>
+          <% end %>
+          <% end %>
+        </div>
+
       </div>
       <% end %>
       <div class="social-share">
+      <hr>
         <ul>
           <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-          <li></li>
+          <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
         </ul>
       </div>
   </div>
@@ -205,12 +209,13 @@
 
 
 
-
 <!-- JS  -->
   <% content_for(:after_js) do %>
   <script>
+
   $(document).ready(function() {
   var handler = Gmaps.build('Google');
+
   handler.buildMap({ internal: { id: 'map' } }, function() {
   markers = handler.addMarkers(<%= raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
@@ -221,13 +226,9 @@
   handler.getMap().setZoom(11);
   }
   });
-  App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
-  received: function(data) {
-  const new_comment = data.comment;
-  document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
-  document.querySelector("#comment_content").value = '';
-  }
-  });
+
+
+
   });
   </script>
   <% end %>
@@ -276,6 +277,12 @@
           handler2.getMap().setZoom(2);
         } else if (markers.length == 1) {
           handler2.getMap().setZoom(11);
+        }
+        App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
+  received: function(data) {
+        const new_comment = data.comment;
+        document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+        document.querySelector("#comment_content").value = '';
         }
 
       });

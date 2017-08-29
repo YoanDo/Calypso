@@ -39,10 +39,17 @@
 
 .trip-status {
   width: 100%;
+  max-height: 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1%;
+}
 
+.trip-status p{
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 .cat-and-edit {
@@ -52,10 +59,31 @@
   justify-conten: center;
 }
 
+.status-color {
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.going {
+  background-color: $green;
+}
+
+.category {
+  max-height: 42px;
+}
+
+.category p {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+
+
 .trip-edit {
   padding-left: 5%;
   white-space: nowrap;
 }
+
 
 .trip-main-info {
 
@@ -353,9 +381,19 @@ text-transform: uppercase;
 }
 
 .social-share {
-
+  color: $gray;
+  background-color: pink;
+  text-align: left;
 }
 
+.social-share ul li{
+  display: inline;
+  margin: 0 5%;
+}
+
+.social-share hr {
+  margin-bottom: 2%
+}
 // .trip-show h4 {
 //   text-align: left;
 // }
