@@ -37,6 +37,7 @@
   padding: 1%;
   border-bottom: 1px solid rgba(220,224,244,0.4);
   text-align: left;
+  min-height: 82px;
 }
 .message:last-child {
   border-bottom: none;
@@ -96,7 +97,7 @@
   color: rgba(0,0,0,0.9);
 }
 .message-body p {
-  margin: 6px 0;
+  margin: 2px 0;
 }
 
 // .message-name p {
@@ -105,11 +106,20 @@
 //   white-space: nowrap;
 // }
 
-.text-orange {
-  color: $orange;
+.text-current-user {
+  color: $gray;
   line-height: 20px;
   font-size: 14px;
   letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.text-host {
+   color: $green;
+  line-height: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-size: 12px;
 }
 
 .text-grey {
