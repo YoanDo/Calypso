@@ -12,7 +12,7 @@
   <div class="message-body">
     <p>
       <% if message.user == current_user %>
-      <div class="text-orange">
+      <div class="text-current-user">
         <%= message.content %>
       </div>
       <% else %>

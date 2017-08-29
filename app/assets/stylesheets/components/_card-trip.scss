@@ -122,6 +122,7 @@
   font-size: 16px;
 }
 
+
 #card-info-trip .btn {
   padding: 0 !important;
 }
@@ -150,4 +151,12 @@
   background: $orange;
   color: white;
   margin-right: 7px;
+=======
+.weather-medium {
+  width: 30px;
+  height: 30px;
+}
+
+.weather {
+  display: flex;
 }
