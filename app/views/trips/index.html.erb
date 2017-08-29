@@ -31,7 +31,7 @@
 
     <% end %>
     <% end %>
-    <div class="list-calendar">
+    <div class="list-calendar" id="one">
 
       <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
       <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
@@ -55,7 +55,13 @@
         if (e.which === 13) {
         $('#search-city').trigger('submit')
             return true;
-            }
+        };
+        });
+
+        var footer = document.getElementById("two").offsetHeight;
+
+        $(function() {
+        $("#one").sticky({bottomSpacing: 130 + footer});
         });
         <% end %>
       <% end %>

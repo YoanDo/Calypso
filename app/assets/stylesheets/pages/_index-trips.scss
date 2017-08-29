@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   min-height: 70vh;
+  position: relative;
 }
 
 .list-cards {
@@ -10,8 +11,9 @@
 
 .list-calendar {
   position: absolute;
-  top: 20px;
-  right: 0px;
+  top: 275px;
+  right: 200px;
+  position: fixed;
 }
 
 .cont-search {
