@@ -39,5 +39,12 @@ class Trip < ApplicationRecord
     return { participant: nil, status: false }
   end
 
+  def calcul_itinary()
+    response = open("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{from.address}&destinations=#{to.address}&key=#{ENV['GOOGLE_API_SERVER_KEY']}").read
+    response = JSON.parse(response)
+    unless response["rows"][0]["elements"][0]["duration"].nil?
+      self.estimated_duration = response["rows"][0]["elements"][0]["duration"]["value"]
+    end
+  end
 
 end
