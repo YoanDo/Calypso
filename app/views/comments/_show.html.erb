@@ -19,7 +19,7 @@
   <div class="message-content">
     <p>
       <% if comment.user == current_user %>
-      <div class="text-orange">
+      <div class="text-current-user">
         <%= comment.content %>
       </div>
       <% else %>

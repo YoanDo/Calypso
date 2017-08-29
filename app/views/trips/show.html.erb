@@ -5,6 +5,7 @@
         <div class="status-color going">
           <% if  @trip.status == 'going' %>
             <p> <i class="fa fa-circle" aria-hidden="true"></i> <%= @trip.status %> </p>
+            <!-- completer -->
           <% end %>
         </div>
       </div>
@@ -126,19 +127,18 @@
     <!-- previous messages -->
     <div class="container-message">
       <div class="board-outline" id="message-board-public">
-    <!-- Chat box -->
+        <!-- Action-cable here (JS) -->
+        <% @comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+        <% end %>
+      </div>
+    </div>
+       <!-- Chat box -->
     <div class="container-comment">
       <div class="comment-box">
         <div class="question-box">
           <%= render 'comments/form', trip: @trip, comment: @comment %>
         </div>
-      </div>
-    </div>
-
-        <!-- Action-cable here (JS) -->
-        <% @comments.each do |comment| %>
-        <%= render 'comments/show', comment: comment %>
-        <% end %>
       </div>
     </div>
   </div>
@@ -207,7 +207,8 @@
 </div>
 
 
-<div id="mapspot" style="width: 100%; height: 20vh;"></div>
+<!-- <div id="mapspot" style="width: 100%; height: 20vh;"></div> -->
+
 <!-- JS  -->
 <% content_for(:after_js) do %>
   <script>
