@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def mytrips
-    @trips = current_user.trips
-    @trips_day_past = @trips.where('ends_at <= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
-    @trips_day_up = @trips.where('ends_at >= ?', Date.today).order(starts_at: :asc).group_by { |t| t.starts_at.to_date }
+    @trips = all_mytrips(current_user)
+    @trips_day_past = @trips.find_all { |t|  t[:trip].starts_at >= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
+    @trips_day_up = @trips.find_all { |t|  t[:trip].starts_at <= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
   end
 
   def mymessages
@@ -45,6 +45,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone, :description, :level, :location, :language, :photo, :photo_cache)
+  end
+
+  def all_mytrips(user)
+    trips = []
+    user.trips.each do |trip|
+      trips << {trip: trip, type: "host"}
+    end
+    user.participants.each do |participant|
+      trips << { trip: participant.trip, type: "praticipant"}
+    end
+
+    return trips.sort_by {|t| t[:trip].starts_at }
   end
 
   def all_trips(user)
