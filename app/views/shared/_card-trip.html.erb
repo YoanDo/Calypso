@@ -2,7 +2,7 @@
   <div class="card-trip__time">
     <p><%= trip.starts_at.strftime('%I:%M%p') %></p>
   </div>
-  <div class="u-add-padding-left u-flex-grow">
+  <div class="u-add-padding-left u-flex-grow" id="card-info-trip">
     <% if trip.category == 'Surf' %>
     <p><%= trip.title.upcase %><span class="category category-background-orange"><%= trip.category.downcase %></p></span>
     <% elsif trip.category == 'Kitesurf' %>
