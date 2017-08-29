@@ -2,16 +2,16 @@
 
   <div class="card-dashboard__trip">
     <div class="card-trip__time">
-      <p><%= trip.starts_at.strftime('%R') %></p>
+      <p><%= trip[:trip].starts_at.strftime('%R') %></p>
     </div>
     <div class="u-add-padding-left u-flex-grow">
 
-      <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
-      <%= link_to trip_path(trip) do %>
-      <h3><%= trip.from.address %> <<strong>/</strong>> <%= trip.to.address %></h3>
+      <p><%= trip[:trip].title.upcase %> <span class="category"><%= trip[:trip].category.downcase %></p></span>
+      <%= link_to trip_path(trip[:trip]) do %>
+      <h3><%= trip[:trip].from.address %> <<strong>/</strong>> <%= trip[:trip].to.address %></h3>
       <% end %>
-      <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-      <div class="btn" data-toggle="collapse" data-target="#requests<%= trip.id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+      <p><%= trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip[:trip].nb_participant - trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
+      <div class="btn" data-toggle="collapse" data-target="#requests<%= trip[:trip].id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
     </div>
     <div class="card-trip__weather">
       <p class="float-right">
@@ -21,8 +21,8 @@
     </div>
   </div>
 
-  <div class="collapse" id="requests<%= trip.id %>">
-  <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
+  <div class="collapse" id="requests<%= trip[:trip].id %>">
+  <% trip[:trip].participants.group_by { |p| p.status }.each do | status, participants | %>
   <% for participant in participants %>
 
     <div class="list-requests">
@@ -33,7 +33,8 @@
       <% end %>
       <% else %>
       <%= link_to user_path(participant.user.id) do %>
-      <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
+        <% avatar_url = current_user.facebook_picture_url || current_user.photo ||"http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "img-circle img-small" %>
       <% end %>
 
       <% end %>

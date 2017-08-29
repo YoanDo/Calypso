@@ -18,7 +18,7 @@
       <h3><%= day.strftime('%v') %></h3>
     </div>
     <% for trip in trips %>
-    <%= render "shared/card-trip", trip: trip %>
+      <%= render "shared/card-trip-dashboard", trip: trip %>
     <% end %>
     <% end %>
   </div>

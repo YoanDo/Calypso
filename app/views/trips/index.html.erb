@@ -35,9 +35,11 @@
 
       <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
       <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
-        <input name="date" type="hidden" id="select_date">
-        <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
-      <% end %>
+      <input name="date" type="hidden" id="select_date">
+        <% unless params["nearfrom"].nil?  %>
+          <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+        <% end %>
+       <% end %>
 
 
       <% content_for(:after_js) do %>
@@ -61,7 +63,6 @@
         $(function() {
         $("#one").sticky({bottomSpacing: 130 + footer});
         });
-
         <% end %>
       <% end %>
     </div>
