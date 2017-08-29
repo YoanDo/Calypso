@@ -8,9 +8,10 @@
     <div class="date">
       <h3><%= day.strftime('%v') %></h3>
     </div>
-    <% for trip in trips %>
-    <%= render "shared/card-trip-dashboard", trip: trip %>
-    <% end %>
+      <% for trip in trips %>
+        <%= trip[:type]  %>
+        <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
+      <% end %>
     <% end %>
     <h3>PAST TRIPS</h3>
     <% @trips_day_past.each do |day, trips| %>
@@ -18,7 +19,7 @@
       <h3><%= day.strftime('%v') %></h3>
     </div>
     <% for trip in trips %>
-      <%= render "shared/card-trip-dashboard", trip: trip %>
+      <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
     <% end %>
     <% end %>
   </div>
