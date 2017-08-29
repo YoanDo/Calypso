@@ -14,13 +14,14 @@
 
 
 .trip-total hr {
-  width: 70%;
+  width: 100%;
   border: none;
   height: 1px;
   /* Set the hr color */
   color: $gray; /* old IE */
   background-color: $gray; /* Modern Browsers */
-  opacity: .5;
+  opacity: .2;
+  margin: 25px 0;
 }
 
 
@@ -42,7 +43,7 @@
   max-height: 42px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 1%;
 }
 
@@ -70,6 +71,7 @@
 
 .category {
   max-height: 42px;
+  background-color: #FF735B;
 }
 
 .category p {
@@ -135,7 +137,6 @@ text-transform: uppercase;
   margin-top: 2%;
   width: 100%;
   padding-top: 0;
-  padding-left: 2%;
   text-align:left;
    overflow: hidden;
    text-overflow: ellipsis;
