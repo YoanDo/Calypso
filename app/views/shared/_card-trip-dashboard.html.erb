@@ -1,69 +1,94 @@
 <div class="card-border">
-
   <div class="card-dashboard__trip">
     <div class="card-trip__time">
-      <p><%= trip.starts_at.strftime('%R') %></p>
+      <p><%= trip.starts_at.strftime('%I:%M%p') %></p>
     </div>
-    <div class="u-add-padding-left u-flex-grow">
-
-      <p><%= trip.title.upcase %> <span class="category"><%= trip.category.downcase %></p></span>
-      <%= link_to trip_path(trip) do %>
-      <h3><%= trip.from.address %> <<strong>/</strong>> <%= trip.to.address %></h3>
-      <% end %>
-      <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-      <div class="btn" data-toggle="collapse" data-target="#requests<%= trip.id %>">See requests <i class="fa fa-angle-down" aria-hidden="true"></i></div>
-    </div>
-    <div class="card-trip__weather">
-      <p class="float-right">
-        <i class="fa fa-tint u-font-big" aria-hidden="true"></i>
-        <i class="fa fa-sun-o u-font-big" aria-hidden="true"></i><br>
-      </p>
-    </div>
-  </div>
-
-  <div class="collapse" id="requests<%= trip.id %>">
-  <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
-  <% for participant in participants %>
-
-    <div class="list-requests">
-
-      <% if participant.user.facebook_picture_url? %>
-      <%= link_to user_path(participant.user.id) do %>
-      <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
-      <% end %>
+    <div class="u-add-padding-left u-flex-grow" id="card-info-trip">
+      <% if trip.category == 'Surf' %>
+      <p><%= trip.title.upcase %><span class="category category-background-orange"><%= trip.category.downcase %></p></span>
+      <% elsif trip.category == 'Kitesurf' %>
+      <p><%= trip.title.upcase %><span class="category category-background-purple"><%= trip.category.downcase %></p></span>
       <% else %>
-      <%= link_to user_path(participant.user.id) do %>
-        <% avatar_url = current_user.facebook_picture_url || current_user.photo ||"http://placehold.it/30x30" %>
-        <%= image_tag avatar_url, class: "img-circle img-small" %>
+      <p><%= trip.title.upcase %><span class="category category-background-green"><%= trip.category.downcase %></p></span>
       <% end %>
 
-      <% end %>
-      <div class="u-add-padding-left u-width-20">
-        <% if participant.user.first_name? %>
-        <strong> <%= participant.user.first_name%> <%= participant.user.last_name%> </strong> <%= participant.created_at.strftime('%v') %></p>
-        <% else %>
-        <%= participant.trip.user.first_name%> <%= participant.trip.user.last_name%>
-        <% end %>
-      </div>
-      <div class="u-add-padding-left u-flex-grow">
-        <p class="text-justify text-message"><%= participant.message %></p>
-      </div>
-      <% if participant.status == "pending" %>
-      <div class="u-add-padding-left">
-        <%= link_to "Accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch, :class=>"btn-accept" %>
-      </div>
-      <div class="u-add-padding-left">
-        <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch, :class=>"btn-decline"%>
-      </div>
-      <% else %>
-      <p><%= participant.status.capitalize %></p>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-</div>
+      <% if trip.from.city == nil %>
+      <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
+       <%= trip.to.city %></h4>
+       <% elsif trip.to.city == nil %>
+       <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
+         <%= trip.to.address %></h4>
+         <% elsif trip.to.city == nil && trip.from.city == nil %>
+         <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
+           <%= trip.to.address %></h4>
+           <% else %>
+           <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
+             <%= trip.to.city %></h4>
+          <% end %>
 
+             <div class="display-flex">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <div class="u-add-padding">
+              <%= trip.participants.select { |participant| participant.status == 'accepted'}.size %>/<%= trip.nb_participant %>
+              </div>
+              <% if trip.participants.select { |participant| participant.status == 'pending'}.size > 0 %>
+              <div class="btn display-flex u-add-padding-left" data-toggle="collapse" data-target="#requests<%= trip.id %>">
+                <div class="notification">
+                  <%= trip.participants.select { |participant| participant.status == 'pending'}.size %>
+                request&nbsp;&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i>
+              </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="card-trip__weather">
+            <p class="float-right">
+              <i class="fa fa-tint u-font-big" aria-hidden="true"></i>
+              <i class="fa fa-sun-o u-font-big" aria-hidden="true"></i>
+            </p>
+          </div>
+        </div>
+
+        <div class="collapse" id="requests<%= trip.id %>">
+          <% trip.participants.group_by { |p| p.status }.each do | status, participants | %>
+          <% for participant in participants %>
+
+          <div class="list-requests">
+            <% if participant.user.facebook_picture_url? %>
+            <%= link_to user_path(participant.user.id) do %>
+            <%= image_tag participant.user.facebook_picture_url, class: "img-circle img-small" %>
+            <% end %>
+            <% else %>
+            <%= link_to user_path(participant.user.id) do %>
+            <% avatar_url = current_user.facebook_picture_url || current_user.photo ||"http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "img-circle img-small" %>
+            <% end %>
+            <% end %>
+            <div class="u-add-padding-left u-width-20" id="info-participant">
+              <p>
+                <%= participant.user.first_name%><br>
+                <%= participant.created_at.strftime('%d/%m/%y') %>
+              </p>
+            </div>
+            <div class="u-add-padding-left u-flex-grow" id="message-participant">
+              <p class="text-justify text-message"><%= participant.message %></p>
+            </div>
+            <% if participant.status == "pending" %>
+            <div class="u-add-padding-left">
+              <%= link_to "Accept", trip_participant_path(participant.trip, participant, status: "accepted"), method: :patch, :class=>"btn-accept" %>
+            </div>
+            <div class="u-add-padding-left">
+              <%= link_to "Cancel", trip_participant_path(participant.trip, participant, status: "declined"), method: :patch, :class=>"btn-decline"%>
+            </div>
+            <% else %>
+            <p><%= participant.status.capitalize %></p>
+            <% end %>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
 
 
 

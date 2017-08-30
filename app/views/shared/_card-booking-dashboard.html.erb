@@ -1,4 +1,7 @@
-<div class="card-trip">
+<div class="card-dashboard__booking">
+  <div class="status-color-booking">
+
+  </div>
   <div class="card-trip__time">
     <p><%= trip.starts_at.strftime('%I:%M%p') %></p>
   </div>
@@ -30,41 +33,10 @@
     <p><span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
     <% end %>
   </div>
-  <!-- WEATHER without RESPONSE  -->
   <div class="card-trip__weather">
-    <% weather = trip.light_weather %>
-    <% if weather == {} %>
-      <div class="weather">
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504016683/wave_tzrfwr.svg', { class: "weather-medium"} %>
-      </div>
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504015914/sea-waves_ryjed0.svg', { class: "weather-medium"} %>
-      </div>
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504015914/wind-sign_amqspd.svg', { class: "weather-medium"} %>
-      </div>
-      </div>
-      <p> wait for it ...</p>
-    </div>
-  <% else %>
-  <!-- WEATHER IF API GET RESPONSE -->
-    <div class="weather">
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504016683/wave_tzrfwr.svg', { class: "weather-medium"} %>
-        <p><%= weather[:wave] %> m at <%= weather[:periode] %>s</h1>
-      </div>
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504015914/sea-waves_ryjed0.svg', { class: "weather-medium"} %>
-        <p> <strong><%= weather[:sweel] %></strong> m to <%= weather[:sweel_direction] %></p>
-      </div>
-      <div>
-        <%= image_tag 'http://res.cloudinary.com/dzly3hnxk/image/upload/c_scale,w_50/v1504015914/wind-sign_amqspd.svg', { class: "weather-medium"} %>
-        <p> <strong><%= weather[:wind_speed] %></strong> k/m to <%= weather[:wind_direction] %></p>
-      </div>
-      </div>
-      <p>Weather on <%= trip.starts_at.to_date %> at 12pm </p>
-    </div>
-  <% end %>
-  <!-- END WEATHER  -->
+    <p class="float-right">
+      <i class="fa fa-tint u-font-big" aria-hidden="true"></i>
+      <i class="fa fa-sun-o u-font-big" aria-hidden="true"></i>
+    </p>
+  </div>
 </div>

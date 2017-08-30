@@ -1,19 +1,16 @@
 .dashboard {
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .dashboard-trips {
-  width: 70%;
-  height: 50vh;
+  width: 65%;
+  height: 100%;
 }
 
 .dashboard-notifications {
   width: 30%;
-  height: 50vh;
-  padding-left: 5%;
-  border-left: 1px solid RGB(224, 228, 228);
 }
 
 .img-random {
@@ -49,4 +46,22 @@
 .u-margin-top {
   margin-top: 30px;
 }
+
+#line-height {
+  border-right: 1px solid RGB(224, 228, 228);
+  margin: 0 5%;
+}
+
+.margin-content {
+  margin: 60px 0;
+}
+
+.margin-trips {
+  margin: 20px 0 30px 0;
+}
+
+.date {
+  margin-bottom: 20px;
+}
+
 

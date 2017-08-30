@@ -1,4 +1,6 @@
- <div id="trip-chat">
+ <div id="trip-chat" class="tripchat">
+
+  <div class="view">
     <div class="messenger-title">
 <!-- Trip & participants info -->
       <h4><%= trip.title  %></h4>
@@ -16,12 +18,11 @@
         </div>
       </div>
     </div>
+  </div>
 <!-- write -->
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
+  <div class="write-message">
             <%= render 'messages/form', trip: trip, message: message %>
-      </div>
-    </div>
+  </div>
 
   </div>
       <!-- JS chatbox -->

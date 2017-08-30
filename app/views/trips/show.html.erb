@@ -24,8 +24,12 @@
         <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
         <h4>
         <%= @trip.starts_at.strftime("%A %e %b %Y") %> <br>
+<<<<<<< HEAD
         <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span>
         <%= @trip.ends_at.strftime("%k:%M")%>
+=======
+        <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span> <%= @trip.ends_at.strftime("%k:%M")%>
+>>>>>>> a20b705fd9863aabd36c0e9a0640089c2c84c11c
         </h4>
         <% else %>
         <h4>
@@ -70,7 +74,7 @@
                 <%= @trip.user.first_name %><br>
                 <%= @trip.user.last_name %>
               </p>
-              <p>TODO: RATING</p>
+              <p style="color: red">TODO: RATING</p>
             </div>
           </div>
         </div>
@@ -178,9 +182,12 @@
           <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
                   <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
           <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
-                  <p>You have cancelled your request</p>
-          <% else %>
-                  <p>Sorry, you cannot join this trip</p>
+            <div class="form-inputs">
+              <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
+            </div>
                   <% end %>
         </div>
       </div>
