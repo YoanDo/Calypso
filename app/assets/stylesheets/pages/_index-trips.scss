@@ -16,9 +16,9 @@
 #datepicker {
   display: flex;
   justify-content: center;
-  padding: 35% 0 15% 0;
+  padding: 35% 0 20% 0;
 }
-
+;
 @media screen and (max-width: 1100px) {
   .list-index {
     flex-direction: column-reverse;
@@ -43,4 +43,9 @@
 
 .u-add-padding-top {
   padding-top: 10px;
+}
+
+.u-font-size-16 {
+  font-size: 16px;
+  padding: 4px 12px !important;
 }
