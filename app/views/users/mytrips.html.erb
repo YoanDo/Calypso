@@ -6,47 +6,65 @@
     <div class="dashboard-trips">
       <h3>Host trips</h3>
 
-      <% @trips_day_up.each do |day, trips| %>
+      <% @trips_up.each do |day, trips| %>
       <div class="margin-trips">
       <div class="date">
         <h4><%= day.strftime('%A, %B %d') %></h4>
       </div>
       <% for trip in trips %>
-      <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
+      <%= render "shared/card-trip-dashboard", trip: trip %>
       <% end %>
       </div>
       <% end %>
 
       <div class="margin-content">
-        <h3>My trips</h3>
+        <h3>My booked trips</h3>
 
-        <% @trips_day_up.each do |day, trips| %>
+        <% @trips_booked_up.each do |day, trips| %>
         <div class="margin-trips">
         <div class="date">
           <h4><%= day.strftime('%A, %B %d') %></h4>
         </div>
-
-        <% for trip in trips %>
-        <%= render "shared/card-booking-dashboard", trip: trip[:trip] %>
-        <% end %>
+          <% for trip in trips %>
+            <%= trip[:status] %>
+            <%= render "shared/card-booking-dashboard", trip: trip[:trip] %>
+          <% end %>
         </div>
         <% end %>
       </div>
 
       <div class="margin-content">
-        <h3>Past trips</h3>
+        <h3>Past Host trips</h3>
 
-        <% @trips_day_past.each do |day, trips| %>
+        <% @trips_past.each do |day, trips| %>
         <div class="margin-trips">
           <div class="date">
             <h4><%= day.strftime('%A, %B %d') %></h4>
           </div>
           <% for trip in trips %>
+          <%= render "shared/card-trip-dashboard", trip: trip %>
+          <% end %>
+        </div>
+          <% end %>
+      </div>
+
+      <div class="margin-content">
+        <h3>Past booked trips</h3>
+
+        <% @trips_booked_past.each do |day, trips| %>
+        <div class="margin-trips">
+          <div class="date">
+            <h4><%= day.strftime('%A, %B %d') %></h4>
+          </div>
+          <% for trip in trips %>
+          <%= trip[:status] %>
           <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
           <% end %>
         </div>
           <% end %>
       </div>
+    </div>
+
     </div>
     <div id="line-height"></div>
 
