@@ -6,13 +6,16 @@
       <ul>
         <% @trips.each do |trip| %>
           <div id="trip-<%= trip.id %>">
-            <li><%= trip.title %> <br>
-            <%= trip.starts_at.strftime("%A %e %b %Y - %k:%M") %> <br>
+
+            <li>
+            <%= trip.title.upcase %> <br>
             <% if trip.from.city.nil? || trip.from.city.nil?  %>
               <%= trip.from.address %> to <%= trip.to.address %>
             <% else %>
               <%= trip.from.city %> to <%= trip.to.city %>
-            <% end %>
+            <% end %><br>
+
+            <%= trip.starts_at.strftime("%A %e %b %Y - %k:%M") %>
             </li>
           </div>
         <% end %>
