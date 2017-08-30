@@ -24,12 +24,8 @@
         <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
         <h4>
         <%= @trip.starts_at.strftime("%A %e %b %Y") %> <br>
-<<<<<<< HEAD
         <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span>
         <%= @trip.ends_at.strftime("%k:%M")%>
-=======
-        <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span> <%= @trip.ends_at.strftime("%k:%M")%>
->>>>>>> a20b705fd9863aabd36c0e9a0640089c2c84c11c
         </h4>
         <% else %>
         <h4>
@@ -124,6 +120,36 @@
         </div>
       </div>
     </div>
+    <!-- wave graph -->
+
+    <div class="host-description">
+      <hr>
+      <div class="trip-title">
+        <h4>Forecast wave for the trip </h4>
+      </div>
+      <!-- description -->
+      <div class="trip-description">
+        <div class="more-description">
+          <canvas id="myChart" width="350px" height="200px"></canvas>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- wave graph -->
+
+    <div class="host-description">
+      <hr>
+      <div class="trip-title">
+        <h4>Spots around destination </h4>
+      </div>
+      <!-- description -->
+      <div class="trip-description">
+        <div class="more-description">
+          <div id="mapspot" style="width: 100%; height: 200px;"></div>
+        </div>
+      </div>
+    </div>
         <!-- CHAT -->
     <div class="qanda">
     <hr>
@@ -214,13 +240,34 @@
   </div>
 </div>
 
-
-<!-- <div id="mapspot" style="width: 100%; height: 20vh;"></div> -->
-
+<%= $orange %>
 <!-- JS  -->
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
+      <% data = @trip.weather %>
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: <%= data[1].to_json.html_safe %>,
+              datasets: [{
+                  data: <%= data[2].to_json.html_safe %>,
+                  label: 'Wave (m)',
+                  backgroundColor : 'rgba(255, 116, 97, 0.5)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              }
+          }
+      });
 
       var styles = [
       {

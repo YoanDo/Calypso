@@ -5,9 +5,9 @@
     <div class="listing-chat">
       <ul>
         <% @trips.each do |trip| %>
-          <div id="trip-<%= trip.id %>">
+          <div class='chat-list' id="trip-<%= trip.id %>">
 
-            <li>
+            <li><p>
             <%= trip.title.upcase %> <br>
             <% if trip.from.city.nil? || trip.from.city.nil?  %>
               <%= trip.from.address %> to <%= trip.to.address %>
@@ -16,7 +16,7 @@
             <% end %><br>
 
             <%= trip.starts_at.strftime("%A %e %b %Y - %k:%M") %>
-            </li>
+            </p></li>
           </div>
         <% end %>
       </ul>
@@ -34,11 +34,21 @@
 <!-- JS dynamic trip navbar -->
 <% content_for(:after_js) do %>
   <script>
+    document.getElementsByClassName('chat-list')[0].classList.add("active-li")
     <% @trips.each do |trip| %>
       document.getElementById("trip-<%= trip.id %>").addEventListener("click", (event) => {
         var chat = "<%= j render 'users/tripchat', trip: trip, message: @message  %>"
         document.getElementById("trip-chat").innerHTML = chat;
+        if (document.getElementsByClassName('chat-list active-li')[0] != null){
+          document.getElementsByClassName('chat-list active-li')[0].classList.remove('active-li')
+        }
+        document.getElementById("trip-<%= trip.id %>").classList.add("active-li")
+
+
       });
     <% end %>
+
+
+//
   </script>
 <% end %>

@@ -4,4 +4,5 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap-datepicker
+//= require Chart.min
 //= require_tree .

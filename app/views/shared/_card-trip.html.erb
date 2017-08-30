@@ -12,59 +12,26 @@
     <% end %>
 
     <% if trip.from.city == nil %>
-    <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
- <%= trip.to.city %></h4>
-      <% elsif trip.to.city == nil %>
-      <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
- <%= trip.to.address %></h4>
-      <% elsif trip.to.city == nil && trip.from.city == nil %>
       <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
- <%= trip.to.address %></h4>
-      <% else %>
-    <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
- <%= trip.to.city %></h4>
-    <% end %>
-    <% if trip.participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
-    <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
+      <%= trip.to.city %></h4>
+    <% elsif trip.to.city == nil %>
+      <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
+      <%= trip.to.address %></h4>
+    <% elsif trip.to.city == nil && trip.from.city == nil %>
+      <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
+      <%= trip.to.address %></h4>
     <% else %>
-    <p><span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
+      <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
+      <%= trip.to.city %></h4>
+    <% end %>
+
+    <% if trip.participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
+      <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
+    <% else %>
+      <p><span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
     <% end %>
   </div>
-  <!-- WEATHER without RESPONSE  -->
-  <div class="card-trip__weather">
-    <% weather = trip.light_weather %>
-    <% if weather == {} %>
-      <div class="display-flex float-right">
-      <p><em>Forecast is not available yet</em></p>
-      </div>
-    </div>
-  <% else %>
-  <!-- WEATHER IF API GET RESPONSE -->
-    <div class="display-flex float-right">
-      <div class="display-flex-end">
-        <%= image_tag 'icons/sea-waves.svg', { class: "weather-icon-size"} %>
-        <h5><%= weather[:wave] %>m</h5>
-      </div>
-      <div class="display-flex-end u-add-padding-left-15">
-        <%= image_tag 'icons/passage-of-time.svg', { class: "weather-icon-size"} %>
-        <h5><%= weather[:periode] %>s
-        <% if weather[:sweel_direction] != nil %>
-        <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
-        <% end %>
-        </h5>
-      </div>
-      <div class="display-flex-end u-add-padding-left-15">
-        <%= image_tag 'icons/wind-sign.svg', { class: "weather-icon-size"} %>
-        <h5>
-        <%= weather[:wind_speed] %>km/h
-        <% if weather[:wind_direction] != nil %>
-        <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
-        <% end %>
-        </h5>
-      </div>
-      </div>
- <!--      <p><#%= trip.starts_at.to_date %> at 12pm </p> -->
-    </div>
-  <% end %>
-  <!-- END WEATHER  -->
+         <!-- WEATHER without RESPONSE  -->
+  <%= render 'shared/weather-data', trip: trip %>
+         <!-- END WEATHER  -->
 </div>
