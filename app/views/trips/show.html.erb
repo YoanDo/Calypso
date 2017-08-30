@@ -24,12 +24,8 @@
         <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
         <h4>
         <%= @trip.starts_at.strftime("%A %e %b %Y") %> <br>
-<<<<<<< HEAD
         <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span>
         <%= @trip.ends_at.strftime("%k:%M")%>
-=======
-        <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span> <%= @trip.ends_at.strftime("%k:%M")%>
->>>>>>> a20b705fd9863aabd36c0e9a0640089c2c84c11c
         </h4>
         <% else %>
         <h4>
