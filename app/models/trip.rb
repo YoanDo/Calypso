@@ -1,7 +1,7 @@
-STATUS = ["pending", "going", "cancelled"]
-CATEGORY = ["Surf", "Kitesurf", "Windsurf"]
-
 class Trip < ApplicationRecord
+  STATUS = ["pending", "going", "cancelled"]
+  CATEGORY = ["Surf", "Kitesurf", "Windsurf"]
+
   belongs_to :user
   has_one :to, -> { where direction: "to"}, class_name: "Location", :dependent => :destroy
   has_one :from, -> { where direction: "from"}, class_name: "Location", :dependent => :destroy
@@ -52,36 +52,40 @@ class Trip < ApplicationRecord
   end
 
   def light_weather
-    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
-    response = JSON.parse(response)
-    date = self.starts_at.strftime("%Y-%m-%d")
-    light_weather = {}
-    response["data"]["weather"].each do |w|
-      if w["date"] == date
-        light_weather[:wave] = w["hourly"][5]["sigHeight_m"]
-        light_weather[:periode] = w["hourly"][5]["swellPeriod_secs"]
-        light_weather[:sweel] = w["hourly"][5]["swellHeight_m"]
-        light_weather[:sweel_direction] = w["hourly"][5]["swellDir16Point"]
-        light_weather[:wind_speed] = w["hourly"][5]["windspeedKmph"]
-        light_weather[:wind_direction] = w["hourly"][5]["winddir16Point"]
+    if self.to.latitude.present?
+      response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
+      response = JSON.parse(response)
+      date = self.starts_at.strftime("%Y-%m-%d")
+      light_weather = {}
+      response["data"]["weather"].each do |w|
+        if w["date"] == date
+          light_weather[:wave] = w["hourly"][5]["sigHeight_m"]
+          light_weather[:periode] = w["hourly"][5]["swellPeriod_secs"]
+          light_weather[:sweel] = w["hourly"][5]["swellHeight_m"]
+          light_weather[:sweel_direction] = w["hourly"][5]["swellDir16Point"]
+          light_weather[:wind_speed] = w["hourly"][5]["windspeedKmph"]
+          light_weather[:wind_direction] = w["hourly"][5]["winddir16Point"]
+        end
       end
     end
     return light_weather
   end
 
   def weather
-    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
-    response = JSON.parse(response)
-    date = self.starts_at.strftime("%Y-%m-%d")
-    forecast_time = []
-    forecast_wave = []
-    response["data"]["weather"].each do |w|
-      if w["date"] >= date
-        date_forecast = Date.parse w["date"]
-        w["hourly"].each do |h|
-          hour_forecast = transform_hour(h["time"])
-          forecast_time << "#{date_forecast.strftime("%a")} #{hour_forecast}"
-          forecast_wave << h["sigHeight_m"]
+    if self.to.latitude.present?
+      response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
+      response = JSON.parse(response)
+      date = self.starts_at.strftime("%Y-%m-%d")
+      forecast_time = []
+      forecast_wave = []
+      response["data"]["weather"].each do |w|
+        if w["date"] >= date
+          date_forecast = Date.parse w["date"]
+          w["hourly"].each do |h|
+            hour_forecast = transform_hour(h["time"])
+            forecast_time << "#{date_forecast.strftime("%a")} #{hour_forecast}"
+            forecast_wave << h["sigHeight_m"]
+          end
         end
       end
     end

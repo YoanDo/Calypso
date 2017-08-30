@@ -1,7 +1,6 @@
-STATUS = ["pending", "waiting list", "accepted", "cancelled", "declined"]
-
-
 class Participant < ApplicationRecord
+  STATUS = ["pending", "waiting list", "accepted", "cancelled", "declined"]
+
   belongs_to :user
   belongs_to :trip
 
