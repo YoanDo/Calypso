@@ -2,9 +2,34 @@
   top: 0;
   left: 0;
   position: absolute;
-  width: 10px;
+  width: 7px;
   height: 100%;
   background: $green;
+}
+
+.status-wording-booking {
+  top: 15px;
+  right: 5px;
+  position: absolute;
+  width: 90px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.color-green {
+  color: $green;
+  font-family: "lato";
+  font-weight: bolder;
+}
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.u-add-padding-right {
+  padding-right: 10px;
 }
 
 .card-dashboard__booking {

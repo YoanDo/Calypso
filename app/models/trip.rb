@@ -52,6 +52,7 @@ class Trip < ApplicationRecord
     response = JSON.parse(response)
     date = self.starts_at.strftime("%Y-%m-%e")
     light_weather = {}
+    raise
     response["data"]["weather"].each do |w|
       if w["date"] == date
         light_weather[:wave] = w["hourly"][5]["sigHeight_m"]
