@@ -70,7 +70,6 @@
 
 .category {
   max-height: 42px;
-  background-color: #FF735B;
 }
 
 .category p {
@@ -381,6 +380,14 @@ text-transform: uppercase;
 .social-share hr {
   margin-bottom: 2%;
   margin-top: 0;
+}
+
+  margin-bottom: 2%
+}
+
+.weather-center {
+  display: flex;
+  justify-content: center;
 }
 
 

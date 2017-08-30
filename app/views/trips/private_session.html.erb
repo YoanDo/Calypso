@@ -50,7 +50,7 @@
       App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= @trip.id %> }, {
         received: function(data) {
           var new_message = data.message;
-          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
+          document.getElementById('message-board-public').insertAdjacentHTML('beforeend', new_message );
           document.querySelector("#message_content").value = '';
         }
       });

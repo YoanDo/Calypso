@@ -139,8 +139,12 @@
       <!-- description -->
       <div class="trip-description">
         <div class="more-description">
+          <div class="weather-center">
+            <%= render 'shared/weather-data', trip: @trip %>
+          </div>
+          <% unless @trip.starts_at < Date.today || @trip.starts_at > Date.today+7 %>
           <canvas id="myChart" width="350px" height="200px"></canvas>
-
+          <% end %>
         </div>
       </div>
     </div>
@@ -257,6 +261,7 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
+      <% unless @trip.starts_at < Date.today || @trip.starts_at > Date.today+7 %>
       <% data = @trip.weather %>
       var ctx = document.getElementById("myChart").getContext('2d');
       var myChart = new Chart(ctx, {
@@ -280,6 +285,7 @@
               }
           }
       });
+      <% end %>
 
       var styles = [
       {
@@ -436,7 +442,6 @@
 
       var directionsDisplay = new google.maps.DirectionsRenderer();
       var directionsService = new google.maps.DirectionsService();
-      console.log("youpi")
 
       function calcRoute() {
         var origin      = new google.maps.LatLng(<%= @trip.from.latitude  %>, <%=  @trip.from.longitude %>);
@@ -461,8 +466,6 @@
         directionsDisplay.setMap(handler.getMap());
       });
 
-      console.log("youpi")
-
       handler2.buildMap({ provider: { styles: styles}, internal: { id: 'mapspot' } }, function() {
 
         markers = handler2.addMarkers(<%= raw @hash.to_json %>);
@@ -479,7 +482,7 @@
         App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
         received: function(data) {
         const new_comment = data.comment;
-        document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+        document.getElementById('message-board-public').insertAdjacentHTML('beforeend', new_comment );
         document.querySelector("#comment_content").value = '';
         }
       });

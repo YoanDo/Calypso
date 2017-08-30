@@ -25,7 +25,9 @@
     <!-- Trip chat -->
     <div class="conversation">
       <div class="messages">
-        <%= render 'users/tripchat', trip: @first_trip, message: @message  %>
+        <div id="trip-chat" class="tripchat">
+        </div>
+        <!-- JS render trip chat partial here -->
       </div>
     </div>
 
@@ -34,21 +36,21 @@
 <!-- JS dynamic trip navbar -->
 <% content_for(:after_js) do %>
   <script>
-    document.getElementsByClassName('chat-list')[0].classList.add("active-li")
-    <% @trips.each do |trip| %>
-      document.getElementById("trip-<%= trip.id %>").addEventListener("click", (event) => {
-        var chat = "<%= j render 'users/tripchat', trip: trip, message: @message  %>"
-        document.getElementById("trip-chat").innerHTML = chat;
-        if (document.getElementsByClassName('chat-list active-li')[0] != null){
-          document.getElementsByClassName('chat-list active-li')[0].classList.remove('active-li')
-        }
-        document.getElementById("trip-<%= trip.id %>").classList.add("active-li")
+    <% if @first_trip %>
+      document.getElementsByClassName('chat-list')[0].classList.add("active-li")
+      <% @trips.each do |trip| %>
+        document.getElementById("trip-<%= trip.id %>").addEventListener("click", (event) => {
+          var chat = "<%= j render 'users/tripchat', trip: trip, message: @message  %>"
+          document.getElementById("trip-chat").innerHTML = chat;
+          if (document.getElementsByClassName('chat-list active-li')[0] != null){
+            document.getElementsByClassName('chat-list active-li')[0].classList.remove('active-li')
+          }
+          document.getElementById("trip-<%= trip.id %>").classList.add("active-li")
 
 
-      });
+        });
+      <% end %>
+      document.getElementById("trip-<%= @first_trip.id %>").click()
     <% end %>
-
-
-//
   </script>
 <% end %>
