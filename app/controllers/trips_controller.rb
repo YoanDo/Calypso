@@ -38,6 +38,9 @@ class TripsController < ApplicationController
     if @trip.save
       Location.create(address:params[:trip][:to], direction: "to", trip: @trip)
       Location.create(address:params[:trip][:from], direction: "from", trip: @trip)
+      @trip.reload
+      @trip.calcul_itinary
+      @trip.save
 
       # send Facebook messenger notifification
       if ENV["FB_ACCESS_TOKEN"].present?
