@@ -11,7 +11,7 @@
           <%= f.input :ends_at %>
           <%= f.input :description, label: "Trips info", placeholder: "The description of your trip (details about the destination, schedule, ...)", as: :text, :input_html => {:rows => 5} %>
           <%= f.input :nb_participant, label: "Number of seats available" %>
-          <%= f.input :category, collection: CATEGORY %>
+          <%= f.input :category, collection: Trip::CATEGORY %>
           <%= f.input :car, placeholder: "The description of your car (model, available space for equipment, ...)", as: :text, :input_html => {:rows => 3} %>
         </div>
 

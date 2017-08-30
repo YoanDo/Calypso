@@ -1,31 +1,40 @@
 
 <% unless trip.starts_at < Date.today || trip.starts_at > Date.today+7 %>
-<% weather = trip.light_weather %>
-<div class="card-trip__weather">
-  <div class="display-flex float-right">
-    <div class="display-flex-end">
-      <%= image_tag 'icons/sea-waves.svg', { class: "weather-icon-size"} %>
-      <h5><%= weather[:wave] %>m</h5>
-    </div>
-    <div class="display-flex-end u-add-padding-left-15">
-      <%= image_tag 'icons/passage-of-time.svg', { class: "weather-icon-size"} %>
-      <h5><%= weather[:periode] %>s
-        <% if weather[:sweel_direction] != nil %>
-        <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
-        <% end %>
-      </h5>
-    </div>
-    <div class="display-flex-end u-add-padding-left-15">
-      <%= image_tag 'icons/wind-sign.svg', { class: "weather-icon-size"} %>
-      <h5>
-        <%= weather[:wind_speed] %>km/h
-        <% if weather[:wind_direction] != nil %>
-        <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
-        <% end %>
-      </h5>
+  <% weather = trip.light_weather %>
+ <!-- ajout safeguard -->
+  <% unless weather == {} %>
+  <div class="card-trip__weather">
+    <div class="display-flex float-right">
+      <div class="display-flex-end">
+        <%= image_tag 'icons/sea-waves.svg', { class: "weather-icon-size"} %>
+        <h5><%= weather[:wave] %>m</h5>
+      </div>
+      <div class="display-flex-end u-add-padding-left-15">
+        <%= image_tag 'icons/passage-of-time.svg', { class: "weather-icon-size"} %>
+        <h5><%= weather[:periode] %>s
+          <% if weather[:sweel_direction] != nil %>
+          <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
+          <% end %>
+        </h5>
+      </div>
+      <div class="display-flex-end u-add-padding-left-15">
+        <%= image_tag 'icons/wind-sign.svg', { class: "weather-icon-size"} %>
+        <h5>
+          <%= weather[:wind_speed] %>km/h
+          <% if weather[:wind_direction] != nil %>
+          <%= image_tag 'icons/navigation.svg', { class: "weather-icon-size"} %>
+          <% end %>
+        </h5>
+      </div>
     </div>
   </div>
+  <% else %>
+  <div class="card-trip__weather">
+  <div class="display-flex float-right">
+    <p><em>Winter is coming...</em></p>
+  </div>
 </div>
+  <% end %>
 <% else %>
 <div class="card-trip__weather">
   <div class="display-flex float-right">
