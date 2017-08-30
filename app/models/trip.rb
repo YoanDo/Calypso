@@ -48,7 +48,7 @@ class Trip < ApplicationRecord
   end
 
   def light_weather
-    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{from.latitude},#{from.longitude}").read
+    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
     response = JSON.parse(response)
     date = self.starts_at.strftime("%Y-%m-%e")
     light_weather = {}
