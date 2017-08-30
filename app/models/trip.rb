@@ -3,8 +3,8 @@ CATEGORY = ["Surf", "Kitesurf", "Windsurf"]
 
 class Trip < ApplicationRecord
   belongs_to :user
-  has_one :to, -> { where direction: "to"}, class_name: "Location"
-  has_one :from, -> { where direction: "from"}, class_name: "Location"
+  has_one :to, -> { where direction: "to"}, class_name: "Location", :dependent => :destroy
+  has_one :from, -> { where direction: "from"}, class_name: "Location", :dependent => :destroy
 
   has_many :participants, :dependent => :destroy
   has_many :comments, :dependent => :destroy
@@ -22,7 +22,7 @@ class Trip < ApplicationRecord
   validates :status, inclusion: { in: STATUS }
   validates :category, inclusion: { in: CATEGORY }
 
-  before_save :calcul_itinary, on: [ :create, :update ]
+  before_save :calcul_itinary, on: [ :update ]
 
   def is_full?
     self.participants.where(status: "accepted").count >= self.nb_participant
@@ -42,10 +42,12 @@ class Trip < ApplicationRecord
   end
 
   def calcul_itinary
-    response = open("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{from.address}&destinations=#{to.address}&key=#{ENV['GOOGLE_API_SERVER_KEY']}").read
-    response = JSON.parse(response)
-    unless response["rows"][0]["elements"][0]["duration"].nil?
-      self.estimated_duration = response["rows"][0]["elements"][0]["duration"]["value"]
+    if self.from.present?
+      response = open("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{from.address}&destinations=#{to.address}&key=#{ENV['GOOGLE_API_SERVER_KEY']}").read
+      response = JSON.parse(response)
+      unless response["rows"][0]["elements"][0]["duration"].nil?
+        self.estimated_duration = response["rows"][0]["elements"][0]["duration"]["value"]
+      end
     end
   end
 
