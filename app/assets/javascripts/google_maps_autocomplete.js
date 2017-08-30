@@ -18,4 +18,8 @@ function onPlaceChanged() {
   var place = this.getPlace();
 
   $('#service_location').trigger('blur').val(place.formatted_address);
+
+  if ($('#search-city').length > 0) {
+    $('#search-city').trigger('submit');
+  }
 }

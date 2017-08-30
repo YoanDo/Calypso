@@ -1,29 +1,43 @@
-<div class="trip-show">
-<% content_for :meta_description, @trip.description %>
-<!-- map -->
-<div id="map" style="width: 100%; height: 20vh;"></div>
-<!-- cloison -->
-<div class="block-center">
-</div>
-<!-- info A/R -->
 <div class="trip-total">
-<div class="banner-trip">
-  <div class="trip-title-container">
-    <div class="trip-cities">
-      <h3><%= @trip.from.address %> - <%= @trip.to.address %> (<%= @trip.estimated_duration %>h trip) <br>
-      Departure: <%= @trip.starts_at.strftime("%A %e %b %Y - %k:%M") %> </h3>
-    </div>
-  </div>
-  <div class="trip-status">
-    <p>Trip status: <br> <%= @trip.status %></p>
-  </div>
-</div>
-<div class="trip-main">
   <div class="trip-left">
-    <!-- title -->
+    <div class="trip-status">
+      <div class="status-color">
+        <div class="status-color going">
+          <% if  @trip.status == 'going' %>
+            <p> <i class="fa fa-circle" aria-hidden="true"></i> <%= @trip.status %> </p>
+            <!-- completer -->
+          <% end %>
+        </div>
+      </div>
+        <div class="category">
+            <p><%= @trip.category %></p>
+        </div>
+    </div>
+    <div class="trip-main-info">
+      <div class="trip-cities">
+        <h3>
+        <%= @trip.from.address %>
+        <i class="fa fa-exchange" aria-hidden="true"></i>
+        <%= @trip.to.address %></h3>
+      </div>
+      <div class="trip-duration">
+        <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
+        <h4>
+        <%= @trip.starts_at.strftime("%A %e %b %Y") %> <br>
+        <%= @trip.starts_at.strftime("%k:%M")%> <span>to</span> <%= @trip.ends_at.strftime("%k:%M")%>
+        </h4>
+        <% else %>
+        <h4>
+        <%= @trip.starts_at.strftime("%A %e %b %Y - %k:%M") %><br><span>to</span>
+        <%= @trip.ends_at.strftime("%A %e %b %Y - %k:%M")%>
+        </h4>
+        <% end %>
+      </div>
+    </div>
     <div class="trip-info">
+      <hr>
       <div class="trip-title">
-        <h4><%= @trip.title %> </h4>
+        <h4><%= @trip.title %></h4>
       </div>
       <!-- description -->
       <div class="trip-description">
@@ -35,6 +49,7 @@
     </div>
     <!-- team -->
     <div class="surfer-box-cont">
+      <hr>
       <h4>C u r r e n t - t e a m </h4>
       <% if @remaining_spots > 0 %>
       <span>
@@ -42,52 +57,109 @@
       </span>
       <% end %>
       <div class="surfers-box">
+        <!-- host -->
+        <div class="surfer-space">
+          <div class="surfers-profile host">
+            <% if @trip.user.facebook_picture_url != nil %>
+            <div class="trip-avatar-host img-circle" style="background-image: url(<%= @trip.user.facebook_picture_url.gsub('square', 'large')%> )">
+            </div>
+            <% end %>
+            <div class="text-avatar">
+              <p>
+                <%= @trip.user.first_name %><br>
+                <%= @trip.user.last_name %>
+              </p>
+              <p style="color: red">TODO: RATING</p>
+            </div>
+          </div>
+        </div>
+        <!-- surfers -->
         <% @trip.participants.each do |participant| %>
         <% if participant.status == 'accepted' %>
-        <div class="surfers-profile">
-        <%= link_to user_path(participant.user) do %>
-          <div class="banner-avatar img-circle" style="background-image: url(<%= participant.user.facebook_picture_url.gsub('square', 'large') %>)">
+        <div class="surfer-space">
+          <div class="surfers-profile">
+            <%= link_to user_path(participant.user) do %>
+            <div class="surfer-avatar img-circle" style="background-image: url(<%= participant.user.facebook_picture_url.gsub('square', 'large') %>)">
+            </div>
+            <div class="text-avatar">
+              <p><%= participant.user.first_name %><br><%= participant.user.last_name %></p>
+            </div>
           </div>
-          <p><%= participant.user.first_name %> <%= participant.user.last_name %></p>
         </div>
-          <% end %>
+        <% end %>
         <% end %>
         <% end %>
         <% @remaining_spots.times do %>
         <div class="available-seat">
+          <!-- empty seat -->
           <div class="empty-user img-circle">
           </div>
-          <p>Available seat</p>
+          <div class="text-avatar">
+            <p>Available seat</p>
+            <br>
+            <br>
+          </div>
         </div>
         <% end %>
       </div>
     </div>
-  </div>
-  <!-- right -->
-
-  <div class="trip-right">
-  <% if @trip.user != current_user %>
-    <%= link_to user_path(@trip.user) do %>
-    <div class="host-info">
-    <h4>Trip leader</h4>
-      <div class=" img-circle img-trip-host" style="background-image: url(<%= @trip.user.facebook_picture_url %>)">
+    <div class="host-description">
+      <hr>
+      <div class="trip-title">
+        <h4>ABOUT <%= @trip.user.first_name %></h4>
       </div>
-      <div class="info-trip-host">
-        <hr>
-
-        <p><br> <%= @trip.user.first_name %> <%= @trip.user.last_name %> <br>
-        (review) </p>
+      <!-- description -->
+      <div class="trip-description">
+        <div class="more-description">
+          <% if @trip.user.description.nil? %>
+            <p><%= @trip.user.first_name %> hasn't write his description yet.</p>
+          <% else %>
+            <p><%= @trip.user.description %></p>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
-    <div class="join-trip">
-      <div class="join-the-team-title">
-        <h1><span>JOIN</span><br>
-        the team</h1>
+        <!-- CHAT -->
+    <div class="qanda">
+    <hr>
+    <h3 class="align-left">Q & A</h3>
+
+    <!-- previous messages -->
+    <div class="container-message">
+      <div class="board-outline" id="message-board-public">
+        <!-- Action-cable here (JS) -->
+        <% @comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+        <% end %>
       </div>
-        <div class="join-team">
-          <div class="join-team-action">
-            <% if @trip.has_participant(current_user)[:status] == false %>        <%= simple_form_for([@trip, @participant]) do |f| %>
+    </div>
+       <!-- Chat box -->
+    <div class="container-comment">
+      <div class="comment-box">
+        <div class="question-box">
+          <%= render 'comments/form', trip: @trip, comment: @comment %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="trip-right">
+  <!-- map -->
+    <div id="map" style="width: 100%; height: 40vh;"> </div>
+    <div class="road-time">
+    <% if @trip.estimated_duration? %>
+      <h4><%= Time.at(@trip.estimated_duration).utc.strftime("%H:%M")
+ %></h4>
+  <% end %>
+    </div>
+    <% if @trip.user != current_user %>
+      <div class="join-trip">
+        <div class="join-the-team-title">
+          <h1><span>JOIN</span><br>
+          the team</h1>
+        </div>
+        <div class="join-team-action">
+          <% if @trip.has_participant(current_user)[:status] == false %>        <%= simple_form_for([@trip, @participant]) do |f| %>
             <div class="form-inputs">
               <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
             </div>
@@ -95,67 +167,212 @@
               <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
             </div>
             <% end %>
-            <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
-            <p>You have a pending request to join this trip</p>
-            <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
-            <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
-            <p>You are on the waiting list for this trip</p>
-            <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
-            <p>You have joined this trip !</p>
-            <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
-            <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
-            <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
-            <p>You have cancelled your request</p>
-            <% else %>
-            <p>Sorry, you cannot join this trip</p>
-            <% end %>
-          </div>
+          <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
+                  <p>You have a pending request to join this trip</p>
+                  <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+          <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
+                  <p>You are on the waiting list for this trip</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
+                  <p>You have joined this trip !</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
+                  <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
+          <% elsif @trip.has_participant(current_user)[:status] == 'cancelled' %>
+            <div class="form-inputs">
+              <%= f.input :message, required: true, label: false, placeholder: 'Write a short message to the organizer :)'%>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Ask to join", class: 'btn btn-primary' %>
+            </div>
+                  <% end %>
         </div>
-        <% else %>
-        <div class="trip-edit">
-    <% if @trip.user == current_user %>
-    <h4>edit<%= link_to edit_trip_path(@trip) do%>
-    <i class="fa fa-pencil" aria-hidden="true"></i></h4>
-    <% end %>
-    <% end %>
-  </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="qanda">
-  <!-- CHAT -->
-  <hr>
-  <h3>Q & A</h3>
-  <!-- previous messages -->
-  <div class="container-message">
-    <div class="board-outline" id="message-board-public">
-      <!-- Action-cable here (JS) -->
-      <% @comments.each do |comment| %>
-      <%= render 'comments/show', comment: comment %>
-      <% end %>
-    </div>
-  </div>
-  <!-- Chat box -->
-  <div class="container-comment">
-    <div class="comment-box">
-      <div class="question-box">
-        <%= render 'comments/form', trip: @trip, comment: @comment %>
       </div>
-    </div>
+      <% else %>
+      <div class="host-info">
+        <div class="trip-edit">
+          <% if @trip.user == current_user %>
+          <h4><%= link_to edit_trip_path(@trip) do%> edit your trip
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          </h4>
+          <% end %>
+          <% end %>
+        </div>
+
+      </div>
+      <% end %>
+      <div class="social-share">
+      <hr>
+        <ul>
+          <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+          <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
+        </ul>
+      </div>
   </div>
 </div>
 
-<div id="mapspot" style="width: 100%; height: 20vh;"></div>
+
+<!-- <div id="mapspot" style="width: 100%; height: 20vh;"></div> -->
+
 <!-- JS  -->
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
 
+      var styles = [
+      {
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [
+              {
+                  "color": "#6195a0"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "color": "#f2f2f2"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "geometry.fill",
+          "stylers": [
+              {
+                  "color": "#ffffff"
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "poi.park",
+          "elementType": "geometry.fill",
+          "stylers": [
+              {
+                  "color": "#e6f3d6"
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 45
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [
+              {
+                  "color": "#f4d2c5"
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "labels.text",
+          "stylers": [
+              {
+                  "color": "#4e4e4e"
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "geometry.fill",
+          "stylers": [
+              {
+                  "color": "#f4f4f4"
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.fill",
+          "stylers": [
+              {
+                  "color": "#787878"
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "color": "#eaf6f8"
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "geometry.fill",
+          "stylers": [
+              {
+                  "color": "#eaf6f8"
+              }
+          ]
+      }
+      ]
+
       var directionsDisplay = new google.maps.DirectionsRenderer();
       var directionsService = new google.maps.DirectionsService();
+      console.log("youpi")
 
       function calcRoute() {
         var origin      = new google.maps.LatLng(<%= @trip.from.latitude  %>, <%=  @trip.from.longitude %>);
@@ -176,12 +393,13 @@
 
       var handler = Gmaps.build('Google');
       var handler2 = Gmaps.build('Google');
-
-      handler.buildMap({ internal: { id: 'map' } }, function() {
+      handler.buildMap({ provider: { styles: styles}, internal: { id: 'map' } }, function() {
         directionsDisplay.setMap(handler.getMap());
       });
 
-      handler2.buildMap({ internal: { id: 'mapspot' } }, function() {
+      console.log("youpi")
+
+      handler2.buildMap({ provider: { styles: styles}, internal: { id: 'mapspot' } }, function() {
 
         markers = handler2.addMarkers(<%= raw @hash.to_json %>);
         handler2.bounds.extendWith(markers);
@@ -192,18 +410,17 @@
         } else if (markers.length == 1) {
           handler2.getMap().setZoom(11);
         }
-
       });
 
-      App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
+        App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
         received: function(data) {
-          const new_comment = data.comment;
-          document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
-          document.querySelector("#comment_content").value = '';
+        const new_comment = data.comment;
+        document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+        document.querySelector("#comment_content").value = '';
         }
       });
 
     });
-  </script>
+</script>
 <% end %>
 </div>

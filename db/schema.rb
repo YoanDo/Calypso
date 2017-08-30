@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170829132856) do
     t.integer  "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "city"
     t.index ["trip_id"], name: "index_locations_on_trip_id", using: :btree
   end
 

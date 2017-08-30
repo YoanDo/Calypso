@@ -4,20 +4,13 @@ class TripsController < ApplicationController
 
   def index
     @date = params["date"] ? Date.strptime(params["date"], "%m/%d/%Y") : Date.today
-    if params["nearfrom"]
+    if params["nearfrom"].presence
       @trips = Location.where(direction: "from").near(params["nearfrom"],40).map(&:trip)
-      @nb_result = @trips.count
     else
       @trips = Trip.all.map
-      @nb_result = @trips.count
     end
     @trips_day = @trips.find_all { |t|  t.starts_at >= @date}.sort_by{|e| e[:starts_at]}.group_by { |t| t.starts_at.to_date }
-    #map
-    @tripsmap = @trips.find_all { |t| !t.from.latitude.nil?}
-    @hash = Gmaps4rails.build_markers(@tripsmap) do |trip, marker|
-      marker.lat trip.from.latitude
-      marker.lng trip.from.longitude
-    end
+    @nb_result = @trips_day.count
   end
 
   def show
@@ -25,7 +18,6 @@ class TripsController < ApplicationController
     @comments = @trip.comments.order(created_at: :desc)
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
-
     if @trip.to.latitude.present?
       @spots = Spot.near(@trip.to.address, 20)
       @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
@@ -88,6 +80,7 @@ class TripsController < ApplicationController
       @trip.to.save
       @trip.from.address = params[:trip][:from]
       @trip.from.save
+      @trip.save
       redirect_to trip_path(@trip)
     else
       render :new

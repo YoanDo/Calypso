@@ -1,8 +1,6 @@
 
 .search {
   width: 100%;
-
-
 }
 
 .search .form-group-navbar-home {
@@ -44,4 +42,57 @@
 
 .search i {
   color: white;
+}
+
+.search-bar:focus {
+  background: RGBA(255, 255, 255, 0.3)
+}
+
+#index-search {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  #index-search {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+
+#search-box {
+  height: 50px !important;
+  font-size: 35px !important;
+  border: none;
+  font-family: "Lato", "sans-serif";
+  font-weight: 300;
+  width: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  #search-box {
+    width: 80%;
+  }
+}
+
+#datepicker {
+  font-family: "Lato", "sans-serif" !important;
+  font-weight: 300 !important;
+}
+
+#datepicker td.active {
+  color: white;
+  font-weight: bolder;
+  background-color: $orange !important;
+  border-color: $orange !important;
+  text-shadow: 0 0 0 black !important;
+}
+
+.gotham-font {
+  font-family: "Lato";
+  font-weight: bolder;
+   font-size: 35px;
+   color: $black;
+   margin-right: 10px;
 }

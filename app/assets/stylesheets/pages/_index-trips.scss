@@ -1,30 +1,51 @@
 .list-trips {
-  width: 100%;
-  position: relative;
-  min-height: 70vh;
+  width: 70%;
+  min-height: calc(100vh - 420px);
 }
 
-.list-cards {
-  width: 70%;
-}
 
 .list-calendar {
-  position: absolute;
-  top: 20px;
-  right: 0px;
+  width: 20%;
 }
 
-.cont-search {
-  // background-image: url(image-path("search.jpeg"));
-  background-color: $gray;
-  width: 100vw;
-  height: 5vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
+.list-index {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
+#datepicker {
+  display: flex;
+  justify-content: center;
+  padding-top: 75px;
+}
+// .cont-search {
+//   background-color: $gray;
+//   width: 100vw;
+//   height: 5vh;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
+
+@media screen and (max-width: 900px) {
+  .list-index {
+    flex-direction: column-reverse;
+  }
+
+  .list-trips {
+    width: 100%;
+  }
+
+  .list-calendar {
+    width: 100%;
+  }
+
+  #datepicker {
+    padding-top: 35px;
+  }
+}

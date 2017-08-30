@@ -1,26 +1,60 @@
-
-<%= render 'shared/navbar-dashboard' %>
-
 <div class="container">
-  <div class="container-small u-margin-top">
-    <h3>UPCOMING TRIPS</h3>
-    <% @trips_day_up.each do |day, trips| %>
-    <div class="date">
-      <h3><%= day.strftime('%v') %></h3>
+
+
+  <div class="dashboard">
+
+    <div class="dashboard-trips">
+      <h3>Host trips</h3>
+
+      <% @trips_day_up.each do |day, trips| %>
+      <div class="margin-trips">
+      <div class="date">
+        <h4><%= day.strftime('%A, %B %d') %></h4>
+      </div>
+      <% for trip in trips %>
+      <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
+      <% end %>
+      </div>
+      <% end %>
+
+      <div class="margin-content">
+        <h3>My trips</h3>
+
+        <% @trips_day_up.each do |day, trips| %>
+        <div class="margin-trips">
+        <div class="date">
+          <h4><%= day.strftime('%A, %B %d') %></h4>
+        </div>
+
+        <% for trip in trips %>
+        <%= render "shared/card-booking-dashboard", trip: trip[:trip] %>
+        <% end %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="margin-content">
+        <h3>Past trips</h3>
+
+        <% @trips_day_past.each do |day, trips| %>
+        <div class="margin-trips">
+          <div class="date">
+            <h4><%= day.strftime('%A, %B %d') %></h4>
+          </div>
+          <% for trip in trips %>
+          <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
+          <% end %>
+        </div>
+          <% end %>
+      </div>
     </div>
-    <% for trip in trips %>
-    <%= render "shared/card-trip-dashboard", trip: trip %>
-    <% end %>
-    <% end %>
-    <h3>PAST TRIPS</h3>
-    <% @trips_day_past.each do |day, trips| %>
-    <div class="date">
-      <h3><%= day.strftime('%v') %></h3>
+    <div id="line-height"></div>
+
+    <div class="dashboard-notifications">
+      <h3>Notifications</h3>
     </div>
-    <% for trip in trips %>
-    <%= render "shared/card-trip", trip: trip %>
-    <% end %>
-    <% end %>
   </div>
 </div>
+
+
 

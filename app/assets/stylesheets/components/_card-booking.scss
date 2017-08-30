@@ -1,13 +1,48 @@
+.status-color-booking {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 7px;
+  height: 100%;
+  background: $green;
+}
+
+.status-wording-booking {
+  top: 15px;
+  right: 5px;
+  position: absolute;
+  width: 90px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.color-green {
+  color: $green;
+  font-family: "lato";
+  font-weight: bolder;
+}
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.u-add-padding-right {
+  padding-right: 10px;
+}
+
 .card-dashboard__booking {
   display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 20px 10px 20px 30px;
-  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 15px 20px 8px 20px;
+  border-radius: 2px;
   border: 1px solid RGB(220, 220, 220);
-  margin-top: 20px;
+  margin: 20px 0;
+  align-items: center;
+  background: RGB(255, 255, 255);
   position: relative;
-
 }
 
 .card-dashboard__booking a {
