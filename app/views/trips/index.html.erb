@@ -38,13 +38,29 @@
           <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
           <input name="date" type="hidden" id="select_date">
           <input name="nearfrom" type="hidden" value="<%= params["nearfrom"] %>">
+          <input name="category" type="hidden" value="<%= params["category"] %>">
           <% end %>
 
-          <ul class="list-unstyled">
-            <li><span class="category category-background-orange">surf</span></li>
-            <li><span class="category category-background-purple">kitesurf</span></li>
-            <li><span class="category category-background-green">windsurf</span></li>
-          </ul>
+          <div id="filter-category">
+          <h6 class="u-add-margin-bottom">Filter by category:</h6>
+            <ul class="list-unstyled u-add-padding-top">
+              <li class="u-add-margin-bottom u-add-padding-top">
+                <%= link_to trips_path(@filters.merge(category: 'Surf')) do %>
+                  <span class="category category-background-orange <%= 'active' if @filters[:category] =='Surf' %>">surf</span>
+                <% end %>
+              </li>
+                 <li class="u-add-margin-bottom u-add-padding-top">
+                <%= link_to trips_path(@filters.merge(category: 'Kitesurf')) do %>
+                  <span class="category category-background-purple <%= 'active' if @filters[:category] =='Kitesurf' %>">kitesurf</span>
+                <% end %>
+              </li>
+              <li class="u-add-margin-bottom u-add-padding-top">
+                <%= link_to trips_path(@filters.merge(category: 'Windsurf')) do %>
+                  <span class="category category-background-green <%= 'active' if @filters[:category] =='Windsurf' %>">windsurf</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -66,6 +82,10 @@
         return true;
       };
     });
+
+
+
+
 
     var footer = document.getElementById("two").offsetHeight;
 
