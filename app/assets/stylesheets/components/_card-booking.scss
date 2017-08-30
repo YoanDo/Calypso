@@ -1,10 +1,28 @@
-.status-color-booking {
+.status-color-booking-green {
   top: 0;
   left: 0;
   position: absolute;
   width: 7px;
   height: 100%;
   background: $green;
+}
+
+.status-color-booking-grey {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 7px;
+  height: 100%;
+  background: #BDBFC7;
+}
+
+.status-color-booking-red {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 7px;
+  height: 100%;
+  background: $red;
 }
 
 .status-wording-booking {
@@ -20,6 +38,18 @@
 
 .color-green {
   color: $green;
+  font-family: "lato";
+  font-weight: bolder;
+}
+
+.color-red {
+  color: $red;
+  font-family: "lato";
+  font-weight: bolder;
+}
+
+.color-grey {
+  color: #BDBFC7;
   font-family: "lato";
   font-weight: bolder;
 }
