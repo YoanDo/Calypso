@@ -22,6 +22,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem "facebook-messenger"
 gem 'chart-js-rails'
 
 source 'https://rails-assets.org' do

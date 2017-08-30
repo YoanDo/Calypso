@@ -38,8 +38,34 @@ class TripsController < ApplicationController
     if @trip.save
       Location.create(address:params[:trip][:to], direction: "to", trip: @trip)
       Location.create(address:params[:trip][:from], direction: "from", trip: @trip)
-      @trip.save
-      redirect_to trip_path(@trip)
+
+      # send Facebook messenger notifification
+      if ENV["FB_ACCESS_TOKEN"].present?
+        User.near(@trip.from.address, 40).each do |user|
+          if (user.recipient_id?) && (user != current_user)
+            Bot.deliver({
+              recipient: {
+                id: user.recipient_id
+              },
+              message:{
+                attachment:{
+                  type:"template",
+                  payload:{
+                    template_type:"button",
+                    text:"Hey #{user.first_name}! #{@trip.user.first_name} has created a #{@trip.category}-trip to #{@trip.to.address}, leaving on #{@trip.starts_at.strftime("%m/%d")} with #{@trip.nb_participant} seats available ",
+                    buttons:[
+                      { type: 'web_url', title: 'More info', url: "http://www.calypso.surf#{trip_path(@trip)}" },
+                      { type: 'postback', title: "Send booking request", payload: {trip_id: @trip.id, user_id: user.id}.to_json }
+                    ]
+                  }
+                }
+              }
+            }, access_token: ENV['FB_ACCESS_TOKEN'])
+          end
+        end
+      end
+
+      redirect_to root_path #change for back to show
     else
       render :new
     end
@@ -80,3 +106,4 @@ class TripsController < ApplicationController
   end
 
 end
+

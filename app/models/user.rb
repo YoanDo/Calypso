@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :messages, :dependent => :destroy
   has_many :reviews, :dependent => :destroy
 
+  geocoded_by :follow_city
+  after_validation :geocode, if: :follow_city?
+
   mount_uploader :photo, PhotoUploader
 
   def self.find_for_facebook_oauth(auth)
