@@ -10,32 +10,6 @@
   background: RGB(255, 255, 255);
 }
 
-.card-trip__weather {
-  width: 40%;
-}
-
-@media screen and (max-width: 700px) {
-  .card-trip {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-  }
-
-  .card-trip__weather {
-    width: 100%;
-  }
-
-  .float-right {
-    float: left !important;
-  }
-
-  #card-info-trip {
-    float: left !important;
-    width: 100% !important;
-    padding-left: 10px !important;
-  }
-}
-
 .float-right {
   float: right;
 }
@@ -153,11 +127,54 @@
   margin-right: 7px;
 }
 
-.weather-medium {
-  width: 30px;
-  height: 30px;
+
+.display-flex-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+.card-trip__weather {
+  width: 50%;
+}
+
+.weather-icon-size {
+  width: 17px;
+  height: 17px;
 }
 
 .weather {
   display: flex;
+}
+
+.u-add-padding-left-15 {
+  padding-left: 15px;
+}
+
+
+@media screen and (max-width: 700px) {
+  .card-trip {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 15px;
+  }
+
+  .card-trip__time {
+    padding-left: 10px;
+  }
+
+  .card-trip__weather {
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  .float-right {
+    float: left !important;
+  }
+
+  #card-info-trip {
+    float: left !important;
+    width: 100% !important;
+    padding-left: 10px !important;
+  }
 }

@@ -1,25 +1,32 @@
 <div class="message">
-  <% if message.user.facebook_picture_url? %>
-  <%= image_tag message.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
-  <% else %>
-  <div class="message-empty-img"></div>
-  <% end %>
 
-  <div class="message-name">
-    <h3><%= message.user.first_name %> <%= message.user.last_name %></h3>
-    <p><%= message.created_at.strftime('%a %d %b %Y')  %></p>
+  <div class="message-left-part">
+    <% if message.user.facebook_picture_url? %>
+      <%= image_tag message.user.facebook_picture_url, { class: "avatar-large img-circle" }%>
+    <% else %>
+      <div class="message-empty-img"></div>
+    <% end %>
   </div>
-  <div class="message-body">
-    <p>
-      <% if message.user == current_user %>
-      <div class="text-current-user">
-        <%= message.content %>
+  <div class="message-right-part">
+    <div class="message-name">
+      <div class="user-name"><h3><%= message.user.first_name %> <%= message.user.last_name %></h3>
       </div>
-      <% else %>
-      <div class="text-grey">
-        <%= message.content %>
+      <div class="sent-time">
+      <p><%= message.created_at.strftime('%a %d %b %Y - %k:%M')  %></p>
       </div>
-      <% end %>
-    </p>
+    </div>
+    <div class="message-body">
+      <p>
+        <% if message.user == current_user %>
+        <div class="text-current-user">
+          <%= message.content %>
+        </div>
+        <% else %>
+        <div class="text-grey">
+          <%= message.content %>
+        </div>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>

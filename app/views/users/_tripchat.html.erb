@@ -1,51 +1,40 @@
- <div id="trip-chat">
-    <div>
+<div id="trip-chat" class="tripchat">
+  <div class="chat-view">
+    <div class="messenger-title">
       <!-- Trip & participants info -->
-      <ul>
-        <li><%= trip.title  %></li>
-        <li><%= trip.starts_at  %></li>
-        <li><%= trip.status  %></li>
-        <li>Oragnizer: <%= trip.user.first_name %> <%= trip.user.last_name %> / <%= trip.user.phone %></li>
-        <% trip.participants.each do |participant| %>
-          <% if participant.status == 'accepted' %>
-            <li><%= trip.user.first_name %> <%= trip.user.last_name %> / <%= trip.user.phone %></li>
-          <% end %>
-        <% end %>
-      </ul>
+      <h4><%= trip.title  %></h4>
+      <p><%= trip.from.address %> to <%= trip.to.address %>, Departure : <%= trip.starts_at.strftime("%k:%M") %> </p>
     </div>
     <!-- Chat box -->
-    <div class="row" id="chat_box">
-      <div class=""> <!-- class removed during backend development -->
-        <strong>Chat</strong>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <%= render 'messages/form', trip: trip, message: message %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-7" id="comments">
-            <div class="board-outline" id="message-board-public">
-              <!-- Action-cable here (JS) -->
-              <% trip.messages.order(created_at: :desc).each do |message| %>
-                <%= render 'messages/show', message: message %>
-              <% end %>
-            </div>
-          </div>
+    <div id="chat_box">
+      <!-- Read -->
+      <div class="messenger-read" id="comments">
+        <div class="board-outline" id="message-board-public">
+          <!-- Action-cable here (JS) -->
+          <% trip.messages.order(created_at: :desc).each do |message| %>
+          <%= render 'messages/show', message: message %>
+          <% end %>
         </div>
       </div>
-      <!-- JS chatbox -->
-      <% content_for(:after_js) do %>
-        <script>
-          $(document).ready(function() {
-            App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= trip.id %> }, {
-              received: function(data) {
-                var new_message = data.message;
-                document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
-                document.querySelector("#message_content").value = '';
-              }
-            });
-          });
-        </script>
-      <% end %>
     </div>
   </div>
+  <!-- write -->
+  <div class="write-message">
+    <%= render 'messages/form', trip: trip, message: message %>
+  </div>
+</div>
+<!-- JS chatbox -->
+<% content_for(:after_js) do %>
+<script>
+$(document).ready(function() {
+App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= trip.id %> }, {
+received: function(data) {
+var new_message = data.message;
+document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
+document.querySelector("#message_content").value = '';
+}
+});
+});
+</script>
+<% end %>
+

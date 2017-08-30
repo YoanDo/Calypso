@@ -54,11 +54,26 @@ h4 {
   text-transform: uppercase;
 }
 
+h5 {
+  font-size: 20px;
+  color: $black;
+  line-height: 1;
+  margin: 0 5px;
+  &:hover {
+    color: $black;
+  }
+
+}
+
 p {
   font-size: 14px;
   color: $gray;
   letter-spacing: 1px;
   line-height: 22px;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 // .footer_down {
