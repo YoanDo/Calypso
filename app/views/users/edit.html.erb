@@ -20,9 +20,9 @@
       <% end %>
       <% if ENV["FB_ACCESS_TOKEN"].present? %>
         <div class="fb-messenger-checkbox"
-          origin= ENV["FB_ORIGIN_URL"]
-          page_id= ENV["FB_PAGE_ID"]
-          messenger_app_id= ENV["FB_APP_ID"]
+          origin= <%= ENV["FB_ORIGIN_URL"] %>
+          page_id= <%=  ENV["FB_PAGE_ID"] %>
+          messenger_app_id= <%= ENV["FB_APP_ID"] %>
           user_ref="<%= user_ref = SecureRandom.base64 %>"
           prechecked="true"
           allow_login="true"
@@ -37,7 +37,7 @@
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : ENV["FB_APP_ID",
+          appId      : <%= ENV["FB_APP_ID"] %>,
           xfbml      : true,
           version    : 'v2.6'
         });
@@ -55,8 +55,8 @@
 
       document.getElementById("update_button").addEventListener("click", (event) => {
         FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-          'app_id': ENV["FB_APP_ID",
-          'page_id': ENV["FB_PAGE_ID"],
+          'app_id': <%= ENV["FB_APP_ID"] %>,
+          'page_id': <%= ENV["FB_PAGE_ID"] %>,
           'user_ref':'<%= user_ref %>'
         });
         console.log('sent')
