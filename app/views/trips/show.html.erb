@@ -470,7 +470,7 @@
         App.comments = App.cable.subscriptions.create({ channel: 'CommentsChannel', trip_id: <%= @trip.id %> }, {
         received: function(data) {
         const new_comment = data.comment;
-        document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_comment );
+        document.getElementById('message-board-public').insertAdjacentHTML('beforeend', new_comment );
         document.querySelector("#comment_content").value = '';
         }
       });

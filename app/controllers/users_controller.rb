@@ -58,6 +58,6 @@ class UsersController < ApplicationController
       end
     end
 
-    return trips.sort_by {|trip| trip.starts_at }
+    return trips.sort_by {|trip| trip.starts_at }.reverse
   end
 end
