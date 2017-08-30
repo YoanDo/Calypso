@@ -15,10 +15,20 @@
     </div>
     <div class="trip-main-info">
       <div class="trip-cities">
+      <% if @trip.from.city.nil? || @trip.from.city.nil? %>
         <h3>
-        <%= @trip.from.address %>
-        <i class="fa fa-exchange" aria-hidden="true"></i>
-        <%= @trip.to.address %></h3>
+          <%= @trip.from.address %>
+          <i class="fa fa-exchange" aria-hidden="true"></i>
+          <%= @trip.to.address %>
+        </h3>
+      <% else %>
+        <h3>
+          <%= @trip.from.city %>
+          <i class="fa fa-exchange" aria-hidden="true"></i>
+          <%= @trip.to.city %>
+        </h3>
+
+        <% end %>
       </div>
       <div class="trip-duration">
         <% if @trip.starts_at.to_date == @trip.ends_at.to_date %>
@@ -92,7 +102,7 @@
         <% end %>
         <% @remaining_spots.times do %>
         <div class="available-seat">
-          <!-- empty seat -->
+<!-- empty seat -->
           <div class="empty-user img-circle">
           </div>
           <div class="text-avatar">
@@ -109,7 +119,7 @@
       <div class="trip-title">
         <h4>ABOUT <%= @trip.user.first_name %></h4>
       </div>
-      <!-- description -->
+<!-- description -->
       <div class="trip-description">
         <div class="more-description">
           <% if @trip.user.description.nil? %>
@@ -120,8 +130,7 @@
         </div>
       </div>
     </div>
-    <!-- wave graph -->
-
+<!-- wave graph -->
     <div class="host-description">
       <hr>
       <div class="trip-title">
@@ -180,13 +189,16 @@
   </div>
   <div class="trip-right">
   <!-- map -->
+
     <div id="map" style="width: 100%; height: 40vh;"> </div>
-    <div class="road-time">
     <% if @trip.estimated_duration? %>
-      <h4><%= Time.at(@trip.estimated_duration).utc.strftime("%H:%M")
- %></h4>
-  <% end %>
+    <div class="road-time">
+
+      <h4>It will take you <%= Time.at(@trip.estimated_duration).utc.strftime("%Hh and %M") %> to join the spot.
+      </h4>
+
     </div>
+    <% end %>
     <% if @trip.user != current_user %>
       <div class="join-trip">
         <div class="join-the-team-title">

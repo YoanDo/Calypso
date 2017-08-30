@@ -5,10 +5,10 @@ require 'net/http'
 
 include Facebook::Messenger
 
-if ENV["FB_ACCESS_TOKEN"].present?
+if ENV["ACCESS_TOKEN"].present?
 
   # Subscripte to Messenger page
-  Facebook::Messenger::Subscriptions.subscribe(access_token: ENV.fetch("FB_ACCESS_TOKEN"))
+  Facebook::Messenger::Subscriptions.subscribe(access_token: ENV.fetch("ACCESS_TOKEN"))
 
   # Optin (when user logged in for the frist time to Messenger update)
   Bot.on :optin do |optin|
@@ -27,7 +27,7 @@ if ENV["FB_ACCESS_TOKEN"].present?
         }
       }
 
-    uri = URI("https://graph.facebook.com/v2.6/me/messages?access_token=#{ENV.fetch("FB_ACCESS_TOKEN")}")
+    uri = URI("https://graph.facebook.com/v2.6/me/messages?access_token=#{ENV.fetch("ACCESS_TOKEN")}")
     http = Net::HTTP.new(uri.host, uri.port)
     req = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json')
     req.body = reply_message.to_json
@@ -38,7 +38,7 @@ if ENV["FB_ACCESS_TOKEN"].present?
     recipient_id = JSON.parse(recipient_id_hash.body)["recipient_id"]
 
     # Ask FB for correspondong UID (recipient ID != UID)
-    uri = URI("https://graph.facebook.com/v2.6/#{recipient_id}/ids_for_apps?app=112177822805280&access_token=#{ENV.fetch("FB_ACCESS_TOKEN")}")
+    uri = URI("https://graph.facebook.com/v2.6/#{recipient_id}/ids_for_apps?app=#{ENV.fetch("FB_APP_ID")}&access_token=#{ENV.fetch("ACCESS_TOKEN")}")
     uid_hash = Net::HTTP.get(uri)
 
     # Parse FB callback and save corresponding UID
@@ -52,12 +52,12 @@ if ENV["FB_ACCESS_TOKEN"].present?
     # Notify user that he has signed in for alerts covering the chosen city
     Bot.deliver({
       recipient: {
-        id: 1458086380949769
+        id: recipient_id
       },
       message: {
         text: "I will send you notifications when trips departing from #{user_updated.follow_city} are created 😄‍"
       }
-    }, access_token: ENV['FB_ACCESS_TOKEN'])
+    }, access_token: ENV['ACCESS_TOKEN'])
   end
 
   # Manage "out of the blue" incoming messages

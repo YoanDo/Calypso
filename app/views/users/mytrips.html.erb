@@ -25,13 +25,25 @@
           <h4><%= day.strftime('%A, %B %d') %></h4>
         </div>
           <% for trip in trips %>
-            <%= trip[:status] %>
-            <%= render "shared/card-booking-dashboard", trip: trip[:trip] %>
+            <%= render "shared/card-booking-dashboard", trip: trip %>
           <% end %>
         </div>
         <% end %>
       </div>
-      <div class="block-center">
+
+      <div class="margin-content">
+        <h3>Past booked trips</h3>
+
+        <% @trips_booked_past.each do |day, trips| %>
+        <div class="margin-trips">
+          <div class="date">
+            <h4><%= day.strftime('%A, %B %d') %></h4>
+          </div>
+          <% for trip in trips %>
+          <%= render "shared/card-booking-dashboard", trip: trip %>
+          <% end %>
+        </div>
+          <% end %>
       </div>
 
       <div class="margin-content">
@@ -49,21 +61,6 @@
           <% end %>
       </div>
 
-      <div class="margin-content">
-        <h3>Past booked trips</h3>
-
-        <% @trips_booked_past.each do |day, trips| %>
-        <div class="margin-trips">
-          <div class="date">
-            <h4><%= day.strftime('%A, %B %d') %></h4>
-          </div>
-          <% for trip in trips %>
-          <%= trip[:status] %>
-          <%= render "shared/card-trip-dashboard", trip: trip[:trip] %>
-          <% end %>
-        </div>
-          <% end %>
-      </div>
     </div>
     <div id="line-height"></div>
 
