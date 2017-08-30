@@ -56,7 +56,7 @@ class TripsController < ApplicationController
       @trip.save
 
       # send Facebook messenger notifification
-      if ENV["FB_ACCESS_TOKEN"].present?
+      if ENV["ACCESS_TOKEN"].present?
         User.near(@trip.from.address, 40).each do |user|
           if (user.recipient_id?) && (user != current_user)
             Bot.deliver({
@@ -76,7 +76,7 @@ class TripsController < ApplicationController
                   }
                 }
               }
-            }, access_token: ENV['FB_ACCESS_TOKEN'])
+            }, access_token: ENV['ACCESS_TOKEN'])
           end
         end
       end

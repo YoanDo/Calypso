@@ -18,7 +18,7 @@
 
         <%= f.button :submit, 'Update', class: 'btn btn-primary', id: 'update_button' %>
       <% end %>
-      <% if ENV["FB_ACCESS_TOKEN"].present? %>
+      <% if ENV["ACCESS_TOKEN"].present? %>
         <div class="fb-messenger-checkbox"
           origin= <%= ENV["FB_ORIGIN_URL"] %>
           page_id= <%=  ENV["FB_PAGE_ID"] %>
@@ -32,7 +32,7 @@
   </div>
       </div>
 
-<% if ENV["FB_ACCESS_TOKEN"].present? %>
+<% if ENV["ACCESS_TOKEN"].present? %>
   <% content_for (:after_js) do %>
     <script>
       window.fbAsyncInit = function() {
