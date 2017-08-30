@@ -34,7 +34,6 @@
 
       <div class="list-calendar">
         <div id="one">
-        <h6>Departure from:</h6>
           <div id="datepicker" data-date="<%= @date.strftime("%m/%d/%Y") %>"></div>
           <%= form_tag trips_path, method: :get, id: "form_date_picker" do %>
           <input name="date" type="hidden" id="select_date">
@@ -47,17 +46,17 @@
             <ul class="list-unstyled u-add-padding-top">
               <li class="u-add-margin-bottom u-add-padding-top">
                 <%= link_to trips_path(@filters.merge(category: 'Surf')) do %>
-                  <span class="category category-background-orange <%= 'active' if @filters[:category] =='Surf' %>">surf</span>
+                  <span class="category category-background-orange u-font-size-16 <%= 'active' if @filters[:category] =='Surf' %>">surf</span>
                 <% end %>
               </li>
                  <li class="u-add-margin-bottom u-add-padding-top">
                 <%= link_to trips_path(@filters.merge(category: 'Kitesurf')) do %>
-                  <span class="category category-background-purple <%= 'active' if @filters[:category] =='Kitesurf' %>">kitesurf</span>
+                  <span class="category category-background-purple u-font-size-16 <%= 'active' if @filters[:category] =='Kitesurf' %>">kitesurf</span>
                 <% end %>
               </li>
               <li class="u-add-margin-bottom u-add-padding-top">
                 <%= link_to trips_path(@filters.merge(category: 'Windsurf')) do %>
-                  <span class="category category-background-green <%= 'active' if @filters[:category] =='Windsurf' %>">windsurf</span>
+                  <span class="category category-background-green u-font-size-16 <%= 'active' if @filters[:category] =='Windsurf' %>">windsurf</span>
                 <% end %>
               </li>
             </ul>
