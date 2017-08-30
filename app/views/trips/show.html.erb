@@ -134,8 +134,12 @@
       <!-- description -->
       <div class="trip-description">
         <div class="more-description">
+          <div class="weather-center">
+            <%= render 'shared/weather-data', trip: @trip %>
+          </div>
+          <% unless @trip.starts_at < Date.today || @trip.starts_at > Date.today+7 %>
           <canvas id="myChart" width="350px" height="200px"></canvas>
-
+          <% end %>
         </div>
       </div>
     </div>
@@ -249,6 +253,7 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
+      <% unless @trip.starts_at < Date.today || @trip.starts_at > Date.today+7 %>
       <% data = @trip.weather %>
       var ctx = document.getElementById("myChart").getContext('2d');
       var myChart = new Chart(ctx, {
@@ -272,6 +277,7 @@
               }
           }
       });
+      <% end %>
 
       var styles = [
       {
