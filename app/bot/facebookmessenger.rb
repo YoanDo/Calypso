@@ -52,7 +52,7 @@ if ENV["ACCESS_TOKEN"].present?
     # Notify user that he has signed in for alerts covering the chosen city
     Bot.deliver({
       recipient: {
-        id: 1458086380949769
+        id: recipient_id
       },
       message: {
         text: "I will send you notifications when trips departing from #{user_updated.follow_city} are created 😄‍"
