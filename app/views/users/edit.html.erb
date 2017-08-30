@@ -18,46 +18,49 @@
 
         <%= f.button :submit, 'Update', class: 'btn btn-primary', id: 'update_button' %>
       <% end %>
-      <div class="fb-messenger-checkbox"
-        origin=https://87e9710e.ngrok.io
-        page_id=1451558588261947
-        messenger_app_id=112177822805280
-        user_ref="<%= user_ref = SecureRandom.base64 %>"
-        prechecked="true"
-        allow_login="true"
-        size="large"></div>
+      <% if ENV["FB_ACCESS_TOKEN"].present? %>
+        <div class="fb-messenger-checkbox"
+          origin=https://87e9710e.ngrok.io
+          page_id=1451558588261947
+          messenger_app_id=112177822805280
+          user_ref="<%= user_ref = SecureRandom.base64 %>"
+          prechecked="true"
+          allow_login="true"
+          size="large"></div>
+      <% end %>
     </Div>
   </div>
       </div>
 
+<% if ENV["FB_ACCESS_TOKEN"].present? %>
+  <% content_for (:after_js) do %>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '112177822805280',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
 
-<% content_for (:after_js) do %>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '112177822805280',
-        xfbml      : true,
-        version    : 'v2.6'
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk')
+      );
+
+      document.getElementById("update_button").addEventListener("click", (event) => {
+        FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
+          'app_id':'112177822805280',
+          'page_id':'1451558588261947',
+          'user_ref':'<%= user_ref %>'
+        });
+        console.log('sent')
       });
-
-    };
-
-    (function(d, s, id){
-      var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk')
-    );
-
-    document.getElementById("update_button").addEventListener("click", (event) => {
-      FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-        'app_id':'112177822805280',
-        'page_id':'1451558588261947',
-        'user_ref':'<%= user_ref %>'
-      });
-      console.log('sent')
-    });
-  </script>
+    </script>
+  <% end %>
 <% end %>
