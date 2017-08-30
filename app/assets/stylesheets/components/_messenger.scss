@@ -1,32 +1,39 @@
 .messenger-box {
-  background-color: blue;
   display: flex;
   padding: 2% 10%;
 }
 
 .listing-chat {
-  background-color: white;
   width: 30%;
   max-width: calc(100vh-220px);
   overflow: scroll;
+  background-color: $light-gray;
  }
 
 .listing-chat ul {
   list-style-type: none;
   padding: 0;
+
 }
 
 .listing-chat li {
-  padding: 2%;
+  color: $gray;
+  opacity: .7;
+  padding: 3%;
 }
 
 .listing-chat li:hover {
   color: $orange;
-  background-color: $light-gray;
+  opacity: 1;
+  background-color: white;
 }
 
+.listing-chat li:active {
+  color: $orange;
+}
+
+
 .conversation {
-  background-color: yellow;
   width: 100%;
   margin: 0 2%;
   display: flex;
@@ -37,8 +44,6 @@
 // tripchat
 
 .tripchat {
-  border-left: solid 1px $gray;
-  border-left: solid 1px #606075;
   display: flex;
   flex-direction: column;
   height: 70vh;
@@ -47,11 +52,11 @@
 
 .messenger-title {
   text-align: center;
-  background-color: pink;
 }
 
 .messenger-title h4 {
   margin: 0px;
+
 }
 
 .messenger-read {
@@ -67,14 +72,16 @@
   padding: 2%
 }
 
+li hr{
+  border: solid 1px red;
+  margin: 2%;
+}
+
 // message_show
 .message {
-  background-color: red;
   display: flex;
   flex-direction: row ;
 }
-
-
 
 .message-right-part {
   display: flex;

@@ -1,43 +1,40 @@
- <div id="trip-chat" class="tripchat">
-
-  <div class="view">
+<div id="trip-chat" class="tripchat">
+  <div class="chat-view">
     <div class="messenger-title">
-<!-- Trip & participants info -->
+      <!-- Trip & participants info -->
       <h4><%= trip.title  %></h4>
       <p><%= trip.from.address %> to <%= trip.to.address %>, Departure : <%= trip.starts_at.strftime("%k:%M") %> </p>
     </div>
-<!-- Chat box -->
+    <!-- Chat box -->
     <div id="chat_box">
-<!-- Read -->
+      <!-- Read -->
       <div class="messenger-read" id="comments">
         <div class="board-outline" id="message-board-public">
           <!-- Action-cable here (JS) -->
-           <% trip.messages.order(created_at: :desc).each do |message| %>
-            <%= render 'messages/show', message: message %>
+          <% trip.messages.order(created_at: :desc).each do |message| %>
+          <%= render 'messages/show', message: message %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-<!-- write -->
+  <!-- write -->
   <div class="write-message">
-            <%= render 'messages/form', trip: trip, message: message %>
+    <%= render 'messages/form', trip: trip, message: message %>
   </div>
+</div>
+<!-- JS chatbox -->
+<% content_for(:after_js) do %>
+<script>
+$(document).ready(function() {
+App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= trip.id %> }, {
+received: function(data) {
+var new_message = data.message;
+document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
+document.querySelector("#message_content").value = '';
+}
+});
+});
+</script>
+<% end %>
 
-  </div>
-      <!-- JS chatbox -->
-      <% content_for(:after_js) do %>
-        <script>
-          $(document).ready(function() {
-            App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= trip.id %> }, {
-              received: function(data) {
-                var new_message = data.message;
-                document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
-                document.querySelector("#message_content").value = '';
-              }
-            });
-          });
-        </script>
-      <% end %>
-    </div>
-  </div>
