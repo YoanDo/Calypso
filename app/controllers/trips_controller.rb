@@ -19,7 +19,7 @@ class TripsController < ApplicationController
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
     if @trip.to.latitude.present?
-      @spots = Spot.near(@trip.to.address, 20)
+      @spots = Spot.near(@trip.to.address, 10)
       @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
         marker.lat spot.latitude
         marker.lng spot.longitude

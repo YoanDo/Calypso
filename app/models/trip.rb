@@ -69,4 +69,32 @@ class Trip < ApplicationRecord
     return light_weather
   end
 
+  def weather
+    response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
+    response = JSON.parse(response)
+    date = self.starts_at.strftime("%Y-%m-%d")
+    forecast_time = []
+    forecast_wave = []
+    response["data"]["weather"].each do |w|
+      if w["date"] >= date
+        date_forecast = Date.parse w["date"]
+        w["hourly"].each do |h|
+          hour_forecast = transform_hour(h["time"])
+          forecast_time << "#{date_forecast.strftime("%a")} #{hour_forecast}"
+          forecast_wave << h["sigHeight_m"]
+        end
+      end
+    end
+    return [ light_weather, forecast_time, forecast_wave]
+  end
+
+  def transform_hour(hours)
+    if hours.size == 1
+      hours = "#{hours}h"
+    elsif hours.size == 3
+      hours = "#{hours.first}h"
+    else
+      hours = "#{hours.first(2)}h"
+    end
+  end
 end
