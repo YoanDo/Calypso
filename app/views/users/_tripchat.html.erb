@@ -11,7 +11,7 @@
       <div class="messenger-read" id="comments">
         <div class="board-outline" id="message-board-public">
           <!-- Action-cable here (JS) -->
-          <% trip.messages.order(created_at: :desc).each do |message| %>
+          <% trip.messages.order(created_at: :asc).each do |message| %>
           <%= render 'messages/show', message: message %>
           <% end %>
         </div>
@@ -30,7 +30,7 @@ $(document).ready(function() {
 App.comments = App.cable.subscriptions.create({ channel: 'MessagesChannel', trip_id: <%= trip.id %> }, {
 received: function(data) {
 var new_message = data.message;
-document.getElementById('message-board-public').insertAdjacentHTML('afterbegin', new_message );
+document.getElementById('message-board-public').insertAdjacentHTML('beforeend', new_message );
 document.querySelector("#message_content").value = '';
 }
 });

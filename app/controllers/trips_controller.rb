@@ -15,7 +15,7 @@ class TripsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @trip.comments.order(created_at: :desc)
+    @comments = @trip.comments.order(created_at: :asc)
     @participant = Participant.new
     @remaining_spots = (@trip.nb_participant - @trip.participants.select{ |p| p.status == 'accepted' }.size)
     if @trip.to.latitude.present?
