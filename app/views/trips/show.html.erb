@@ -430,7 +430,6 @@
 
       var directionsDisplay = new google.maps.DirectionsRenderer();
       var directionsService = new google.maps.DirectionsService();
-      console.log("youpi")
 
       function calcRoute() {
         var origin      = new google.maps.LatLng(<%= @trip.from.latitude  %>, <%=  @trip.from.longitude %>);
@@ -454,8 +453,6 @@
       handler.buildMap({ provider: { styles: styles}, internal: { id: 'map' } }, function() {
         directionsDisplay.setMap(handler.getMap());
       });
-
-      console.log("youpi")
 
       handler2.buildMap({ provider: { styles: styles}, internal: { id: 'mapspot' } }, function() {
 

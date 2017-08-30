@@ -17,9 +17,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :edit, :update, :show ] do
     get 'mytrips', on: :collection
-    get 'mybookings', on: :collection
     get 'mymessages', on: :collection
-    get 'dashboard', on: :collection
     resources :reviews, only: [ :create ]
   end
 

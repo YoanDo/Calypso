@@ -75,7 +75,7 @@
       <% if user_signed_in? %>
         <li><%= link_to "CREATE", new_trip_path %></li>
         <li><%= link_to "EXPLORE", new_trip_path %></li>
-        <li><%= link_to "MY TRIP", dashboard_users_path %></li>
+        <li><%= link_to "MY TRIP", mytrips_users_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete  %></li>
       <% else %>
