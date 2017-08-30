@@ -38,7 +38,7 @@ if ENV["ACCESS_TOKEN"].present?
     recipient_id = JSON.parse(recipient_id_hash.body)["recipient_id"]
 
     # Ask FB for correspondong UID (recipient ID != UID)
-    uri = URI("https://graph.facebook.com/v2.6/#{recipient_id}/ids_for_apps?app=112177822805280&access_token=#{ENV.fetch("ACCESS_TOKEN")}")
+    uri = URI("https://graph.facebook.com/v2.6/#{recipient_id}/ids_for_apps?app=#{ENV.fetch("FB_APP_ID")}&access_token=#{ENV.fetch("ACCESS_TOKEN")}")
     uid_hash = Net::HTTP.get(uri)
 
     # Parse FB callback and save corresponding UID
