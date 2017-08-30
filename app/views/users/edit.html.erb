@@ -20,9 +20,9 @@
       <% end %>
       <% if ENV["FB_ACCESS_TOKEN"].present? %>
         <div class="fb-messenger-checkbox"
-          origin=https://87e9710e.ngrok.io
-          page_id=1451558588261947
-          messenger_app_id=112177822805280
+          origin= <%= ENV["FB_ORIGIN_URL"] %>
+          page_id= <%=  ENV["FB_PAGE_ID"] %>
+          messenger_app_id= <%= ENV["FB_APP_ID"] %>
           user_ref="<%= user_ref = SecureRandom.base64 %>"
           prechecked="true"
           allow_login="true"
@@ -37,7 +37,7 @@
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '112177822805280',
+          appId      : <%= ENV["FB_APP_ID"] %>,
           xfbml      : true,
           version    : 'v2.6'
         });
@@ -55,8 +55,8 @@
 
       document.getElementById("update_button").addEventListener("click", (event) => {
         FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-          'app_id':'112177822805280',
-          'page_id':'1451558588261947',
+          'app_id': <%= ENV["FB_APP_ID"] %>,
+          'page_id': <%= ENV["FB_PAGE_ID"] %>,
           'user_ref':'<%= user_ref %>'
         });
         console.log('sent')
