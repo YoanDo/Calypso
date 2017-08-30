@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 
   def mytrips
     @trips = all_mytrips(current_user)
-    @trips_day_past = @trips.find_all { |t|  t[:trip].starts_at >= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
-    @trips_day_up = @trips.find_all { |t|  t[:trip].starts_at <= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
+    @trips_day_past = @trips.find_all { |t|  t[:trip].starts_at <= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
+    @trips_day_up = @trips.find_all { |t|  t[:trip].starts_at >= Date.today }.group_by { |t| t[:trip].starts_at.to_date }
   end
 
   def mymessages

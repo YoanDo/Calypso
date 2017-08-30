@@ -5,6 +5,7 @@
       <%= simple_form_for(@trip) do |f| %>
         <div class="form-inputs">
           <%= f.input :title, placeholder: "The title of your trip" %>
+          <%= f.input :status,collection: Trip::STATUS %>
           <%= f.input :from, input_html: {class: "autocomplete-location", value: f.object.from.address || "" }%>
           <%= f.input :to, input_html: {class: "autocomplete-location", value: f.object.to.address || ""} %>
           <%= f.input :starts_at %>

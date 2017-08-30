@@ -22,6 +22,8 @@ class Trip < ApplicationRecord
   validates :status, inclusion: { in: STATUS }
   validates :category, inclusion: { in: CATEGORY }
 
+  before_save :calcul_itinary, on: [ :create, :update ]
+
   def is_full?
     self.participants.where(status: "accepted").count >= self.nb_participant
   end
