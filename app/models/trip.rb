@@ -52,9 +52,8 @@ class Trip < ApplicationRecord
   def light_weather
     response = open("https://api.worldweatheronline.com/premium/v1/marine.ashx?key=#{ENV['WWO_KEY']}&format=json&q=#{to.latitude},#{to.longitude}").read
     response = JSON.parse(response)
-    date = self.starts_at.strftime("%Y-%m-%e")
+    date = self.starts_at.strftime("%Y-%m-%d")
     light_weather = {}
-    raise
     response["data"]["weather"].each do |w|
       if w["date"] == date
         light_weather[:wave] = w["hourly"][5]["sigHeight_m"]
