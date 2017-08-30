@@ -1,12 +1,6 @@
+
+<% unless trip.starts_at < Date.today || trip.starts_at > Date.today+7 %>
 <% weather = trip.light_weather %>
-<% if weather == {} %>
-<div class="card-trip__weather">
-  <div class="display-flex float-right">
-    <p><em>Winter is coming...</em></p>
-  </div>
-</div>
-<% else %>
-<!-- WEATHER IF API GET RESPONSE -->
 <div class="card-trip__weather">
   <div class="display-flex float-right">
     <div class="display-flex-end">
@@ -30,6 +24,12 @@
         <% end %>
       </h5>
     </div>
+  </div>
+</div>
+<% else %>
+<div class="card-trip__weather">
+  <div class="display-flex float-right">
+    <p><em>Winter is coming...</em></p>
   </div>
 </div>
 <% end %>
