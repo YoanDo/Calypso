@@ -28,10 +28,15 @@
   background-color: white;
 }
 
-.listing-chat li:active {
-  color: $orange;
+.active-li {
+
+  opacity: 1;
+  background-color: white;
 }
 
+.active-li p {
+    color: $orange;
+  }
 
 .conversation {
   width: 100%;
@@ -72,10 +77,7 @@
   padding: 2%
 }
 
-li hr{
-  border: solid 1px red;
-  margin: 2%;
-}
+
 
 // message_show
 .message {
