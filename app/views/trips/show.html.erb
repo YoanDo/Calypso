@@ -194,7 +194,7 @@
     <% if @trip.estimated_duration? %>
     <div class="road-time">
 
-      <h4>It will take you <%= Time.at(@trip.estimated_duration).utc.strftime("%Hh and %M") %> to join the spot.
+      <h4>It will take you <%= Time.at(@trip.estimated_duration).utc.strftime("%Hh %Mmin") %> to join the spot.
       </h4>
 
     </div>
