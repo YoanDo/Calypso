@@ -106,7 +106,23 @@
   border: 2px solid white;
 }
 
+.btn-info:focus {
+  border: solid 2px RGBA(62, 61, 75, 1.00);
+  color: white;
+  background-color: RGBA(62, 61, 75, 1.00);
+}
 
+.btn-info:active {
+  border: solid 2px RGBA(62, 61, 75, 1.00);
+  color: white;
+  background-color: RGBA(62, 61, 75, 1.00);
+}
+
+.btn-info:active:focus {
+  border: solid 2px RGBA(62, 61, 75, 1.00);
+  color: white;
+  background-color: RGBA(62, 61, 75, 1.00);
+}
 
 .btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
 .btn-facebook:focus,.btn-facebook.focus{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}
