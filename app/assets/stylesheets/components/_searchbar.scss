@@ -96,3 +96,22 @@
    color: $black;
    margin-right: 10px;
 }
+
+#nearfrom::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    white;
+}
+#nearfrom:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white;
+   opacity:  1;
+}
+#nearfrom::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white;
+   opacity:  1;
+}
+#nearfrom:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    white;
+}
+#nearfrom::-ms-input-placeholder { /* Microsoft Edge */
+   color:    white;
+}
+
