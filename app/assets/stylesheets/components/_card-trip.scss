@@ -8,6 +8,9 @@
   margin: 20px 0;
   align-items: center;
   background: RGB(255, 255, 255);
+  & p {
+    margin: 0 0 3px !important;
+  }
 }
 
 .float-right {
@@ -153,9 +156,11 @@
   display: flex;
 }
 
+
 .u-add-padding-left-15 {
   padding-left: 15px;
 }
+
 
 
 @media screen and (max-width: 700px) {
