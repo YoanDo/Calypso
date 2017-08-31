@@ -624,7 +624,7 @@ t17.ends_at = "Sun, 03 Sep 2017 20:30:00 UTC +00:00"
 t17.description = "Etretat seems to be perfect saturday. lets go surfing
 I have a car.
 Weather is sunny"
-t17.nb_participant = "6"
+t17.nb_participant = "4"
 t17.user = u9
 t17.status = "going"
 t17.category = "Surf"
@@ -645,24 +645,6 @@ p4.message = "Awesome. I want to surf"
 p4.save!
 
 puts "Participant 4 on #{t17.title}"
-
-p5 = Participant.new
-p5.user = u9
-p5.trip = t17
-p5.status = "accepted"
-p5.message = "Can i join you ?"
-p5.save!
-
-puts "Participant 5 on #{t17.title}"
-
-p6 = Participant.new
-p6.user = u5
-p6.trip = t17
-p6.status = "accepted"
-p6.message = "Could i come with my Dog ?"
-p6.save!
-
-puts "Participant 6 on #{t17.title}"
 
 
 
