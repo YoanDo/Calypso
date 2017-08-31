@@ -42,6 +42,12 @@
   font-weight: bolder;
 }
 
+.color-green {
+  color: $green;
+  font-family: "lato";
+  font-weight: bolder;
+}
+
 .color-red {
   color: $red;
   font-family: "lato";
@@ -125,5 +131,9 @@
 .border-bottom {
   padding-bottom: 10px;
   border-bottom: 1px solid RGB(220, 220, 220);
+  margin-bottom: 10px;
+}
+
+.u-add-margin-bottom {
   margin-bottom: 10px;
 }
