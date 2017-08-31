@@ -25,7 +25,14 @@
       <%= trip.to.city %></h4>
     <% end %>
 
-     <p>Hosted by <%= trip.user.first_name %></p>
+     <p>
+     Hosted by <%= trip.user.first_name %>
+     </p>
+     <p>
+     <% if trip.estimated_duration? %>
+     Travel duration: <%= Time.at(trip.estimated_duration).utc.strftime("%Hh %Mmin") %>
+     <% end %>
+     </p>
 
     <% if trip.participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
       <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
