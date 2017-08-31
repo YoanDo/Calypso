@@ -12,6 +12,10 @@
 }
 
 
+#participant_message {
+  resize: none;
+}
+
 .trip-total hr {
   width: 100%;
   border: none;
@@ -312,6 +316,10 @@ text-transform: uppercase;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  position: fixed;
+  top: 0px;
+  padding-top: 10vh;
+  right: 0px;
 }
 
 
