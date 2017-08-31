@@ -68,6 +68,18 @@
   background-color: $green;
 }
 
+.pending {
+  background-color: yellow;
+}
+
+.cancelled {
+  background-color: $red;
+}
+
+.category {
+  background-color: $orange;
+}
+
 
 .trip-edit {
   padding-left: 5%;
@@ -293,7 +305,7 @@ text-transform: uppercase;
 
 //rightbox
 .trip-right {
-  width: 35vw;
+  min-width: 35vw;
   height: 100%;
   color: white;
   padding: 1% 10% 2% 2%;
