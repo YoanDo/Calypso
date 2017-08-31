@@ -33,7 +33,14 @@
   padding: 2px 6px;
   margin-left: 10px;
   font-size: 12px;
+  max-height: 42px;
 }
+
+.category p {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
 
 .category-background-orange {
   background: RGB(115, 204, 215);
