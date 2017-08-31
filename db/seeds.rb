@@ -300,7 +300,7 @@ Le spot est accessible, les débutants n’ayez pas peur de prendre la marée :v
 t2.nb_participant = "1"
 t2.user = u7
 t2.status = "going"
-t2.category = "Surf"
+t2.category = "Kitesurf"
 t2.car = "twingo"
 
 t2.save!
@@ -618,7 +618,7 @@ puts "Trip 16 : #{t16.title}"
 
 t17 = Trip.new
 
-t17.title = "Siouville on fire sunday"
+t17.title = "Etretat on fire sunday"
 t17.starts_at = "Sun, 03 Sep 2017 07:30:00 UTC +00:00"
 t17.ends_at = "Sun, 03 Sep 2017 20:30:00 UTC +00:00"
 t17.description = "Etretat seems to be perfect saturday. lets go surfing
@@ -633,7 +633,7 @@ t17.car = "Combi Volkswagen"
 t17.save!
 
 Location.create(address: "Paris, France", direction: "from", trip: t17)
-Location.create(address: "Siouville, France", direction: "to", trip: t17)
+Location.create(address: "Etretat, France", direction: "to", trip: t17)
 
 puts "Trip 17 : #{t17.title}"
 
