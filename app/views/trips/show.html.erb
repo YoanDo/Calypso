@@ -1,4 +1,4 @@
-<div class="trip-total">
+  <div class="trip-total">
   <div class="trip-left">
     <div class="trip-status">
       <div class="status-color">
@@ -221,14 +221,19 @@
             <% end %>
           <% elsif @trip.has_participant(current_user)[:status] == 'pending' %>
 
-                  <p>We've sent your request to <% @trip.user %></p>
+                  <p>We've sent your request to <%= @trip.user.first_name %></p>
 
-                  <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %>
+                  <%= link_to "check it", mytrips_users_path ,{:class=>"btn btn-primary btn-sychronize "} %>
+
+                  <%= link_to "Cancel request", trip_participant_path(@trip, @trip.has_participant(current_user)[:participant] , status: "cancelled"), method: :patch, class: 'btn btn-info' %> <br>
           <% elsif @trip.has_participant(current_user)[:status] == 'waiting list' %>
                   <p>You are on the waiting list for this trip</p>
           <% elsif @trip.has_participant(current_user)[:status] == 'accepted' %>
           <%= link_to  mytrips_users_path(@user) do%>
                   <p>You have joined this trip ! 🔥</p>
+
+                  <%= link_to "check it", mytrips_users_path ,{:class=>"btn btn-primary btn-sychronize "} %> <br>
+
                   <% end %>
           <% elsif @trip.has_participant(current_user)[:status] == 'declined' %>
                   <p><%= @trip.user.first_name %> has declined your request to join this trip</p>
