@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :edit, :update, :show ] do
     get 'mytrips', on: :collection
     get 'mymessages', on: :collection
+    patch 'updatefbmessenger', on: :collection
     resources :reviews, only: [ :create ]
   end
 

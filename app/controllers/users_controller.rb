@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def updatefbmessenger
+    @user = current_user
+    current_user.update(user_params)
+    redirect_to trips_path, notice: 'Facebook notifications have been updated'
+  end
+
   def mytrips
     @trips = current_user.trips.order(starts_at: :asc)
     @trips_up = @trips.find_all { |t|  t.starts_at >= Date.today }.group_by { |t| t.starts_at.to_date }
