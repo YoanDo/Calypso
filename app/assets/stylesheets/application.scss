@@ -22,6 +22,11 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     outline: 0 none;
 }
 
+
+.container {
+  min-height: calc(100vh - 220px);
+}
+
 a{
   opacity: .7;
 }
