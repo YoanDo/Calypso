@@ -1,11 +1,14 @@
 .messenger-box {
   display: flex;
   padding: 2% 10%;
+  max-height: 80vh;
+
 }
 
 .listing-chat {
   width: 30%;
-  max-width: calc(100vh-220px);
+  // max-width: calc(100vh-220px);
+  max-height: 30%;
   overflow: scroll;
   background-color: $light-gray;
  }
@@ -29,12 +32,15 @@
 }
 
 .active-li {
-
   opacity: 1;
   background-color: white;
 }
 
 .active-li p {
+    color: $orange;
+  }
+
+.active-li h4 {
     color: $orange;
   }
 
@@ -51,7 +57,7 @@
 .tripchat {
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 75vh;
   justify-content: space-between;
 }
 
@@ -111,4 +117,13 @@
 
 .chat-form {
   height: 40px;
+}
+
+.listing-chat span{
+  font-size: 12px;
+  font-style: italic;
+}
+
+.listing-chat h4 {
+  margin: 0;
 }
