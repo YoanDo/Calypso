@@ -7,13 +7,13 @@
   background: $green;
 }
 
-.status-color-booking-grey {
+.status-color-booking-yellow {
   top: 0;
   left: 0;
   position: absolute;
   width: 7px;
   height: 100%;
-  background: #BDBFC7;
+  background: $yellow;
 }
 
 .status-color-booking-red {
@@ -36,8 +36,8 @@
   justify-content: right;
 }
 
-.color-green {
-  color: $green;
+.color-yellow {
+  color: $yellow;
   font-family: "lato";
   font-weight: bolder;
 }

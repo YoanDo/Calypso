@@ -18,10 +18,10 @@
       </div>
     </div>
   <% else %>
-    <div class="status-color-booking-grey">
+    <div class="status-color-booking-yellow">
     </div>
     <div class="status-wording-booking">
-      <div class="u-add-padding-right color-grey">Pending</div>
+      <div class="u-add-padding-right color-yellow">Pending</div>
       <div class="color-grey font-size-25">
       </div>
     </div>
@@ -37,6 +37,8 @@
     <% else %>
       <p><%= trip[:trip].title.upcase %><span class="category category-background-green"><%= trip[:trip].category.downcase %></p></span>
     <% end %>
+
+    <%= link_to trip_path(trip[:trip]) do %>
     <% if trip[:trip].from.city == nil %>
       <h4><%= trip[:trip].from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
       <%= trip[:trip].to.city %></h4>
@@ -50,6 +52,8 @@
       <h4><%= trip[:trip].from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
       <%= trip[:trip].to.city %></h4>
     <% end %>
+    <% end %>
+
     <% if trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
       <p><%= trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip[:trip].nb_participant - trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
     <% else %>
