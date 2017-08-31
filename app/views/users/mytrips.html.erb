@@ -1,6 +1,7 @@
 <div class="container">
   <div class="dashboard">
     <div class="dashboard-trips">
+    <% if @trips_up.present? %>
       <h3>Hosted trips</h3>
 
       <% @trips_up.each do |day, trips| %>
@@ -13,6 +14,8 @@
       <% end %>
       </div>
       <% end %>
+
+    <% end %>
 
       <div class="margin-content">
         <h3>Booked trips</h3>
@@ -30,7 +33,7 @@
       </div>
 
       <div class="margin-content">
-        <h3>Past booked trips</h3>
+        <h3>Past trips</h3>
 
         <% @trips_booked_past.each do |day, trips| %>
         <div class="margin-trips">
@@ -44,7 +47,7 @@
           <% end %>
       </div>
 
-      <div class="margin-content">
+      <!-- <div class="margin-content">
         <h3>Past Host trips</h3>
 
         <% @trips_past.each do |day, trips| %>
@@ -57,7 +60,7 @@
           <% end %>
         </div>
           <% end %>
-      </div>
+      </div> -->
 
     </div>
     <div id="line-height"></div>
