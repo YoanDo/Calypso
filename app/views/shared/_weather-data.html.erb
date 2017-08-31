@@ -1,10 +1,7 @@
-
 <% unless trip.starts_at < Date.today || trip.starts_at > Date.today+7 %>
   <% weather = trip.light_weather %>
  <!-- ajout safeguard -->
   <% unless weather == {} %>
-  <div class="card-trip__weather">
-    <div class="display-flex float-right">
       <div class="display-flex-end">
         <%= image_tag 'icons/sea-waves.svg', { class: "weather-icon-size"} %>
         <h5><%= weather[:wave] %>m</h5>
@@ -26,8 +23,6 @@
           <% end %>
         </h5>
       </div>
-    </div>
-  </div>
   <% else %>
   <div class="card-trip__weather">
   <div class="display-flex float-right">
