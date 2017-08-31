@@ -192,7 +192,9 @@
     </div>
   </div>
   </div>
-  <div class="trip-right">
+
+
+  <div class="trip-right" id="three">
   <!-- map -->
 
     <div id="map" style="width: 100%; height: 40vh;"> </div>
@@ -301,6 +303,23 @@
           }
       });
       <% end %>
+
+
+      // Sticky
+
+
+      var footer = document.getElementById("two").offsetHeight;
+
+    function sticky() {
+      if (window.innerWidth < 900) {
+        $("#three").unstick();
+      } else {
+        $("#three").sticky({bottomSpacing: 130 + footer});
+      }
+    };
+    window.addEventListener('load', sticky);
+    window.addEventListener('resize', sticky);
+
 
       var styles = [
       {
@@ -506,3 +525,4 @@
 </script>
 <% end %>
 </div>
+
