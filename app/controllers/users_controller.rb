@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def updatefbmessenger
     @user = current_user
     current_user.update(user_params)
-    redirect_to trips_path, notice: 'Facebook notifications have been updated'
+    redirect_to mytrips_users_path, notice: 'Facebook notifications have been updated'
   end
 
   def mytrips
