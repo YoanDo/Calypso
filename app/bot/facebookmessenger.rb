@@ -42,7 +42,6 @@ if ENV["ACCESS_TOKEN"].present?
     uid_hash = Net::HTTP.get(uri)
 
     # Parse FB callback and save corresponding UID
-    Rails.logger.info(uid_hash)
     uid = JSON.parse(uid_hash)["data"][0]["id"]
 
     # Update user with mathcing recipient ID (used for all conversations after optin)
