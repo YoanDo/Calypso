@@ -81,7 +81,7 @@ class TripsController < ApplicationController
         end
       end
 
-      redirect_to root_path #change for back to show
+      redirect_to trip_path(@trip)
     else
       render :new
     end
