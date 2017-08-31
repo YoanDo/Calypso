@@ -12,6 +12,7 @@
         <p><%= trip.title.upcase %><span class="category category-background-green"><%= trip.category.downcase %></p></span>
       <% end %>
 
+      <%= link_to trip_path(trip) do %>
       <% if trip.from.city == nil %>
         <h4><%= trip.from.address %> <i class="fa fa-exchange" aria-hidden="true"></i>
         <%= trip.to.city %></h4>
@@ -24,6 +25,7 @@
       <% else %>
         <h4><%= trip.from.city %> <i class="fa fa-exchange" aria-hidden="true"></i>
         <%= trip.to.city %></h4>
+      <% end %>
       <% end %>
 
       <div class="display-flex">
