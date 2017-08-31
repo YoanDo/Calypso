@@ -7,15 +7,16 @@
         <% @trips.each do |trip| %>
           <div class='chat-list' id="trip-<%= trip.id %>">
 
-            <li><p>
-            <%= trip.title.upcase %> <br>
+            <li>
+            <h4> <%= trip.title.upcase %> </h4>
+            <p>
             <% if trip.from.city.nil? || trip.from.city.nil?  %>
               <%= trip.from.address %> to <%= trip.to.address %>
             <% else %>
               <%= trip.from.city %> to <%= trip.to.city %>
             <% end %><br>
 
-            <%= trip.starts_at.strftime("%A %e %b %Y - %k:%M") %>
+            <span> <%= trip.starts_at.strftime("%A %e %b %Y - %k:%M") %> </span>
             </p></li>
           </div>
         <% end %>
