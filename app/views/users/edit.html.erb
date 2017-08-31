@@ -3,64 +3,18 @@
     <Div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
       <%= simple_form_for(@user) do |f| %>
         <%= f.error_notification %>
-        <%= f.input :first_name, required: true %>
-        <%= f.input :last_name, required: true %>
-        <%= f.input :phone, label: 'Phone number (displayed only to people you travel with)' %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
         <%= f.input :description, required: true, label: 'Profile', placeholder: 'Tell us about yourself !', as: :text, :input_html => {:rows => 5} %>
         <%= f.input :level, required: true, label: 'Surf level', collection: ['Beginner', 'Intermediate', 'Advanced' ] %>
-        <%= f.input :location, required: true %>
-        <%= f.input :language, required: true %>
-        <%= f.input :follow_city, label: "Indicate your departure city if you would like to receive Facebook notifications when a trip is created", input_html: {class: "autocomplete-location"} %>
-        <!-- FB messenger sign up -->
-        <%= f.input :photo, required: true %>
+        <%= f.input :location %>
+        <%= f.input :language %>
+        <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
         <%= f.input :photo_cache, as: :hidden %>
 
         <%= f.button :submit, 'Update', class: 'btn btn-primary', id: 'update_button' %>
       <% end %>
-      <% if ENV["ACCESS_TOKEN"].present? %>
-        <div class="fb-messenger-checkbox"
-          origin= <%= ENV["FB_ORIGIN_URL"] %>
-          page_id= <%=  ENV["FB_PAGE_ID"] %>
-          messenger_app_id= <%= ENV["FB_APP_ID"] %>
-          user_ref="<%= user_ref = SecureRandom.base64 %>"
-          prechecked="true"
-          allow_login="true"
-          size="large"></div>
-      <% end %>
     </Div>
   </div>
-      </div>
-
-<% if ENV["ACCESS_TOKEN"].present? %>
-  <% content_for (:after_js) do %>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : <%= ENV["FB_APP_ID"] %>,
-          xfbml      : true,
-          version    : 'v2.6'
-        });
-
-      };
-
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk')
-      );
-
-      document.getElementById("update_button").addEventListener("click", (event) => {
-        FB.AppEvents.logEvent('MessengerCheckboxUserConfirmation', null, {
-          'app_id': <%= ENV["FB_APP_ID"] %>,
-          'page_id': <%= ENV["FB_PAGE_ID"] %>,
-          'user_ref':'<%= user_ref %>'
-        });
-        console.log('sent')
-      });
-    </script>
-  <% end %>
-<% end %>
+</div>
