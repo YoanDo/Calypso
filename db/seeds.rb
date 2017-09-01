@@ -281,7 +281,7 @@ t1.car = "Zeg"
 
 t1.save!
 
-Location.create(address: "Paris, France", direction: "from", trip: t1)
+Location.create(address: "Lille, France", direction: "from", trip: t1)
 Location.create(address: "Etretat", direction: "to", trip: t1)
 
 puts "Trip 1 : #{t1.title}"
@@ -645,6 +645,3 @@ p4.message = "Awesome. I want to surf"
 p4.save!
 
 puts "Participant 4 on #{t17.title}"
-
-
-
