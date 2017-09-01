@@ -34,11 +34,32 @@
      <% end %>
      </p>
 
-    <% if trip.participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
-      <p><%= trip.participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-    <% else %>
-      <p><span class="u-color-font-orange">• <%= trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-    <% end %>
+    <% nb_accepted_participants = trip.participants.select { |participant| participant.status == 'accepted'}.size %>
+    <% nb_seats_left = trip.nb_participant - trip.participants.select { |participant| participant.status == 'accepted'}.size %>
+
+    <span class='font-size-14'>
+      <p>
+
+        <% if nb_accepted_participants == trip.nb_participant %>
+        <% elsif nb_accepted_participants > 1 %>
+          <%= nb_accepted_participants %> surfers going
+        <% elsif nb_accepted_participants == 1 %>
+          1 surfer going
+        <% else %>
+        <% end %>
+
+        <span class="u-color-font-orange">
+          <% if nb_seats_left > 1 %>
+            • <%= nb_seats_left %> seats left
+          <% elsif nb_seats_left == 1 %>
+            • 1 seat left
+          <% elsif nb_accepted_participants == trip.nb_participant %>
+            • Trip full
+          <% else %>
+          <% end %>
+        </span>
+      </p>
+    </span>
   </div>
          <!-- WEATHER without RESPONSE  -->
   <div class="card-trip__weather">

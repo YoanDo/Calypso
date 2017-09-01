@@ -65,3 +65,23 @@
 }
 
 
+@media screen and (max-width: 1000px) {
+  .dashboard {
+    flex-direction: column;
+    margin-top: 0px;
+  }
+
+  .dashboard-trips {
+    width: 100%;
+  }
+
+  .dashboard-notifications {
+    width: 100%;
+    text-align: center;
+  }
+
+  .line-height {
+    display: none;
+  }
+}
+
