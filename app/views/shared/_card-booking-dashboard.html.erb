@@ -54,17 +54,52 @@
     <% end %>
     <% end %>
 
+    <p>
+     Hosted by <%= trip[:trip].user.first_name %>
+     </p>
+
+    <span class="font-size-14">
     <% if trip[:status] == 'accepted' %>
+      <div class="chat-link">
         <%= link_to mymessages_users_path do %>
-            <i class="fa fa-comments" aria-hidden="true"></i> Discuss with other participants
+            <i class="fa fa-commenting" aria-hidden="true"></i> Chat now
         <% end %>
+      </div>
     <% else %>
-      <% if trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size > 0 %>
-        <p><%= trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> surfers going <span class="u-color-font-orange">• <%= trip[:trip].nb_participant - trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-      <% else %>
-        <p><span class="u-color-font-orange">• <%= trip[:trip].nb_participant - trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %> seats left</span></p>
-      <% end %>
+
+    <% nb_accepted_participants = trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %>
+    <% nb_seats_left = trip[:trip].nb_participant - trip[:trip].participants.select { |participant| participant.status == 'accepted'}.size %>
+
+    <span class='font-size-14'>
+      <p>
+
+        <% if nb_accepted_participants == trip[:trip].nb_participant %>
+        <% elsif nb_accepted_participants > 1 %>
+          <%= nb_accepted_participants %> surfers going
+        <% elsif nb_accepted_participants == 1 %>
+          1 surfer going
+        <% else %>
+        <% end %>
+
+        <span class="u-color-font-orange">
+          <% if nb_seats_left > 1 %>
+            • <%= nb_seats_left %> seats left
+          <% elsif nb_seats_left == 1 %>
+            • 1 seat left
+          <% elsif nb_accepted_participants == trip[:trip].nb_participant %>
+            • Trip full
+          <% else %>
+          <% end %>
+        </span>
+      </p>
+    </span>
+
     <% end %>
+    </span>
   </div>
+  <div class="card-trip__weather">
+    <div class="display-flex float-right">
   <%= render 'shared/weather-data', trip: trip[:trip] %>
+  </div>
+  </div>
 </div>

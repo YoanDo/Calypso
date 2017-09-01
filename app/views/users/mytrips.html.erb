@@ -1,21 +1,20 @@
 <div class="container">
   <div class="dashboard">
     <div class="dashboard-trips">
-    <% if @trips_up.present? %>
-      <h3>Hosted trips</h3>
+      <% if @trips_up.present? %>
+        <h3>Hosted trips</h3>
 
-      <% @trips_up.each do |day, trips| %>
-      <div class="margin-trips">
-      <div class="date">
-        <h4><%= day.strftime('%A, %B %d') %></h4>
-      </div>
-      <% for trip in trips %>
-      <%= render "shared/card-trip-dashboard", trip: trip %>
+        <% @trips_up.each do |day, trips| %>
+        <div class="margin-trips">
+        <div class="date">
+          <h4><%= day.strftime('%A, %B %d') %></h4>
+        </div>
+        <% for trip in trips %>
+        <%= render "shared/card-trip-dashboard", trip: trip %>
+        <% end %>
+        </div>
+        <% end %>
       <% end %>
-      </div>
-      <% end %>
-
-    <% end %>
 
       <div class="margin-content">
         <h3>Booked trips</h3>
@@ -32,6 +31,7 @@
         <% end %>
       </div>
 
+      <% if @trips_past.present? %>
       <div class="margin-content">
         <h3>Past trips</h3>
 
@@ -46,20 +46,21 @@
         </div>
           <% end %>
       </div>
+      <% end %>
 
       <!-- <div class="margin-content">
         <h3>Past Host trips</h3>
 
-        <% @trips_past.each do |day, trips| %>
+        <#% @trips_past.each do |day, trips| %>
         <div class="margin-trips">
           <div class="date">
-            <h4><%= day.strftime('%A, %B %d') %></h4>
+            <h4><#%= day.strftime('%A, %B %d') %></h4>
           </div>
-          <% for trip in trips %>
-          <%= render "shared/card-trip-dashboard", trip: trip %>
-          <% end %>
+          <#% for trip in trips %>
+          <#%= render "shared/card-trip-dashboard", trip: trip %>
+          <#% end %>
         </div>
-          <% end %>
+          <#% end %>
       </div> -->
 
     </div>
@@ -68,8 +69,8 @@
     <div class="dashboard-notifications">
       <!-- Link to FB messenger sign-in-form -->
       <div class='FB-messenger-sign-in'>
-        <h3>🤖
-Facebook notifications:</h3>
+        <h4>🤖
+Facebook notifications:</h4>
 <p>1 - Create an alert for your departure city</p>
 <p>2 - Receive a message from our bot when someone creates a trip 🎉</p>
         <button type=button, class='btn btn-info fbmessenger'>Get notifications</button>

@@ -102,7 +102,7 @@
 
 .card-dashboard__booking h4 {
   margin-top: 0 !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 8px !important;
 }
 
 .card-booking__options {
@@ -136,4 +136,62 @@
 
 .u-add-margin-bottom {
   margin-bottom: 10px;
+}
+
+.chat-link {
+  margin-bottom: 8px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.chat-link a {
+  color: $black;
+  font-size: 16px;
+  & .fa {
+    color: $green;
+    font-size: 20px;
+  }
+}
+
+.chat-link a:hover {
+  color: $black;
+  cursor: pointer;
+  & .fa:hover {
+    color: $green;
+    cursor: pointer;
+  }
+}
+
+
+#card-info-trip p {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 700px) {
+  .card-dashboard__booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 15px;
+  }
+
+  .card-trip__time {
+    padding-left: 10px;
+  }
+
+  .card-trip__weather {
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  .float-right {
+    float: left !important;
+  }
+
+  #card-info-trip {
+    float: left !important;
+    width: 100% !important;
+    padding-left: 10px !important;
+  }
 }
