@@ -9,6 +9,9 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 
+#find error
+gem 'rails_12factor', group: :production
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
