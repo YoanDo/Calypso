@@ -21,6 +21,7 @@ module Calypso
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.paths.add File.join('app', 'bot'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'bot', '*')]
+    config.i18n.default_locale = :fr
     config.generators do |generate|
       generate.assets false
       generate.helper false
@@ -31,4 +32,5 @@ module Calypso
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
 end

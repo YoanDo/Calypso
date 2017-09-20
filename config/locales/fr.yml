@@ -19,16 +19,17 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   home:
-    join-a-trip: "JOIN A TRIP,"
-    meet-surfers: "MEET SURFERS,"
-    create-adventures: "CREATE ADVENTURES"
+    join-a-trip: "rejoint une session,"
+    meet-surfers: "rencontre des surfeurs,"
+    create-adventures: "mets toi à l'eau "
 
-    explore: "EXPLORE"
+    explore: "explorer"
 
-    find-a-trip: "FIND A TRIP"
-    find-a-trip-descr: "Find people who share your passion and escape the city for a surf session"
+    find-a-trip: "trouve une session"
+    find-a-trip-descr: "Rencontre des gens qui partagent ta passion et pars pour une session"
 
-    create-a-trip: 'CREATE A TRIP'
-    create-a-trip-descr: "Organize your own trip and connect with a community of thousands of surf enthusiasts"
+    create-a-trip: 'crée tes sessions'
+    create-a-trip-descr: "organise tes propres trips et connecte toi à une communauté grandissante"
+

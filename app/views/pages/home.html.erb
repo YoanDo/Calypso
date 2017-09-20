@@ -1,48 +1,42 @@
 <header class="heropanel--video" data-vide-bg="mp4: https://res.cloudinary.com/dyub4bz6x/video/upload/v1503833173/banner-calypso_br9sj1.mp4", poster: https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg data-vide-options="posterType: png, loop: true, muted: true, position: 50% 50%">
+<%#= I18n.locale %>
   <div class="heropanel__content">
-    <h1>JOIN A TRIP ,</h1>
-    <h1>MEET SURFERS,</h1>
-    <h1>CREATE ADVENTURES</h1>
+    <h1><%= t "home.join-a-trip" %></h1>
+    <h1><%= t "home.meet-surfers" %></h1>
+    <h1><%= t "home.create-adventures" %></h1>
   </div>
   <!-- searchbar -->
   <!-- <#%= render 'shared/search' %> -->
   <!-- btn explore -->
   <div class="explore-btn">
-  <%= link_to "EXPLORE", trips_path ,{:class=>"btn btn-explore btn-full-width"} %>
-   </div>
+    <%= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%= t "home.explore" %>
+    <% end %>
+  </div>
 </header>
 <!-- ligne -->
 <div class="block-center">
 </div>
-
-
 <!-- join  -->
 <div class="map-container">
-      <div class="find">
-        <h3><i class="fa fa-search" aria-hidden="true"></i>
-        FIND A TRIP</h3>
-        <p>Find people who share your passion <br> and escape the city for a surf <br> session</p>
-      </div>
-
+  <div class="find">
+    <h3><i class="fa fa-search" aria-hidden="true"></i>
+    <%= t "home.find-a-trip" %></h3>
+    <p><%= t "home.find-a-trip-descr" %></p>
+  </div>
 </div>
-
-
 <div class="create-container">
   <div class="bg">
   </div>
   <div class="white-bg text-center">
     <h3>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      CREATE A TRIP
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <%= t "home.create-a-trip" %>
     </h3>
     <p>
-    Organize your own trip and connect with <br> a community of thousands of <br> surf enthusiasts
+      <%= t "home.create-a-trip-descr" %>
     </p>
   </div>
 </div>
 <div class="block-center">
 </div>
-
-
-
-
