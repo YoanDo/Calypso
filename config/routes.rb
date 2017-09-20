@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount ActionCable.server => '/cable'
   mount Facebook::Messenger::Server, at: 'bot'
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+scope '(:locale)', locale: /fr|en/ do
   resources :trips, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :comments, only: [:create]
     resources :participants, only: [ :create, :update ]
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+end
 end
