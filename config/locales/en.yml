@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home:
+    join-a-trip: "JOIN A TRIP,"
+    meet-surfers: "MEET SURFERS,"
+    create-adventures: "CREATE ADVENTURES"
+
+    explore: "EXPLORE"
+
+    find-a-trip: "FIND A TRIP"
+    find-a-trip-descr: "Find people who share your passion
+  and escape the city for a surf
+  session"
+
+    create-a-trip: 'CREATE A TRIP'
+    create-a-trip-descr: "Organize your own trip and connect with
+  a community of thousands of
+  surf enthusiasts"
