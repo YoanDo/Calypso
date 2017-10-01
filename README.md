@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+You love surfing and live away from the sea? Calypso is a new community plateform made to help surfers to connect and organize their trips.
+Upcomming version:
+- Mail collect for beta test
