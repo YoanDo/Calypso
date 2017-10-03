@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :subscribers
   mount ActionCable.server => '/cable'
   mount Facebook::Messenger::Server, at: 'bot'
 
