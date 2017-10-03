@@ -13,7 +13,12 @@
     <%= t "home.explore" %>
     <% end %>
   </div>
-
+  <div>
+  <%= form_for Subscriber.create do |f| %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>
+  </div>
 </header>
 <!-- ligne -->
 <div class="block-center">
