@@ -9,13 +9,15 @@
   <!-- <#%= render 'shared/search' %> -->
   <!-- btn explore -->
   <div class="explore-btn">
-    <%= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-    <%= t "home.explore" %>
-    <% end %>
+<!-- a reactiver après phase mail -->
+    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%#= t "home.explore" %>
+    <%# end %>
+
     <div class="mail-collector">
       <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
-        <%= f.text_field :email, placeholder: t "test" %>
-        <%= f.submit %>
+        <%= f.text_field :email, placeholder: "email address" %>
+        <%= f.submit "send" %>
       <% end %>
     </div>
   </div>
