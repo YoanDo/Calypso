@@ -87,3 +87,20 @@
     height: 100vh;
   }
 }
+
+.mail-collector {
+  display: flex;
+  flex-direction: row;
+}
+
+.mail-collector input {
+  border: solid 3px white;
+  color: white;
+  background-color: rgba(255, 116, 97, 0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
+  }

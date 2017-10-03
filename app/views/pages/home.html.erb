@@ -12,13 +12,14 @@
     <%= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
     <%= t "home.explore" %>
     <% end %>
+    <div class="mail-collector">
+      <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
+        <%= f.text_field :email, placeholder: t "test" %>
+        <%= f.submit %>
+      <% end %>
+    </div>
   </div>
-  <div class="explore-btn">
-  <%= form_for Subscriber.create do |f| %>
-  <%= f.text_field :email %>
-  <%= f.submit %>
-<% end %>
-  </div>
+
 </header>
 <!-- ligne -->
 <div class="block-center">
