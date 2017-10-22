@@ -5,21 +5,19 @@
     <h1><%= t "home.meet-surfers" %></h1>
     <h1><%= t "home.create-adventures" %></h1>
   </div>
+    <% if user_signed_in? %>
   <!-- searchbar -->
-  <!-- <#%= render 'shared/search' %> -->
+      <%= render 'shared/search' %>
   <!-- btn explore -->
-  <div class="explore-btn">
-<!-- a reactiver après phase mail -->
-    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-    <%#= t "home.explore" %>
-    <%# end %>
-
-    <div class="mail-collector">
-      <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
-        <%= f.text_field :email, placeholder: "email address" %>
-        <%= f.submit "send", class: "send" %>
-      <% end %>
-    </div>
+    <% else %>
+    <div class="explore-btn">
+      <div class="mail-collector">
+        <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
+          <%= f.text_field :email, placeholder: "email address" %>
+          <%= f.submit "send", class: "send" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
 </header>
