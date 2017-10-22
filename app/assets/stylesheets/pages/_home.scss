@@ -44,6 +44,11 @@
   margin-left: 25%;
 }
 
+
+.explore-btn input::placeholder {
+  color: white;
+}
+
 //create
 
 .create-container {
@@ -104,3 +109,11 @@
   text-transform: uppercase;
   padding: 6px 28px;
   }
+
+
+
+.send {
+  border-radius: 0 !important;
+  border-left: none !important;
+}
+

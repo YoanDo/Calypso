@@ -17,7 +17,7 @@
     <div class="mail-collector">
       <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
         <%= f.text_field :email, placeholder: "email address" %>
-        <%= f.submit "send" %>
+        <%= f.submit "send", class: "send" %>
       <% end %>
     </div>
   </div>
