@@ -28,7 +28,8 @@ gem "gmaps4rails"
 gem "facebook-messenger"
 gem 'chart-js-rails'
 gem 'devise-i18n'
-gem "gibbon"
+gem 'gibbon'
+gem 'vider', github: 'wazery/vider'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
