@@ -10,17 +10,18 @@
   <!-- btn explore -->
   <div class="explore-btn">
 <!-- a reactiver après phase mail -->
-    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-    <%#= t "home.explore" %>
-    <%# end %>
+    <%= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%= t "home.explore" %>
+    <% end %>
 
-    <div class="mail-collector">
-      <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
-        <%= f.text_field :email, placeholder: "email address" %>
-        <%= f.submit "send", class: "send" %>
-      <% end %>
+<!-- old mail collector -->
+<!--     <div class="mail-collector">
+      <#%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
+        <#%= f.text_field :email, placeholder: "email address" %>
+        <#%= f.submit "send", class: "send" %>
+      <#% end %>
     </div>
-  </div>
+  </div> -->
 
 </header>
 
