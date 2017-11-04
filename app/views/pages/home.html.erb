@@ -9,10 +9,15 @@
   <!-- <#%= render 'shared/search' %> -->
   <!-- btn explore -->
   <div class="explore-btn">
+
+  <!-- pop on click -->
+    <div id="open-mc-popup" class="btn btn-explore btn-full-width" onclick="showMailingPopUp(); return false;"><%= t "home.register" %>
+    </div>
+
 <!-- a reactiver après phase mail -->
-    <%= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-    <%= t "home.explore" %>
-    <% end %>
+    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%#= t "home.explore" %>
+    <%# end %>
 
 <!-- old mail collector -->
 <!--     <div class="mail-collector">
