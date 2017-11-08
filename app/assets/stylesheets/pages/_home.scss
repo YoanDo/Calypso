@@ -1,119 +1,95 @@
 // Specific CSS for your home-pa
 .map-container {
-  background: url(image-path("calypso-range.jpg"));
+background: url(image-path("calypso-range.jpg"));
 }
-
 .map-container h2 {
-  font-size: 33px;
+font-size: 33px;
 }
-
 .map-container p {
-  font-size: 20px;
+font-size: 20px;
 }
-
 .find {
-  margin-left: 5%;
+margin-left: 5%;
 }
-
 .find p {
-  max-width: 42%;
-
+max-width: 42%;
 }
-
-
 .text-map-background {
-  width: 50%;
-  word-wrap:break-word;
+width: 50%;
+word-wrap:break-word;
 }
-
 .map-container {
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  background-image: url(image-path("calypso-range.jpg"));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right;
-
+width: 100%;
+height: 50vh;
+display: flex;
+align-items: center;
+background-image: url(image-path("calypso-range.jpg"));
+background-repeat: no-repeat;
+background-size: cover;
+background-position: right;
 }
-
 .explore-btn {
-  width: 30%;
-  text-align: center;
-  margin-left: 25%;
+width: 30%;
+text-align: center;
+margin-left: 25%;
 }
-
 //couleur input
 .explore-btn input::placeholder {
-  color: white;
+color: white;
 }
-
 //create
-
 .create-container {
-  display: flex;
-  // flex-direction: column;
-  width: 100%;
-  height: 50vh;
-  margin-bottom: 2px;
+display: flex;
+// flex-direction: column;
+width: 100%;
+height: 50vh;
+margin-bottom: 2px;
 }
-
 .create-container h2 {
-  font-size: 33px;
+font-size: 33px;
 }
-
 .create-container p {
-  font-size: 20px;
+font-size: 20px;
 }
-
 .bg {
-  background-image: url(image-path("sunset.jpg"));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left;
-  flex: 1 1 70%;
+background-image: url(image-path("sunset.jpg"));
+background-repeat: no-repeat;
+background-size: cover;
+background-position: left;
+flex: 1 1 70%;
 }
-
 .white-bg {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex: 1 1 30%;
-  padding: 20px;
-  text-align: left;
+background-color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+flex: 1 1 30%;
+padding: 20px;
+text-align: left;
 }
-
 @media (max-width: 600px) {
-  .create-container {
-    flex-direction: column;
-    height: 100vh;
-  }
+.create-container {
+flex-direction: column;
+height: 100vh;
 }
-
+}
 .mail-collector {
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
-
 .mail-collector input {
-  border: solid 3px white;
-  color: white;
-  background-color: rgba(255, 116, 97, 0);
-  font-family: 'Lato';
-  font-size: 14;
-  font-weight: 300;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 6px 28px;
-  }
-
-
-
-.send {
-  border-radius: 0 !important;
-  border-left: none !important;
+border: solid 3px white;
+color: white;
+background-color: rgba(255, 116, 97, 0);
+font-family: 'Lato';
+font-size: 14;
+font-weight: 300;
+letter-spacing: 3px;
+text-transform: uppercase;
+padding: 6px 28px;
 }
-
+.send {
+border-radius: 0 !important;
+border-left: none !important;
+}
