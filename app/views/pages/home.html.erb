@@ -5,21 +5,23 @@
     <h1><%= t "home.meet-surfers" %></h1>
     <h1><%= t "home.create-adventures" %></h1>
   </div>
-    <% if user_signed_in? %>
   <!-- searchbar -->
-      <%= render 'shared/search' %>
-  <!-- MAIL COLLECTION : à virer après phase test -->
-    <% else %>
-    <div class="explore-btn">
-      <div class="mail-collector">
-        <%= form_for Subscriber.create, html: {class: "mail-collector"} do |f| %>
-          <%= f.text_field :email, placeholder: "email address" %>
-          <%= f.submit "send", class: "send" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <!-- <#%= render 'shared/search' %> -->
+  <!-- btn explore -->
+  <div class="explore-btn">
+
+  <!-- pop on click -->
+    <div id="open-mc-popup" class="btn btn-explore btn-full-width open-popup" onclick="showMailPopup()" ><%= t "home.register" %>
+    </div>
+
+<!-- a reactiver après phase mail -->
+    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%#= t "home.explore" %>
+    <%# end %>
+
+
 </header>
+
 <!-- join  -->
 <div class="map-container">
   <div class="find">
@@ -41,8 +43,4 @@
     </p>
   </div>
 </div>
-<div class="block-center">
-</div>
-
-<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
-<script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"af12c8121a0cbbd603454ea9e","lid":"4904281888"}) })</script>
+<!-- ligne couleur map <div class="block-center"> </div> -->
