@@ -1,5 +1,12 @@
-<header class="heropanel--video" data-vide-bg="mp4:https://res.cloudinary.com/dyub4bz6x/video/upload/v1503833173/banner-calypso_br9sj1.mp4", poster: https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg data-vide-options="posterType: png, loop: true, muted: true, position: 50% 50%">
-<%#= I18n.locale %>
+<header class="heropanel--video curve-mask" data-vide-bg="mp4:https://res.cloudinary.com/dyub4bz6x/video/upload/v1503833173/banner-calypso_br9sj1.mp4", poster: https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg data-vide-options="posterType: png, loop: true, muted: true, position: 50% 50%">
+  <div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand logo-nav" do %>
+    CALYPSO<span>/</span>
+  <% end %>
+</div>
+
+  <%#= I18n.locale %>
   <div class="heropanel__content">
     <h1><%= t "home.join-a-trip" %></h1>
     <h1><%= t "home.meet-surfers" %></h1>
@@ -9,42 +16,40 @@
   <!-- <#%= render 'shared/search' %> -->
   <!-- btn explore -->
   <div class="explore-btn">
-
-  <!-- pop on click -->
+    <!-- pop on click -->
     <div id="open-mc-popup" class="btn btn-explore btn-full-width open-popup" onclick="showMailPopup()" ><%= t "home.register" %>
     </div>
-</div>
-
-<!-- a reactiver après phase mail -->
-    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-    <%#= t "home.explore" %>
-    <%# end %>
-
-
+  </div>
+  <!-- a reactiver après phase mail -->
+  <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+  <%#= t "home.explore" %>
+  <%# end %>
 </header>
-
 <!-- join  -->
-<div class="map-container">
-  <div class="find">
-    <h3><i class="fa fa-search" aria-hidden="true"></i>
-    <%= t "home.find-a-trip" %></h3>
-    <p><%= t "home.find-a-trip-descr" %></p>
+<div class="actions-demo">
+  <div class="map-container">
+    <div class="find">
+      <h3><i class="fa fa-search" aria-hidden="true"></i>
+      <%= t "home.find-a-trip" %></h3>
+      <p><%= t "home.find-a-trip-descr" %></p>
+    </div>
+    <div class="find-demo">
+      <img src="https://res.cloudinary.com/dyub4bz6x/image/upload/v1512858771/demo-search_ybitac.gif" class="shadow-demo" alt="">
+    </div>
   </div>
-</div>
-<div class="create-container">
-  <div class="bg">
-  </div>
-  <div class="white-bg text-center">
-    <h3>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    <%= t "home.create-a-trip" %>
-    </h3>
-    <p>
-      <%= t "home.create-a-trip-descr" %>
-    </p>
+  <div class="create-container">
+    <div class="bg">
+    </div>
+    <div class="white-bg text-center">
+      <h3>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      <%= t "home.create-a-trip" %>
+      </h3>
+      <p>
+        <%= t "home.create-a-trip-descr" %>
+      </p>
+    </div>
   </div>
 </div>
 <!-- ligne couleur map <div class="block-center"> </div> -->
-
 <!-- nb : mp4:http://res.cloudinary.com/dyub4bz6x/video/upload/v1510410746/calypso-bannerNB-med_d58u6g.mp4 , carmine #ED2F2F-->
-
