@@ -17,8 +17,14 @@ header .navbar-wagon {
   }
 }
 
+header .header-content{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
 header:after{
-      background-image: radial-gradient(95% 170px at 50% -5px, transparent 99%, rgb(255, 255, 255) 100%);
+      background-image:  radial-gradient(87% 173px at 23% -5px, transparent 99%, white 100%);
     height: 265px;
     width: 100%;
     display: block;
@@ -30,7 +36,7 @@ header:after{
   margin: 0 8%;
 }
 .map-container {
-  // background: url(image-path("calypso-range.jpg"));
+  // background: url(image-path("calypso-range.jpg"));x
   display: flex;
   align-items: center;
 }
@@ -89,7 +95,7 @@ background-position: right;
 .explore-btn {
 width: 30%;
 text-align: center;
-margin-left: 25%;
+margin: auto;
 }
 //couleur input
 .explore-btn input::placeholder {
