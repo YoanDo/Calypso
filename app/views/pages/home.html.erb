@@ -34,46 +34,31 @@
       <%= t "home.find-a-trip" %></h3>
       <p><%= t "home.find-a-trip-descr" %></p>
     </div>
-    <div class="action-illustration">
+    <div class="action-illustration iphone">
       <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516466362/demo_iojjsx.gif" class="shadow-demo" alt="">
     </div>
   </div>
   <!-- CREATE -->
   <div class="action-container">
     <div class="action-text">
-      <h3><i class="fa fa-plus" aria-hidden="true"></i><%= t "home.create-a-trip" %></h3>
+      <h3><i class="fa fa-plus" aria-hidden="true"></i>
+      <%= t "home.create-a-trip" %></h3>
       <p><%= t "home.create-a-trip-descr" %></p>
     </div>
-    <div class="action-illustration">
+    <div class="action-illustration mac">
       <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516467667/macbookcalypso-4d51c48cd48d46d193dc922607c21c9ac9ba95b6248bbb4d0932bff031ed6842_gu1d54.png" class="shadow-demo" alt="">
     </div>
   </div>
 </div>
+<div class="join-us">
+  <div class="explore-btn">
+    <!-- pop on click -->
+    <div id="open-mc-popup" class="btn btn-explore btn-full-width open-popup" onclick="showMailPopup()" ><%= t "home.register" %>
+    </div>
+  </div>
+</div>
 
-<!-- OLD -->
-<div class="map-container">
-  <div class="find">
-    <h3><i class="fa fa-plus" aria-hidden="true"></i><%= t "home.create-a-trip" %></h3>
-    <p><%= t "home.create-a-trip-descr" %></p>
-  </div>
-  <div class="find-demo">
-    <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516466362/demo_iojjsx.gif" class="shadow-demo" alt="">
-  </div>
-</div>
-<!-- old -->
-<div class="create-container">
-  <div class="white-bg text-center">
-    <h3>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    <%= t "home.create-a-trip" %>
-    </h3>
-    <p>
-      <%= t "home.create-a-trip-descr" %>
-    </p>
-  </div>
-  <div class="bg">
-    <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516467667/macbookcalypso-4d51c48cd48d46d193dc922607c21c9ac9ba95b6248bbb4d0932bff031ed6842_gu1d54.png" class="shadow-demo" alt="">
-  </div>
-</div>
+<!-- <div class="progression"></div> -->
+
 <!-- ligne couleur map <div class="block-center"> </div> -->
 <!-- nb : mp4:http://res.cloudinary.com/dyub4bz6x/video/upload/v1510410746/calypso-bannerNB-med_d58u6g.mp4 , carmine #ED2F2F-->
