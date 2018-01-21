@@ -25,65 +25,12 @@ header .header-content{
 
 header:after{
       background-image:  radial-gradient(87% 173px at 23% -5px, transparent 99%, white 100%);
-    height: 265px;
+    height: 270px;
     width: 100%;
     display: block;
     content: "";
     margin-top: 120px;
     z-index: 999;
-}
-.actions-demo {
-  margin: 0 15%;
-}
-
-.find {
-}
-
-@media (min-width: 1020px){
-  .map-container{
-    min-height: 580px;
-  }
-  .find {
-    margin-right: 5%;
-    padding-bottom: 25%;
-    max-width: 300px;
-  }
-  .find-demo{
-    padding-top: 5%;
-  }
-}
-
-
-.text-map-background {
-width: 50%;
-word-wrap:break-word;
-}
-.map-container {
-width: 100%;
-// height: 75vh;
-display: flex;
-justify-content: space-around;
-align-items: center;
-// background-image: url(image-path("calypso-range.jpg"));
-background-repeat: no-repeat;
-background-size: cover;
-background-position: right;
-}
-
-.map-container h2 {
-font-size: 1.8em;
-}
-.map-container p {
-font-size: 1.2em;
-}
-
-.find-demo img {
-  height: 45vw;
-  z-index: 99;
-}
-
-.shadow-demo {
-  // box-shadow: 5px 45px 73px -24px rgba(0,0,0,0.42);
 }
 
 .explore-btn {
@@ -95,36 +42,124 @@ font-size: 1.2em;
 .explore-btn input::placeholder {
 color: white;
 }
-//create
-.create-container {
-display: flex;
-// flex-direction: column;
+
+
+// actions
+.actions-demo .action-container, .create-container {
+  margin-bottom: 5%;
+  padding: 0 15%;
+}
+
+
+.action-container {
 width: 100%;
-height: 50vh;
-margin-bottom: 2px;
-}
-.create-container h2 {
-font-size: 33px;
-}
-.create-container p {
-font-size: 20px;
-}
-.bg {
-background-image: url(image-path("sunset.jpg"));
+// height: 75vh;
+display: flex;
+justify-content: space-around;
+align-items: center;
+// background-image: url(image-path("calypso-range.jpg"));
 background-repeat: no-repeat;
 background-size: cover;
-background-position: left;
-flex: 1 1 70%;
+background-position: right;
 }
+
+.action-container h2 {
+font-size: 1.8em;
+}
+.action-container p {
+font-size: 1.2em;
+}
+
+.action-text{
+  display: flex;
+  flex-direction: column;
+}
+
+.action-illustration img {
+  // height: 100%;
+  // max-height: 50vh;
+  width: 100%;
+  max-width: 30vw;
+}
+
+
+
+
+.find-demo img {
+  height: 45vw;
+  z-index: 99;
+}
+
+.action-text {
+}
+
+@media (min-width: 1020px){
+  .action-container{
+    min-height: 580px;
+  }
+  .action-text {
+    margin-right: 5%;
+    padding-bottom: 25%;
+    max-width: 300px;
+  }
+  .action-text-demo{
+    padding-top: 5%;
+  }
+}
+
+
+
+
+
+
+
+
+
+.text-map-background {
+width: 50%;
+word-wrap:break-word;
+}
+
+.shadow-demo {
+  // box-shadow: 5px 45px 73px -24px rgba(0,0,0,0.42);
+}
+
+//create
+.create-container {
+  display: flex;
+  // flex-direction: column;
+  width: 100%;
+  min-height: 50vh;
+  margin-bottom: 2%;
+  margin-top: 20%;
+}
+
+.create-container h2 {
+  font-size: 33px;
+}
+
+.create-container p {
+  font-size: 20px;
+}
+
+.create-container .bg img {
+  // background-image: url("http://res.cloudinary.com/dyub4bz6x/image/upload/v1516467667/macbookcalypso-4d51c48cd48d46d193dc922607c21c9ac9ba95b6248bbb4d0932bff031ed6842_gu1d54.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: left;
+  // flex: 1 1 70%;
+  height: 50vh;
+}
+
 .white-bg {
-background-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-flex: 1 1 30%;
-padding: 20px;
-text-align: left;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  flex: 1 1 30%;
+  padding: 20px;
+  text-align: left;
 }
 @media (max-width: 600px) {
 .create-container {

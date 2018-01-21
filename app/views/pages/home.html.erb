@@ -1,55 +1,78 @@
 <header class="heropanel--video curve-mask" data-vide-bg="mp4:https://res.cloudinary.com/dyub4bz6x/video/upload/v1503833173/banner-calypso_br9sj1.mp4", poster: https://static.pexels.com/photos/342469/pexels-photo-342469.jpeg data-vide-options="posterType: png, loop: true, muted: true, position: 50% 50%">
   <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand logo-nav" do %>
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand logo-nav" do %>
     CALYPSO<span>/</span>
-  <% end %>
-</div>
-<div class="header-content">
-  <%#= I18n.locale %>
-  <div class="heropanel__content">
-    <h1><%= t "home.join-a-trip" %></h1>
-    <h1><%= t "home.meet-surfers" %></h1>
-    <h1><%= t "home.create-adventures" %></h1>
+    <% end %>
   </div>
-  <!-- searchbar -->
-  <!-- <#%= render 'shared/search' %> -->
-  <!-- btn explore -->
-  <div class="explore-btn">
-    <!-- pop on click -->
-    <div id="open-mc-popup" class="btn btn-explore btn-full-width open-popup" onclick="showMailPopup()" ><%= t "home.register" %>
+  <div class="header-content">
+    <%#= I18n.locale %>
+    <div class="heropanel__content">
+      <h1><%= t "home.join-a-trip" %></h1>
+      <h1><%= t "home.meet-surfers" %></h1>
+      <h1><%= t "home.create-adventures" %></h1>
     </div>
+    <!-- searchbar -->
+    <!-- <#%= render 'shared/search' %> -->
+    <!-- btn explore -->
+    <div class="explore-btn">
+      <!-- pop on click -->
+      <div id="open-mc-popup" class="btn btn-explore btn-full-width open-popup" onclick="showMailPopup()" ><%= t "home.register" %>
+      </div>
+    </div>
+    <!-- a reactiver après phase mail -->
+    <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
+    <%#= t "home.explore" %>
+    <%# end %>
   </div>
-  <!-- a reactiver après phase mail -->
-  <%#= link_to  trips_path ,{:class=>"btn btn-explore btn-full-width"} do %>
-  <%#= t "home.explore" %>
-  <%# end %>
-</div>
 </header>
-<!-- join  -->
 <div class="actions-demo">
-  <div class="map-container">
-    <div class="find">
+  <!-- JOIN  -->
+  <div class="action-container">
+    <div class="action-text">
       <h3><i class="fa fa-search" aria-hidden="true"></i>
       <%= t "home.find-a-trip" %></h3>
       <p><%= t "home.find-a-trip-descr" %></p>
     </div>
-    <div class="find-demo">
+    <div class="action-illustration">
       <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516466362/demo_iojjsx.gif" class="shadow-demo" alt="">
     </div>
   </div>
-  <div class="create-container">
-    <div class="bg">
+  <!-- CREATE -->
+  <div class="action-container">
+    <div class="action-text">
+      <h3><i class="fa fa-plus" aria-hidden="true"></i><%= t "home.create-a-trip" %></h3>
+      <p><%= t "home.create-a-trip-descr" %></p>
     </div>
-    <div class="white-bg text-center">
-      <h3>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      <%= t "home.create-a-trip" %>
-      </h3>
-      <p>
-        <%= t "home.create-a-trip-descr" %>
-      </p>
+    <div class="action-illustration">
+      <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516467667/macbookcalypso-4d51c48cd48d46d193dc922607c21c9ac9ba95b6248bbb4d0932bff031ed6842_gu1d54.png" class="shadow-demo" alt="">
     </div>
+  </div>
+</div>
+
+<!-- OLD -->
+<div class="map-container">
+  <div class="find">
+    <h3><i class="fa fa-plus" aria-hidden="true"></i><%= t "home.create-a-trip" %></h3>
+    <p><%= t "home.create-a-trip-descr" %></p>
+  </div>
+  <div class="find-demo">
+    <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516466362/demo_iojjsx.gif" class="shadow-demo" alt="">
+  </div>
+</div>
+<!-- old -->
+<div class="create-container">
+  <div class="white-bg text-center">
+    <h3>
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <%= t "home.create-a-trip" %>
+    </h3>
+    <p>
+      <%= t "home.create-a-trip-descr" %>
+    </p>
+  </div>
+  <div class="bg">
+    <img src="http://res.cloudinary.com/dyub4bz6x/image/upload/v1516467667/macbookcalypso-4d51c48cd48d46d193dc922607c21c9ac9ba95b6248bbb4d0932bff031ed6842_gu1d54.png" class="shadow-demo" alt="">
   </div>
 </div>
 <!-- ligne couleur map <div class="block-center"> </div> -->
