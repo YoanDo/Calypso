@@ -29,6 +29,18 @@
     font-weight: 700;
 }
 
+@media (max-width:410px){
+  .heropanel__content {
+    max-width:80%;
+    h1{
+    font-size: 2.4em;
+    font-weight: 700;
+    line-height: 1.3em;
+    }
+  }
+}
+
+
 // .heropanel__content h1 a {
 //     color:#FFF;
 //     text-decoration:none;

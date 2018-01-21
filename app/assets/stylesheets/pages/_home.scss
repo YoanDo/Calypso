@@ -34,6 +34,17 @@ header:after{
   z-index: 999;
 }
 
+@media (max-width:410px) {
+  header:after{
+    height: 250px;
+    width: 100%;
+    display: block;
+    content: "";
+    margin-top: 0;
+    z-index: 999;
+  }
+}
+
 .logo-nav{
   span{
     color: $calypso;
@@ -69,6 +80,11 @@ header:after{
   background-position: right;
 }
 
+@media (max-width:410px){
+  .actions-demo .action-container {
+    margin-bottom: 25%;
+  }
+}
 .action-container h2 {
   font-size: 1.8em;
 }
@@ -151,9 +167,12 @@ header:after{
 }
 
 @media (max-width: 600px) {
-  .create-container {
+  .action-container {
     flex-direction: column;
-    height: 100vh;
+    // height: 100vh;
+    div{
+      margin: 10% auto;
+    }
   }
 }
 .mail-collector {
