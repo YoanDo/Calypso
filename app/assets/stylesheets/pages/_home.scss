@@ -1,96 +1,180 @@
 // Specific CSS for your home-pa
-.map-container {
-background: url(image-path("calypso-range.jpg"));
+// header:after {
+//     background-image: radial-gradient(95% 170px at 50% -5px, transparent 99%, #fff 100%);
+//     height: 230px;
+//     width: 100%;
+//     display: block;
+//     content: '';
+//     margin-top: -200px;
+//     z-index: 999;
+// }
+
+
+header .navbar-wagon {
+  background-color: rgba(255, 255, 255, 0);
+  .logo-nav{
+    color: white;
+  }
 }
-.map-container h2 {
-font-size: 33px;
+
+header .header-content{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
-.map-container p {
-font-size: 20px;
+
+header:after{
+  // background-image:  radial-gradient(87% 173px at 23% -5px, transparent 99%, white 100%);
+  background-image: radial-gradient(95% 170px at 50% -5px, transparent 99%, #fff 100%);
+  height: 270px;
+  width: 100%;
+  display: block;
+  content: "";
+  margin-top: 120px;
+  z-index: 999;
 }
-.find {
-margin-left: 5%;
+
+.logo-nav{
+  span{
+    color: $calypso;
+  }
 }
-.find p {
-max-width: 42%;
-}
-.text-map-background {
-width: 50%;
-word-wrap:break-word;
-}
-.map-container {
-width: 100%;
-height: 50vh;
-display: flex;
-align-items: center;
-background-image: url(image-path("calypso-range.jpg"));
-background-repeat: no-repeat;
-background-size: cover;
-background-position: right;
-}
+
 .explore-btn {
-width: 30%;
-text-align: center;
-margin-left: 25%;
+  text-align: center;
+  margin: auto;
 }
+
 //couleur input
 .explore-btn input::placeholder {
-color: white;
+  color: white;
 }
-//create
-.create-container {
-display: flex;
-// flex-direction: column;
-width: 100%;
-height: 50vh;
-margin-bottom: 2px;
+
+// actions
+.actions-demo .action-container, .create-container {
+  margin-bottom: 5%;
+  padding: 0 20%;
 }
-.create-container h2 {
-font-size: 33px;
+
+
+.action-container {
+  width: 100%;
+  // height: 75vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-image: url(image-path("calypso-range.jpg"));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
 }
-.create-container p {
-font-size: 20px;
+
+.action-container h2 {
+  font-size: 1.8em;
 }
-.bg {
-background-image: url(image-path("sunset.jpg"));
-background-repeat: no-repeat;
-background-size: cover;
-background-position: left;
-flex: 1 1 70%;
+
+.action-container p {
+  font-size: 1.2em;
 }
-.white-bg {
-background-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-flex: 1 1 30%;
-padding: 20px;
-text-align: left;
+
+.action-text{
+  display: flex;
+  flex-direction: column;
 }
+
+// .action-illustration  {
+//   // height: 100%;
+//   // max-height: 50vh;
+//   width: 100%;
+//   max-width: 30vw;
+// }
+
+.iphone img {
+  max-height: 50vh;
+}
+
+.mac img{
+  max-height: 30vh;
+}
+
+.action-text {
+  h3{
+    color: $calypso;
+    font-size: 2em;
+  }
+  p{
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+}
+
+.action-illustration{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+@media (min-width: 1020px){
+  .action-container{
+    min-height: 35em;
+  }
+  .action-text {
+    max-width: 28em;
+  }
+}
+
+.join-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // background-color:#30a87a;
+  background:url("https://images.unsplash.com/photo-1481531016920-bdc05fe6b9a8?auto=format&fit=crop&w=2850&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  background-attachment: fixed;
+  width: 100%;
+  height: 50vh;
+}
+.join-us:after{
+  background-image: radial-gradient(500% 214px at -366% -6px, transparent 99%, #fff 100%)
+}
+
+.progression{
+  height: 50vh
+}
+
+// OLD ----------------------------------------------------------------------
+.shadow-demo {
+  // box-shadow: 5px 45px 73px -24px rgba(0,0,0,0.42);
+}
+
 @media (max-width: 600px) {
-.create-container {
-flex-direction: column;
-height: 100vh;
-}
+  .create-container {
+    flex-direction: column;
+    height: 100vh;
+  }
 }
 .mail-collector {
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
+
 .mail-collector input {
-border: solid 3px #FF0041 ;
-color: white;
-background-color: rgba(255, 116, 97, 0);
-font-family: 'Lato';
-font-size: 14;
-font-weight: 300;
-letter-spacing: 3px;
-text-transform: uppercase;
-padding: 6px 28px;
+  border: solid 3px #FF0041 ;
+  color: white;
+  background-color: rgba(255, 116, 97, 0);
+  font-family: 'Lato';
+  font-size: 14;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 28px;
 }
+
 .send {
-border-radius: 0 !important;
-border-left: none !important;
+  border-radius: 0 !important;
+  border-left: none !important;
 }
 

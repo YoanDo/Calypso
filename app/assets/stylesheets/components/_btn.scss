@@ -86,24 +86,27 @@
 
 
 .btn-explore {
-  border: solid 3px white;
+  border-bottom: solid 3px white;
   color: white;
-  background-color: rgba(255, 116, 97, 0);
+  background-color: rgba(255, 255, 255, 0.3);
   font-family: 'Lato';
-  font-size: 14;
+  font-size: 1em;
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 6px 28px;
+  transition: 1s;
   // margin: 1%
 }
 
 .btn-explore:hover {
-  border: white;
-  color: $black;
+  color: white;
   background-color: white;
   opacity: 1;
-  border: 2px solid white;
+  // border: solid 3px white;
+  // border: 3px solid white;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 6px 86px;
 }
 
 .btn-info:focus {
