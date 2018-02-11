@@ -23,7 +23,15 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
+    <!-- analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55400045-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-55400045-2');
+    </script>
   </head>
   <body>
     <%#= render 'shared/navbar' %>
@@ -35,15 +43,13 @@
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
     <%= javascript_include_tag "application" %>
     <%= yield(:after_js) %>
-
-        <!-- evil pop up -->
+    <!-- evil pop up -->
     <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
-
     <script type="text/javascript">
     function showMailPopup() {
-      document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-      document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-      require(["mojo/signup-forms/Loader"],function(L){L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"af12c8121a0cbbd603454ea9e","lid":"4904281888"})});
+    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    require(["mojo/signup-forms/Loader"],function(L){L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"af12c8121a0cbbd603454ea9e","lid":"4904281888"})});
     };
     </script>
   </body>
