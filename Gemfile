@@ -4,7 +4,7 @@ ruby '2.3.4'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
-gem 'pg'
+gem 'pg', '~> 0.20'
 gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
@@ -28,6 +28,7 @@ gem "gmaps4rails"
 gem "facebook-messenger"
 gem 'chart-js-rails'
 gem 'devise-i18n'
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
