@@ -33,6 +33,7 @@
 .social{
   a{
     font-size: 2em !important;
+    margin: 0;
   }
 
   .fa{
@@ -41,7 +42,14 @@
       color: white;
     }
   }
+}
 
+@media (max-width:410px) {
+  .social{
+    .fa{
+      margin: 0;
+    }
+  }
 }
 
 .footer-links a:hover {
@@ -66,10 +74,10 @@
   .footer {
     flex-direction: column;
     align-items: center;
-    padding-bottom: 50px;
-  }
+    padding: 50px auto;
 
-  .footer-links {
-    margin-top: 20px;
+    .logo-footer {
+      margin: 5%;
+    }
   }
 }

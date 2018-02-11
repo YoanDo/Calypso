@@ -312,13 +312,19 @@ $mute: #DFE3E4;
 @media (max-width:410px) {
   .progression{
     background-color: white;
+    padding: 10%;
   }
   .progress{
     display:flex;
     flex-direction: column;
     height: 100%;
-    margin: 10% auto;
+    padding: 10% auto;
+    margin-top: 0;
     background-color: white;
+
+    ol{
+      padding: 10% 0;
+    }
 
     li{
       width: 100%;
