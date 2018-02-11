@@ -83,7 +83,9 @@ header:after{
 
 @media (max-width:410px){
   .actions-demo .action-container {
-    margin-bottom: 25%;
+    padding-bottom: 25%;
+    margin-bottom: 0;
+    background-color: white;
   }
 }
 
@@ -155,117 +157,27 @@ header:after{
   width: 100%;
   height: 50vh;
 }
+
+@media (max-width: 410px) {
+  .join-us:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background:url("https://images.unsplash.com/photo-1481531016920-bdc05fe6b9a8?auto=format&fit=crop&w=2850&q=80");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+}
+
 .join-us:after{
   background-image: radial-gradient(500% 214px at -366% -6px, transparent 99%, #fff 100%)
-}
-
-.progression{
-  height: 50vh
-}
-
-// progression settings
-$complete: #2ECC71;
-$active: #3498DB;
-$mute: #DFE3E4;
-
-.progress {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  color: darken($mute, 33%);
-
-  // /* added css counter */
-  counter-reset: counter;
-  ol {
-    display:block !important;
-  }
-  > li {
-    position: relative;
-    display: table-cell;
-    text-align: center;
-    font-size: 0.8em;
-    padding-bottom:0;
-
-    &:before {
-      // /*content: attr(data-step);*/
-
-      // /* Changed to use css counter */
-      counter-increment: counter;
-      content: counter(counter);
-
-      display: block;
-      margin: 0 auto;
-      background: $mute;
-      width: 3em;
-      height: 3em;
-      text-align: center; //IE8 doesn't inherit this style
-      margin-bottom: 0.25em;
-      line-height: 3em;
-      border-radius: 100%;
-      position: relative;
-      z-index: 1000;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      display: block;
-      background: $mute;
-      width: 100%;
-      height: 0.5em;
-      top: 1.25em;
-      left: 50%;
-      margin-left: 1.5em\9;
-      z-index: -1;
-    }
-    &:last-child:after {
-      display: none;
-    }
-    &.is-complete {
-      color: $complete;
-
-   &:before {
-    content:"✔"
-   }
-      &:before,
-      &:after {
-        color: #FFF;
-        background: $complete;
-      }
-    }
-    &.is-active {
-      color: $active;
-
-      &:before {
-        color: #FFF;
-        background: $active;
-      }
-    }
-  }
-}
-  // /**
-  //  * Needed for IE8
-  //  */
-  .progress__last:after {
-    display: none!important;
-  }
-
-  // /**
-  //  * Size Extensions
-  //  */
-  .progress--medium {
-    font-size: 1.5em;
-  }
-  .progress--large {
-    font-size: 2em;
-  }
-
-
-// OLD ----------------------------------------------------------------------
-.shadow-demo {
-  // box-shadow: 5px 45px 73px -24px rgba(0,0,0,0.42);
 }
 
 @media (max-width: 600px) {
@@ -277,6 +189,7 @@ $mute: #DFE3E4;
     }
   }
 }
+
 .mail-collector {
   display: flex;
   flex-direction: row;
@@ -305,6 +218,13 @@ $mute: #DFE3E4;
 $complete: #1FBEA5;
 $active: #3498DB;
 $mute: #DFE3E4;
+
+@media (max-width:410px) {
+  .progression{
+    height:100%;
+  }
+}
+
 
 .progress {
   list-style: none;
@@ -384,6 +304,26 @@ $mute: #DFE3E4;
       &:before {
         color: #FFF;
         background: $active;
+      }
+    }
+  }
+}
+
+@media (max-width:410px) {
+  .progression{
+    background-color: white;
+  }
+  .progress{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 10% auto;
+    background-color: white;
+
+    li{
+      width: 100%;
+        &:after{
+        display: none;
       }
     }
   }
