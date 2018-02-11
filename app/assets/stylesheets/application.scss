@@ -29,7 +29,16 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     outline: 0 none;
 }
 
-
+.flex{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.flex-column{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .container {
   min-height: calc(100vh - 220px);
 }

@@ -1,7 +1,9 @@
 
+
+
 .btn-primary {
-  border: solid 2px rgba(255, 116, 97, .90);
-  color: rgba(255, 116, 97, .90);
+  border: solid 2px $calypso;
+  color: $calypso;
   background-color: rgba(255, 116, 97, 0);
   font-family: 'Lato';
   font-size: 14;
@@ -10,12 +12,16 @@
   text-transform: uppercase;
   padding: 6px 28px;
   // margin: 1%
+  &:active{
+    background-color: $calypso !important;
+    border-color: $calypso !important;
+  }
 }
 
 .btn-primary:hover {
-  border: solid 2px rgba(255, 116, 97, 1.0);
+  border: solid 2px $calypso;
   color: white;
-  background-color: rgba(255, 116, 97, 1.0);
+  background-color: rgba(255, 116, 97, 0);
 }
 
 .btn-info {
