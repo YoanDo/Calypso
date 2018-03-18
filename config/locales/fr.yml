@@ -1,15 +1,19 @@
 fr:
   home:
-    join-a-trip: "rejoins une session,"
-    meet-surfers: "rencontre des surfeurs,"
-    create-adventures: "mets toi à l'eau "
+    intro: "Envie d’aller surfer ? Rejoins une session, mets toi à l’eau et crée ton aventure."
+    intro_part2: "Calypso est la plateforme qui va permettre à une communauté de passionnés de tous niveaux de se retrouver et de rejoindre les spots. "
+    intro_part3: "Plus que du covoiturage, Calypso va t’aider à organiser tes futures sessions, te donner l’opportunité de te mettre plus souvent à l’eau et te permettre de rencontrer des gens cools.  "
+    intro_part4: "Le concept est simple, rejoins un session ou crée la tienne."
 
-    register: "inscription"
+    join-a-trip: "rejoins une session,"
+    meet-surfers: "mets toi à l’eau,"
+    create-adventures: "crée ton aventure"
+
+    register: "pré-inscription"
     explore: "explorer"
 
     find-a-trip: "trouve une session"
-    find-a-trip-descr: "Rencontre des gens qui partagent ta passion et pars pour une session"
-
+    find-a-trip-descr: "Envie de te mettre à l’eau ? Rejoins des surfeurs autour de toi prêt à prendre la route vers les spots."
     create-a-trip: 'crée tes sessions'
-    create-a-trip-descr: "organise tes propres trips et connecte toi à une communauté grandissante"
+    create-a-trip-descr: "Organise ton propre trip. Permets à d’autres passionnés de partir avec toi. Partagez la route, votre expérience."
 
