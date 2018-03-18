@@ -62,13 +62,13 @@ header:after{
 }
 
 // actions
-.actions-demo .action-container, .create-container {
+.actions-demo .action-container, .create-container, .intro  {
   margin-bottom: 2%;
   padding: 0 20%;
 }
 
 
-.action-container {
+.action-container,{
   width: 100%;
   // height: 75vh;
   display: flex;
@@ -93,7 +93,7 @@ header:after{
   font-size: 1.8em;
 }
 
-.action-container p {
+.actions-demo, .intro p {
   font-size: 1.2em;
 }
 
@@ -428,3 +428,20 @@ a.bttn {
     }
   }
 }
+
+// yeeeeww
+// .support-us:hover a button span{
+//   display: none;
+// }
+
+// .support-us:hover a button span{
+//   content: 'Yeeeeew';
+// }
+
+
+// .item:hover .new-label span{
+//   display: none;
+// }
+// .item:hover .new-label:after{
+//   content: 'ADD';
+// }
