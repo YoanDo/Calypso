@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :subscribers
   mount ActionCable.server => '/cable'
-  mount Facebook::Messenger::Server, at: 'bot'
+  # shutted11042018 due to fb update
+  # mount Facebook::Messenger::Server, at: 'bot'
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

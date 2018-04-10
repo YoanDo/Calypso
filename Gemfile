@@ -25,7 +25,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
-gem "facebook-messenger"
+# gem "facebook-messenger"
 gem 'chart-js-rails'
 gem 'devise-i18n'
 
